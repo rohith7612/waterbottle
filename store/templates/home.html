@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Water Bottle Store</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary-blue: #0d6efd;
+            --water-blue: #00bcd4;
+            --deep-blue: #1976d2;
+            --light-blue: #e3f2fd;
+            --gradient-primary: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --gradient-water: linear-gradient(135deg, #00bcd4 0%, #2196f3 100%);
+            --gradient-hero: linear-gradient(135deg, rgba(13,110,253,0.9) 0%, rgba(25,118,210,0.9) 100%);
+            --gradient-light-translucent: linear-gradient(135deg, rgba(227, 242, 253, 0.8) 0%, rgba(207, 216, 220, 0.8) 100%);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            overflow-x: hidden;
+            background: linear-gradient(45deg, #f8f9fa, #e9ecef);
+        }
+
+        /* Animated Background */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background:
+                radial-gradient(circle at 20% 80%, rgba(13,110,253,0.05) 0%, transparent 40%),
+                radial-gradient(circle at 80% 20%, rgba(0,188,212,0.05) 0%, transparent 40%),
+                radial-gradient(circle at 50% 50%, rgba(102,126,234,0.03) 0%, transparent 30%);
+            animation: backgroundShift 15s ease-in-out infinite alternate;
+            z-index: -1;
+        }
+
+        @keyframes backgroundShift {
+            0% { transform: translateX(0) translateY(0) scale(1); }
+            50% { transform: translateX(15px) translateY(-10px) scale(1.05); }
+            100% { transform: translateX(-10px) translateY(15px) scale(1); }
+        }
+
+        /* Navbar Animations */
+        .navbar {
+            background: var(--gradient-primary) !important;
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .navbar::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            animation: shimmer 3s infinite;
+        }
+
+        @keyframes shimmer {
+            0% { left: -100%; }
+            100% { left: 100%; }
+        }
+
+        .navbar-brand {
+            font-weight: bold;
+            font-size: 1.8rem;
+            color: white !important;
+            position: relative;
+            animation: brandPulse 2s ease-in-out infinite alternate;
+            text-shadow: 0 0 10px rgba(255,255,255,0.3), 0 0 20px rgba(255,255,255,0.2);
+        }
+
+        @keyframes brandPulse {
+            0% { transform: scale(1); text-shadow: 0 0 10px rgba(255,255,255,0.3), 0 0 20px rgba(255,255,255,0.2); }
+            100% { transform: scale(1.05); text-shadow: 0 0 15px rgba(255,255,255,0.5), 0 0 30px rgba(255,255,255,0.3); }
+        }
+
+        .nav-link {
+            color: rgba(255,255,255,0.9) !important;
+            position: relative;
+            transition: all 0.3s ease;
+            margin: 0 5px;
+            border-radius: 20px;
+            padding: 8px 16px !important;
+        }
+
+        .nav-link::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 100%;
+            background: rgba(255,255,255,0.2);
+            border-radius: 20px;
+            transition: width 0.3s ease;
+            z-index: -1;
+        }
+
+        .nav-link:hover {
+            color: white !important;
+            transform: translateY(-2px);
+            text-shadow: 0 0 10px rgba(255,255,255,0.8);
+        }
+
+        .nav-link:hover::before {
+            width: 100%;
+        }
+
+        /* Floating Water Droplets */
+        .water-droplet {
+            position: fixed;
+            background: var(--gradient-water);
+            border-radius: 50% 50% 50% 0 / 60% 60% 40% 40%; /* More realistic droplet shape */
+            transform: rotate(-45deg);
+            pointer-events: none;
+            z-index: 1000;
+            animation: float 8s infinite ease-in-out, dropletSway 5s infinite alternate ease-in-out;
+            opacity: 0.5; /* Slightly more subtle */
+            box-shadow: inset -5px -5px 10px rgba(0,0,0,0.1), 0 0 5px var(--water-blue);
+        }
+        @keyframes dropletSway {
+            0% { transform: rotate(-45deg) translateX(0); }
+            100% { transform: rotate(-35deg) translateX(5px); }
+        }
+
+        .water-droplet:nth-child(1) { width: 12px; height: 18px; top: 10%; left: 10%; animation-delay: 0s, 0s; }
+        .water-droplet:nth-child(2) { width: 18px; height: 25px; top: 20%; left: 80%; animation-delay: 1s, 0.5s; }
+        .water-droplet:nth-child(3) { width: 10px; height: 15px; top: 60%; left: 15%; animation-delay: 2s, 1s; }
+        .water-droplet:nth-child(4) { width: 15px; height: 22px; top: 80%; left: 70%; animation-delay: 3s, 1.5s; }
+        .water-droplet:nth-child(5) { width: 9px; height: 14px; top: 40%; left: 40%; animation-delay: 4s, 2s; }
+        .water-droplet:nth-child(6) { width: 16px; height: 23px; top: 70%; left: 50%; animation-delay: 5s, 2.5s; }
+
+
+        @keyframes float {
+            0%, 100% { transform: rotate(-45deg) translateY(0px); opacity: 0.5; }
+            50% { transform: rotate(-45deg) translateY(-25px); opacity: 0.7; }
+        }
+
+        /* Alert Messages Animation */
+        .alert {
+            animation: slideInFromTop 0.5s ease-out;
+            border: none;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .alert::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            animation: alertShimmer 2s infinite;
+        }
+
+        @keyframes slideInFromTop {
+            0% { transform: translateY(-100px); opacity: 0; }
+            100% { transform: translateY(0); opacity: 1; }
+        }
+        @keyframes alertShimmer {
+            0% { left: -100%; }
+            100% { left: 100%; }
+        }
+
+        /* Container Animation */
+        .container { animation: fadeInUp 0.8s ease-out; }
+        @keyframes fadeInUp {
+            0% { transform: translateY(30px); opacity: 0; }
+            100% { transform: translateY(0); opacity: 1; }
+        }
+
+        /* Button Animations */
+        .btn {
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            border-radius: 25px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 50%; left: 50%;
+            width: 0; height: 0;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.3);
+            transition: width 0.3s ease, height 0.3s ease;
+            transform: translate(-50%, -50%);
+            z-index: 0;
+        }
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+        }
+        .btn:hover::before { width: 300px; height: 300px; }
+        .btn span, .btn i { position: relative; z-index: 1; }
+
+        /* Card Animations */
+        .card {
+            transition: all 0.4s ease;
+            border-radius: 20px;
+            overflow: hidden;
+            border: none;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            position: relative;
+            background-color: rgba(255,255,255,0.7); /* Make cards slightly translucent */
+            backdrop-filter: blur(5px);
+        }
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: var(--gradient-water);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: 1;
+        }
+        .card:hover {
+            transform: translateY(-10px) rotateX(3deg) rotateY(-2deg) scale(1.03);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+        .card:hover::before { opacity: 0.1; }
+        .card * { position: relative; z-index: 2; }
+
+        /* Text Animations */
+        .text-animate { animation: textGlow 2s ease-in-out infinite alternate; }
+        @keyframes textGlow {
+            0% { text-shadow: 0 0 5px rgba(13,110,253,0.4), 0 0 10px rgba(13,110,253,0.2); }
+            100% { text-shadow: 0 0 15px rgba(13,110,253,0.7), 0 0 25px rgba(13,110,253,0.5); }
+        }
+        .text-animate-subtle { animation: textGlowSubtle 3s ease-in-out infinite alternate; }
+         @keyframes textGlowSubtle {
+            0% { text-shadow: 0 0 2px rgba(0,188,212,0.3); }
+            100% { text-shadow: 0 0 8px rgba(0,188,212,0.6); }
+        }
+
+
+        /* Hover Effects for Links */
+        a { transition: all 0.3s ease; }
+        a:hover { text-decoration: none; transform: scale(1.05); }
+
+        /* Responsive Animations */
+        @media (max-width: 768px) {
+            .navbar-brand { font-size: 1.5rem; }
+            .card:hover { transform: translateY(-5px); }
+            .footer-content { text-align: center; }
+            .footer-content .col-md-3, .footer-content .col-md-2, .footer-content .col-md-4 { margin-bottom: 20px; }
+        }
+
+        /* Page Transition */
+        .page-transition { animation: pageSlideIn 0.6s ease-out; }
+        @keyframes pageSlideIn {
+            0% { transform: translateX(100px); opacity: 0; }
+            100% { transform: translateX(0); opacity: 1; }
+        }
+
+        /* Scroll Animations */
+        .scroll-animate {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Added a bouncier transition */
+        }
+        .scroll-animate.animate { opacity: 1; transform: translateY(0); }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 10px; }
+        ::-webkit-scrollbar-track { background: #f1f1f1; }
+        ::-webkit-scrollbar-thumb {
+            background: var(--gradient-water);
+            border-radius: 10px;
+            border: 2px solid #f1f1f1;
+        }
+        ::-webkit-scrollbar-thumb:hover { background: var(--deep-blue); }
+
+        /* Particle Effect */
+        .particle {
+            position: fixed;
+            width: 5px; height: 5px;
+            background: var(--water-blue);
+            border-radius: 50%;
+            pointer-events: none;
+            animation: particleFloat 8s infinite ease-in-out; /* Slower, more ambient */
+            opacity: 0; /* Start invisible, fade in with animation */
+            box-shadow: 0 0 5px var(--water-blue), 0 0 10px var(--water-blue);
+        }
+        @keyframes particleFloat {
+            0%, 100% { transform: translateY(0) rotate(0deg) scale(0.5); opacity: 0; }
+            10%, 90% { opacity: 0.8; transform: scale(1); }
+            50% { transform: translateY(-100vh) rotate(180deg) scale(0.7); opacity: 0.4; }
+        }
+
+        /* Animated Icon Styles */
+        .animated-icon-feature i {
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
+            display: inline-block;
+            animation: iconBounce 3s infinite ease-in-out;
+            color: var(--primary-blue);
+            text-shadow: 0 0 15px rgba(13,110,253,0.3);
+        }
+        @keyframes iconBounce {
+            0%, 100% { transform: translateY(0) scale(1); }
+            50% { transform: translateY(-15px) scale(1.1); }
+        }
+        .animated-icon-feature h3 { color: var(--deep-blue); }
+
+
+        /* Footer Styles */
+        footer { background: var(--gradient-primary); color: rgba(255,255,255,0.9); }
+        footer a { color: rgba(255,255,255,0.8); text-decoration: none; transition: color 0.3s ease; }
+        footer a:hover { color: white; text-decoration: underline; transform: none; }
+        footer .navbar-brand { animation: none; text-shadow: none; }
+        footer .list-inline-item a { transition: transform 0.3s ease; }
+        footer .list-inline-item a:hover { transform: scale(1.1); }
+        footer hr { border-top: 1px solid rgba(255,255,255,0.2); }
+
+    </style>
+</head>
+<body>
+    <div class="water-droplet"></div>
+    <div class="water-droplet"></div>
+    <div class="water-droplet"></div>
+    <div class="water-droplet"></div>
+    <div class="water-droplet"></div>
+    <div class="water-droplet"></div>
+
+
+    <div class="particle" style="left: 5%; animation-delay: 0s; top: 100vh;"></div>
+    <div class="particle" style="left: 15%; animation-delay: 1s; top: 100vh;"></div>
+    <div class="particle" style="left: 25%; animation-delay: 0.5s; top: 100vh;"></div>
+    <div class="particle" style="left: 35%; animation-delay: 2s; top: 100vh;"></div>
+    <div class="particle" style="left: 45%; animation-delay: 1.5s; top: 100vh;"></div>
+    <div class="particle" style="left: 55%; animation-delay: 3s; top: 100vh;"></div>
+    <div class="particle" style="left: 65%; animation-delay: 2.5s; top: 100vh;"></div>
+    <div class="particle" style="left: 75%; animation-delay: 0.8s; top: 100vh;"></div>
+    <div class="particle" style="left: 85%; animation-delay: 1.8s; top: 100vh;"></div>
+    <div class="particle" style="left: 95%; animation-delay: 3.5s; top: 100vh;"></div>
+
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+        <div class="container">
+            <a class="navbar-brand text-animate" href="#">
+                <i class="fas fa-tint me-2"></i>WaterBottleCo
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                         <ul class="navbar-nav ms-auto">
+                <li class="nav-item"><a class="nav-link" href="{% url 'home' %}">Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="{% url 'products' %}">Products</a></li>
+                <li class="nav-item"><a class="nav-link" href="{% url 'about' %}">About Us</a></li>
+                <li class="nav-item"><a class="nav-link" href="{% url 'contact' %}">Contact</a></li>
+                {% if user.is_authenticated %}
+                    <li class="nav-item"><a class="nav-link" href="{% url 'my_orders' %}">My Orders</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'logout' %}">Logout</a></li>
+                    {% comment %} <li class="nav-item"><a class="nav-link" href="{% url 'admin_dashboard' %}">Admin Panel</a></li> {% endcomment %}
+                {% else %}
+                    <li class="nav-item"><a class="nav-link" href="{% url 'login' %}">Login</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'register' %}">Register</a></li>
+                {% endif %}
+            </ul>
+
+            </div>
+        </div>
+    </nav>
+
+    <div class="container mt-4 page-transition">
+        <div class="scroll-animate">
+            <div class="row">
+                <div class="col-12 text-center mb-5 py-5" style="background: var(--gradient-hero); border-radius: 20px; color: white;">
+                    <h1 class="display-3 fw-bold text-animate mb-3" style="animation-duration: 2.5s;">Welcome to WaterBottleCo</h1>
+                    <p class="lead fs-4 mb-4">Experience hydration with unparalleled style & innovation.</p>
+                    <button class="btn btn-light btn-lg text-primary">
+                        <a href="{% url 'products' %}"><span><i class="fas fa-flask me-2"></i>Discover Our Essence</span></a>
+                    </button>
+                </div>
+            </div>
+
+            <div class="row mb-5">
+                <div class="col-md-4 mb-4">
+                    <div class="card scroll-animate">
+                        <div class="card-body text-center p-4">
+                            <i class="fas fa-shield-alt fa-3x text-primary mb-3" style="animation: iconBounce 3s infinite ease-in-out .2s;"></i>
+                            <h5 class="card-title fw-bold">Premium Durability</h5>
+                            <p class="card-text">Crafted for endurance, ready for any adventure.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="card scroll-animate" style="animation-delay: 0.2s;">
+                        <div class="card-body text-center p-4">
+                            <i class="fas fa-seedling fa-3x text-success mb-3" style="animation: iconBounce 3s infinite ease-in-out .4s;"></i>
+                            <h5 class="card-title fw-bold">Eco-Conscious Design</h5>
+                            <p class="card-text">Sustainably sourced, responsibly made for our planet.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="card scroll-animate" style="animation-delay: 0.4s;">
+                        <div class="card-body text-center p-4">
+                            <i class="fas fa-rocket fa-3x text-info mb-3" style="animation: iconBounce 3s infinite ease-in-out .6s;"></i>
+                            <h5 class="card-title fw-bold">Swift & Seamless</h5>
+                            <p class="card-text">Hydration delivered to you, faster than ever.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row my-5 py-5 scroll-animate text-center animated-icon-feature" style="background: var(--gradient-light-translucent); border-radius: 20px; backdrop-filter: blur(5px);">
+                <div class="col-md-8 mx-auto">
+                    <i class="fas fa-water"></i>
+                    <h2 class="display-5 fw-bold text-animate mb-3">Pure Hydration, Elevated</h2>
+                    <p class="lead text-muted">
+                        Discover the flow of innovation. Our commitment is to provide not just a bottle,
+                        but an experience that complements your dynamic lifestyle with pure, refreshing hydration.
+                    </p>
+                </div>
+            </div>
+
+            <div class="row my-5 align-items-center scroll-animate">
+                <div class="col-md-6 text-center text-md-start mb-4 mb-md-0">
+                     <i class="fas fa-cogs fa-4x text-primary mb-4" style="animation: iconBounce 3s infinite ease-in-out 1s;"></i>
+                    <h3 class="fw-bold text-animate-subtle" style="color: var(--deep-blue);">Engineered for Excellence</h3>
+                    <p class="lead text-secondary">
+                        Every curve, every material, meticulously chosen for optimal performance and aesthetic appeal.
+                        We push the boundaries of design to bring you perfection.
+                    </p>
+                </div>
+                <div class="col-md-6 text-center">
+                    <div class="p-4" style="background: var(--gradient-water); border-radius: 15px; color: white;">
+                        <i class="fas fa-lightbulb fa-5x mb-3" style="text-shadow: 0 0 15px rgba(255,255,255,0.7);"></i>
+                        <h4 class="fw-bold">Spark of Innovation</h4>
+                        <p>Constantly evolving, always inspiring.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="row my-5 align-items-center scroll-animate">
+                <div class="col-md-6 text-center order-md-2 text-md-end mb-4 mb-md-0">
+                     <i class="fas fa-palette fa-4x text-success mb-4" style="animation: iconBounce 3s infinite ease-in-out 1.2s;"></i>
+                    <h3 class="fw-bold text-animate-subtle" style="color: var(--deep-blue);">Vibrant Styles, Unique You</h3>
+                    <p class="lead text-secondary">
+                        Express yourself with a spectrum of colors and designs that match your unique personality and flair.
+                    </p>
+                </div>
+                <div class="col-md-6 text-center order-md-1">
+                     <div class="p-4" style="background: var(--gradient-primary); border-radius: 15px; color: white;">
+                        <i class="fas fa-fingerprint fa-5x mb-3" style="text-shadow: 0 0 15px rgba(255,255,255,0.7);"></i>
+                        <h4 class="fw-bold">Your Signature Bottle</h4>
+                        <p>Make a statement with every sip.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row my-5 py-5 scroll-animate">
+                <div class="col-12 text-center">
+                    <i class="fas fa-sync-alt fa-spin fa-3x text-primary mb-4" style="animation-duration: 4s;"></i>
+                    <h2 class="display-4 fw-bold text-animate mb-3">Join the Revolution of Refreshment</h2>
+                    <p class="lead text-muted col-md-8 mx-auto">
+                        Be part of a movement that values sustainability, style, and superior hydration.
+                        Explore our world and find your perfect companion.
+                    </p>
+                    <button class="btn btn-primary btn-lg mt-3">
+                        <span><i class="fas fa-tint me-2"></i>Explore Now</span>
+                    </button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <footer class="text-white pt-5 pb-4 mt-5 scroll-animate">
+        <div class="container text-center text-md-start footer-content">
+            <div class="row text-center text-md-start">
+                <div class="col-md-3 col-lg-3 col-xl-3 mx-auto mt-3">
+                    <h5 class="text-uppercase mb-4 fw-bold navbar-brand" style="font-size: 1.6rem !important;">
+                        <i class="fas fa-tint me-2"></i>WaterBottleCo
+                    </h5>
+                    <p>
+                        Premium source for stylish, durable, and eco-friendly water bottles. Stay hydrated, stay healthy.
+                    </p>
+                </div>
+                <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mt-3">
+                    <h5 class="text-uppercase mb-4 fw-bold">Collections</h5>
+                    <p><a href="#" class="text-white">Signature Series</a></p>
+                    <p><a href="#" class="text-white">Adventure Gear</a></p>
+                    <p><a href="#" class="text-white">Urban Minimalist</a></p>
+                    <p><a href="#" class="text-white">Limited Editions</a></p>
+                </div>
+                <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mt-3">
+                    <h5 class="text-uppercase mb-4 fw-bold">Support</h5>
+                    <p><a href="#" class="text-white">My Account</a></p>
+                    <p><a href="#" class="text-white">Shipping & Returns</a></p>
+                    <p><a href="#" class="text-white">FAQs</a></p>
+                    <p><a href="#" class="text-white">Contact Support</a></p>
+                </div>
+                <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mt-3">
+                    <h5 class="text-uppercase mb-4 fw-bold">Connect</h5>
+                    <p><i class="fas fa-map-marker-alt me-3"></i> Aqua Central, Hydration Hub</p>
+                    <p><i class="fas fa-envelope me-3"></i> splash@waterbottleco.xyz</p>
+                    <p><i class="fas fa-phone me-3"></i> +1 (555) HYDRATE</p>
+                </div>
+            </div>
+            <hr class="mb-4 mt-4">
+            <div class="row align-items-center">
+                <div class="col-md-7 col-lg-8">
+                    <p>© <span id="currentYear"></span> WaterBottleCo. All Rights Reserved.
+                       Designed with <i class="fas fa-water text-info"></i> and <i class="fas fa-cogs"></i>.
+                    </p>
+                </div>
+                <div class="col-md-5 col-lg-4">
+                    <div class="text-center text-md-end">
+                        <ul class="list-unstyled list-inline mb-0">
+                            <li class="list-inline-item"><a href="#" class="btn-floating btn-sm text-white" style="font-size: 23px;"><i class="fab fa-facebook-f"></i></a></li>
+                            <li class="list-inline-item"><a href="#" class="btn-floating btn-sm text-white" style="font-size: 23px;"><i class="fab fa-twitter"></i></a></li>
+                            <li class="list-inline-item"><a href="#" class="btn-floating btn-sm text-white" style="font-size: 23px;"><i class="fab fa-instagram"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        function animateOnScroll() {
+            const elements = document.querySelectorAll('.scroll-animate');
+            elements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const elementVisible = window.innerHeight * 0.15; // 15% from bottom
+                if (elementTop < window.innerHeight - elementVisible) {
+                    element.classList.add('animate');
+                }
+            });
+        }
+        window.addEventListener('scroll', animateOnScroll);
+        window.addEventListener('load', animateOnScroll);
+
+        document.querySelectorAll('.btn').forEach(button => {
+            button.addEventListener('click', function(e) {
+                if (this.querySelector('.ripple')) return;
+                const ripple = document.createElement('span');
+                const rect = this.getBoundingClientRect();
+                const size = Math.max(rect.width, rect.height);
+                const x = e.clientX - rect.left - size / 2;
+                const y = e.clientY - rect.top - size / 2;
+                ripple.style.width = ripple.style.height = size + 'px';
+                ripple.style.left = x + 'px';
+                ripple.style.top = y + 'px';
+                ripple.style.position = 'absolute';
+                ripple.style.borderRadius = '50%';
+                ripple.style.background = 'rgba(255,255,255,0.4)';
+                ripple.style.transform = 'scale(0)';
+                ripple.style.animation = 'rippleEffect 0.6s linear';
+                ripple.style.pointerEvents = 'none';
+                ripple.classList.add('ripple');
+                this.appendChild(ripple);
+                setTimeout(() => { ripple.remove(); }, 600);
+            });
+        });
+        if (!document.querySelector('style[data-ripple]')) {
+            const rippleStyle = document.createElement("style");
+            rippleStyle.setAttribute("data-ripple", "true");
+            rippleStyle.innerText = `@keyframes rippleEffect { to { transform: scale(4); opacity: 0; } }`;
+            document.head.appendChild(rippleStyle);
+        }
+
+        const navbar = document.querySelector('.navbar');
+        const initialNavbarBg = getComputedStyle(navbar).background;
+        const initialBackdropFilter = getComputedStyle(navbar).backdropFilter;
+        window.addEventListener('scroll', function() {
+            if (window.scrollY > 50) {
+                navbar.style.background = 'rgba(102, 126, 234, 0.9)'; /* Corresponds to --gradient-primary start color with opacity */
+                navbar.style.backdropFilter = 'blur(15px)';
+                navbar.style.boxShadow = '0 2px 10px rgba(0,0,0,0.1)';
+            } else {
+                navbar.style.background = initialNavbarBg;
+                navbar.style.backdropFilter = initialBackdropFilter;
+                navbar.style.boxShadow = 'none';
+            }
+        });
+
+        document.addEventListener('mousemove', function(e) {
+            if (Math.random() > 0.96) {
+                const trail = document.createElement('div');
+                trail.className = 'particle';
+                trail.style.left = (e.clientX - 2) + 'px';
+                trail.style.top = (e.clientY - 2) + 'px';
+                trail.style.position = 'fixed';
+                trail.style.pointerEvents = 'none';
+                trail.style.animation = 'mouseParticleFade 1s ease-out forwards';
+                trail.style.background = `hsl(${Math.random() * 60 + 180}, 100%, 70%)`; // Shades of blue/cyan for trail
+                trail.style.width = trail.style.height = (Math.random() * 3 + 2) + 'px'; // Vary size
+                document.body.appendChild(trail);
+                setTimeout(() => { trail.remove(); }, 1000);
+            }
+        });
+        if (!document.querySelector('style[data-mouseparticle]')) {
+            const mouseParticleStyle = document.createElement("style");
+            mouseParticleStyle.setAttribute("data-mouseparticle", "true");
+            mouseParticleStyle.innerText = `@keyframes mouseParticleFade { 0% { transform: scale(1) translateY(0) rotate(0deg); opacity: 0.8; } 100% { transform: scale(0.3) translateY(-30px) rotate(720deg); opacity: 0; } }`;
+            document.head.appendChild(mouseParticleStyle);
+        }
+
+        window.addEventListener('load', function() {
+            document.body.style.animation = 'fadeInBody 1s ease-out';
+        });
+        if (!document.querySelector('style[data-bodyfade]')) {
+            const bodyFadeStyle = document.createElement("style");
+            bodyFadeStyle.setAttribute("data-bodyfade", "true");
+            bodyFadeStyle.innerText = `@keyframes fadeInBody { 0% { opacity: 0; } 100% { opacity: 1; } }`;
+            document.head.appendChild(bodyFadeStyle);
+        }
+
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+    </script>
+</body>
+</html>
