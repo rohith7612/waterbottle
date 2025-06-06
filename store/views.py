@@ -19,6 +19,11 @@ def about(request):
 def contact(request):
     return render(request, 'contact.html')
 
+def successful(request, product_id):
+    product = get_object_or_404(Product, pk=product_id)
+    return render(request, 'store/successful.html', {'product': product})
+
+
 @login_required
 def admin_dashboard(request):
     products = Product.objects.all()
@@ -48,7 +53,7 @@ def delete_product(request, id):
 def buy_product(request, product_id):
     product = get_object_or_404(Product, pk=product_id)
     Sale.objects.create(user=request.user, product=product, quantity=1)
-    return redirect('products')  # or a 'thank you' page
+    return redirect('successful', product_id=product.id)  # or a 'thank you' page
 
 
 @login_required
