@@ -465,6 +465,17 @@
             0% { transform: rotate(0deg); }
             100% { transform: rotate(360deg); }
         }
+
+        /* Hero Image Animation */
+        .hero-image img {
+            transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+
+        .hero-image img:hover {
+            transform: scale(1.07) rotate(-3deg);
+            box-shadow: 0 16px 48px 0 rgba(30,58,138,0.25), 0 2px 8px 0 rgba(30,58,138,0.10);
+            filter: brightness(1.08) saturate(1.2);
+        }
     </style>
 </head>
 <body>
@@ -475,8 +486,8 @@
     <nav class="navbar navbar-expand-lg fixed-top" id="mainNavbar">
         <div class="container">
             <a class="navbar-brand" href="#">
-                <div class="logo-icon">
-                    <i class="fas fa-seedling"></i>
+                <div class="logo-icon" style="padding:0; background:none;">
+                    <img src="/media/product_images/Vin2Grow.png" alt="Vin2Grow Logo" style="width:36px; height:36px; border-radius:8px; object-fit:cover; box-shadow:0 2px 8px rgba(30,58,138,0.10); background:#fff;" />
                 </div>
                 Vin2Grow
             </a>
@@ -514,7 +525,7 @@
                 </div>
                 <div class="col-lg-6 text-center">
                     <div class="hero-image fade-in-up">
-                        <i class="fas fa-water fa-10x" style="opacity: 0.3;"></i>
+                        <img src="/media/product_images/Vin2Grow.png" alt="Premium Water Bottle" style="max-width: 350px; width: 100%; height: auto; border-radius: 2rem; box-shadow: 0 8px 32px rgba(30,58,138,0.15); object-fit: cover; background: #f8fafc;" />
                     </div>
                 </div>
             </div>
