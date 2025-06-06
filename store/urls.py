@@ -11,11 +11,4 @@ urlpatterns = [
     path('admin-dashboard/delete/<int:id>/', views.delete_product, name='delete_product'),
     path('buy/<int:product_id>/', views.buy_product, name='buy_product'),
     path('my-orders/', views.my_orders, name='my_orders'),
-
-
-
-
-
-
-    
 ]
