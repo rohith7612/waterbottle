@@ -26,3 +26,12 @@ class Sale(models.Model):
         return f"Sale by {self.user.username if self.user else 'Unknown'} on {self.date}"
 
 
+
+
+
+
+
+
+
+
+

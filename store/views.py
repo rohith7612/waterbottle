@@ -56,3 +56,16 @@ def my_orders(request):
     orders = Sale.objects.filter(user=request.user).select_related('product')
     return render(request, 'store/my_orders.html', {'orders': orders})
 
+
+
+
+
+
+
+
+
+
+
+
+
+

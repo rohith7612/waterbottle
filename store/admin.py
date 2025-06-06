@@ -9,3 +9,4 @@ class SaleAdmin(admin.ModelAdmin):
     list_filter = ('timestamp', 'user', 'product')
 
 admin.site.register(Product)
+
