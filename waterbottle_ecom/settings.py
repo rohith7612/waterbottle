@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-q&xp5mgcp2*(ev!ldb#x5sun2nmz_lx17%hn0x0(-_57u@=gy6
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['waterbottles.onrender.com', 'localhost', '127.0.0.1']
+ALLOWED_HOSTS = ['vin2grow.onrender.com', 'localhost', '127.0.0.1']
 
 
 # Application definition
