@@ -2,22 +2,30 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Register - WaterBottleCo</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up - Vin2Grow</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
+    
     <style>
-        /* CSS Variables */
         :root {
-            --primary-blue: #0d6efd;
-            --water-blue: #00bcd4;
-            --deep-blue: #1976d2;
-            --light-blue: #e3f2fd;
-            --gradient-primary: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            --gradient-water: linear-gradient(135deg, #00bcd4 0%, #2196f3 100%);
-            --gradient-hero: linear-gradient(135deg, rgba(13,110,253,0.9) 0%, rgba(25,118,210,0.9) 100%);
-            --gradient-light-translucent: linear-gradient(135deg, rgba(227, 242, 253, 0.8) 0%, rgba(207, 216, 220, 0.8) 100%);
+            --primary-navy: #1e3a8a;
+            --primary-blue: #3b82f6;
+            --accent-teal: #06b6d4;
+            --accent-emerald: #10b981;
+            --neutral-gray: #6b7280;
+            --light-gray: #f8fafc;
+            --white: #ffffff;
+            --dark: #0f172a;
+            --shadow-light: rgba(0, 0, 0, 0.1);
+            --shadow-medium: rgba(0, 0, 0, 0.15);
+            --shadow-heavy: rgba(0, 0, 0, 0.25);
+            --gradient-primary: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+            --gradient-accent: linear-gradient(135deg, #06b6d4 0%, #10b981 100%);
+            --gradient-hero: linear-gradient(135deg, rgba(30, 58, 138, 0.95) 0%, rgba(59, 130, 246, 0.95) 100%);
         }
 
-        /* Global Styles */
         * {
             margin: 0;
             padding: 0;
@@ -25,16 +33,27 @@
         }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.6;
+            color: var(--dark);
+            background-color: var(--white);
             overflow-x: hidden;
-            background: linear-gradient(45deg, #f8f9fa, #e9ecef);
-            min-height: 100vh; /* Ensure body takes full viewport height */
-            display: flex;
-            flex-direction: column;
-            position: relative; /* For animated background and particles */
+            min-height: 100vh;
+            display: block;
         }
 
-        /* Animated Background */
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 600;
+            line-height: 1.2;
+            margin-bottom: 1rem;
+        }
+
+        .display-1, .display-2, .display-3, .display-4 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+        }
+
         body::before {
             content: '';
             position: fixed;
@@ -42,337 +61,255 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background:
-                radial-gradient(circle at 20% 80%, rgba(13,110,253,0.05) 0%, transparent 40%),
-                radial-gradient(circle at 80% 20%, rgba(0,188,212,0.05) 0%, transparent 40%),
-                radial-gradient(circle at 50% 50%, rgba(102,126,234,0.03) 0%, transparent 30%);
-            animation: backgroundShift 15s ease-in-out infinite alternate;
+            background: 
+                radial-gradient(circle at 15% 85%, rgba(59, 130, 246, 0.03) 0%, transparent 50%),
+                radial-gradient(circle at 85% 15%, rgba(6, 182, 212, 0.03) 0%, transparent 50%);
+            animation: subtleShift 20s ease-in-out infinite alternate;
             z-index: -1;
-        }
-
-        @keyframes backgroundShift {
-            0% { transform: translateX(0) translateY(0) scale(1); }
-            50% { transform: translateX(15px) translateY(-10px) scale(1.05); }
-            100% { transform: translateX(-10px) translateY(15px) scale(1); }
-        }
-
-        /* Floating Water Droplets (for background) */
-        .water-droplet {
-            position: fixed;
-            background: var(--gradient-water);
-            border-radius: 50% 50% 50% 0 / 60% 60% 40% 40%; /* More realistic droplet shape */
-            transform: rotate(-45deg);
             pointer-events: none;
-            z-index: 1000;
-            animation: float 8s infinite ease-in-out, dropletSway 5s infinite alternate ease-in-out;
-            opacity: 0.5; /* Slightly more subtle */
-            box-shadow: inset -5px -5px 10px rgba(0,0,0,0.1), 0 0 5px var(--water-blue);
-        }
-        @keyframes dropletSway {
-            0% { transform: rotate(-45deg) translateX(0); }
-            100% { transform: rotate(-35deg) translateX(5px); }
         }
 
-        @keyframes float {
-            0%, 100% { transform: rotate(-45deg) translateY(0px); opacity: 0.5; }
-            50% { transform: rotate(-45deg) translateY(-25px); opacity: 0.7; }
+        @keyframes subtleShift {
+            0% { transform: translate(0, 0) scale(1); }
+            100% { transform: translate(-10px, 10px) scale(1.02); }
         }
 
-        /* Navbar Animations */
         .navbar {
-            background: var(--gradient-primary) !important;
-            backdrop-filter: blur(10px);
-            border-bottom: 1px solid rgba(255,255,255,0.1);
+            background: rgba(255, 255, 255, 0.95) !important;
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
             transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-            z-index: 10; /* Ensure navbar is above droplets */
+            box-shadow: 0 2px 20px var(--shadow-light);
+            padding: 1rem 0;
+            /* Removed absolute/fixed positioning here, it's handled by default flow */
         }
 
-        .navbar::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
-            animation: shimmer 3s infinite;
-        }
-
-        @keyframes shimmer {
-            0% { left: -100%; }
-            100% { left: 100%; }
+        .navbar-scrolled {
+            background: rgba(255, 255, 255, 0.98) !important;
+            box-shadow: 0 2px 30px var(--shadow-medium);
+            padding: 0.5rem 0;
         }
 
         .navbar-brand {
-            font-weight: bold;
-            font-size: 1.8rem;
-            color: white !important;
-            position: relative;
-            animation: brandPulse 2s ease-in-out infinite alternate;
-            text-shadow: 0 0 10px rgba(255,255,255,0.3), 0 0 20px rgba(255,255,255,0.2);
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            font-size: 2rem;
+            color: var(--primary-navy) !important;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s ease;
         }
 
-        @keyframes brandPulse {
-            0% { transform: scale(1); text-shadow: 0 0 10px rgba(255,255,255,0.3), 0 0 20px rgba(255,255,255,0.2); }
-            100% { transform: scale(1.05); text-shadow: 0 0 15px rgba(255,255,255,0.5), 0 0 30px rgba(255,255,255,0.3); }
+        .logo-icon {
+            width: 45px;
+            height: 45px;
+            background: var(--gradient-primary);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .navbar-brand:hover .logo-icon {
+            transform: rotate(5deg) scale(1.05);
+            box-shadow: 0 5px 15px var(--shadow-medium);
         }
 
         .nav-link {
-            color: rgba(255,255,255,0.9) !important;
+            color: var(--neutral-gray) !important;
+            font-weight: 500;
             position: relative;
             transition: all 0.3s ease;
-            margin: 0 5px;
-            border-radius: 20px;
-            padding: 8px 16px !important;
+            margin: 0 0.5rem;
+            padding: 0.5rem 1rem !important;
+            border-radius: 8px;
         }
 
         .nav-link::before {
             content: '';
             position: absolute;
-            top: 0;
-            left: 0;
+            bottom: 0;
+            left: 50%;
             width: 0;
-            height: 100%;
-            background: rgba(255,255,255,0.2);
-            border-radius: 20px;
-            transition: width 0.3s ease;
-            z-index: -1;
+            height: 2px;
+            background: var(--gradient-primary);
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
         }
 
         .nav-link:hover {
-            color: white !important;
-            transform: translateY(-2px);
-            text-shadow: 0 0 10px rgba(255,255,255,0.8);
+            color: var(--primary-navy) !important;
+            background: rgba(59, 130, 246, 0.05);
         }
 
         .nav-link:hover::before {
-            width: 100%;
+            width: 60%;
         }
 
-        /* Alert Messages Animation */
-        .alert {
-            animation: slideInFromTop 0.5s ease-out;
-            border: none;
-            border-radius: 15px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1); /* Lighter shadow for alerts */
-            position: relative;
-            overflow: hidden;
-            margin-bottom: 1rem; /* Slightly less margin for form alerts */
-            font-size: 0.9rem;
-            padding: 10px 15px;
-        }
-
-        .alert::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
-            animation: alertShimmer 2s infinite;
-        }
-
-        @keyframes slideInFromTop {
-            0% { transform: translateY(-100px); opacity: 0; }
-            100% { transform: translateY(0); opacity: 1; }
-        }
-        @keyframes alertShimmer {
-            0% { left: -100%; }
-            100% { left: 100%; }
-        }
-
-        /* Container for Registration Form */
-        .container.mt-5 {
-            flex-grow: 1; /* Allow content to grow and push footer down */
+        /* New main content wrapper for spacing */
+        .main-content-wrapper {
+            min-height: 100vh;
             display: flex;
-            align-items: center; /* Center vertically */
-            justify-content: center; /* Center horizontally */
-            padding-top: 20px;
-            padding-bottom: 20px;
+            align-items: center;
+            justify-content: center;
+            padding-top: 100px;
+            padding-bottom: 40px;
         }
 
-        .register-card {
-            background-color: rgba(255, 255, 255, 0.8); /* Slightly translucent white background */
-            backdrop-filter: blur(8px); /* Frosted glass effect */
-            border-radius: 25px; /* More rounded corners */
-            box-shadow: 0 15px 40px rgba(0,0,0,0.15); /* Stronger shadow */
-            padding: 40px; /* Increased padding */
-            animation: formFadeIn 0.8s ease-out forwards;
-            opacity: 0; /* Start hidden for animation */
-            border: 1px solid rgba(255,255,255,0.3); /* Subtle border */
+        /* Specific styles for the signup card */
+        .signup-card {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px var(--shadow-medium);
+            padding: 3rem;
+            width: 100%;
+            max-width: 480px;
+            text-align: center;
+            transition: all 0.3s ease;
+            position: relative;
+            z-index: 2;
+            margin: 1rem auto;
         }
 
-        @keyframes formFadeIn {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
+        .signup-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 50px var(--shadow-heavy);
         }
 
-        h3.mb-4.text-center {
-            color: var(--primary-blue);
-            text-shadow: 0 2px 8px rgba(0,0,0,0.1);
-            font-weight: 700;
-            font-size: 2rem; /* Larger heading */
-            margin-bottom: 1.5rem !important;
-            animation: textGlow 2s ease-in-out infinite alternate;
-        }
-
-        @keyframes textGlow {
-            0% { text-shadow: 0 0 5px rgba(13,110,253,0.4), 0 0 10px rgba(13,110,253,0.2); }
-            100% { text-shadow: 0 0 15px rgba(13,110,253,0.7), 0 0 25px rgba(13,110,253,0.5); }
+        .signup-card h3 {
+            font-size: 2rem;
+            color: var(--primary-navy);
+            margin-bottom: 1.5rem;
         }
 
         .form-label {
             font-weight: 600;
-            color: #34495e; /* Darker label color */
+            color: var(--primary-navy);
+            text-align: left;
+            display: block;
             margin-bottom: 0.5rem;
         }
 
         .form-control {
-            border-radius: 15px; /* Rounded input fields */
-            padding: 12px 18px; /* More padding in inputs */
-            border: 1px solid rgba(0,188,212,0.3);
+            border-radius: 10px;
+            padding: 0.75rem 1.25rem;
+            border: 1px solid rgba(0, 0, 0, 0.1);
             transition: all 0.3s ease;
-            box-shadow: inset 0 1px 3px rgba(0,0,0,0.1);
-            background-color: rgba(255,255,255,0.9); /* Slightly opaque background */
-        }
-        .form-control:focus {
-            border-color: var(--water-blue);
-            box-shadow: 0 0 0 0.25rem rgba(0,188,212,0.25); /* Focus glow */
-            background-color: white;
+            box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.05);
         }
 
-        .btn-primary { /* Changed from btn-success for Register button */
-            background: var(--gradient-primary); /* Use primary gradient for register */
+        .form-control:focus {
+            border-color: var(--primary-blue);
+            box-shadow: 0 0 0 0.25rem rgba(59, 130, 246, 0.25);
+            outline: none;
+        }
+
+        .btn-primary { /* Using primary button for signup */
+            background: var(--gradient-primary);
             border: none;
+            border-radius: 10px;
+            padding: 0.8rem 2rem;
+            font-weight: 600;
             transition: all 0.3s ease;
-            border-radius: 25px; /* Pill-shaped button */
-            padding: 12px 25px; /* More padding */
-            font-weight: bold;
-            font-size: 1.1rem;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-            position: relative;
-            overflow: hidden;
-            z-index: 1;
+            box-shadow: 0 4px 15px rgba(30, 58, 138, 0.3);
+            color: white;
         }
-        .btn-primary::before {
-            content: '';
-            position: absolute;
-            top: 50%; left: 50%;
-            width: 0; height: 0;
-            border-radius: 50%;
-            background: rgba(255,255,255,0.3);
-            transition: width 0.3s ease, height 0.3s ease;
-            transform: translate(-50%, -50%);
-            z-index: 0;
-        }
+
         .btn-primary:hover {
             transform: translateY(-3px);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
-            background: var(--deep-blue); /* Darker blue on hover */
+            box-shadow: 0 8px 20px rgba(30, 58, 138, 0.4);
+            filter: brightness(1.1);
         }
-        .btn-primary:hover::before { width: 300px; height: 300px; }
-        .btn-primary span, .btn-primary i { position: relative; z-index: 1; }
 
-
-        p.text-center.mt-3 {
-            color: #6c757d;
-            font-size: 0.95rem;
-            animation: textFadeIn 0.8s ease-out forwards;
-            animation-delay: 0.5s;
+        .alert {
+            border-radius: 10px;
+            padding: 1rem 1.5rem;
+            margin-bottom: 1.5rem;
+            font-weight: 500;
+            text-align: left;
             opacity: 0;
+            transform: translateY(-10px);
+            animation: fadeInAlert 0.5s forwards;
         }
-        p.text-center.mt-3 a {
+
+        .alert-danger {
+            background-color: #f8d7da;
+            color: #721c24;
+            border-color: #f5c6cb;
+        }
+        .alert-success {
+            background-color: #d4edda;
+            color: #155724;
+            border-color: #c3e6cb;
+        }
+
+        @keyframes fadeInAlert {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .text-center a {
             color: var(--primary-blue);
-            font-weight: 600;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .text-center a:hover {
+            color: var(--primary-navy);
+            text-decoration: underline;
+        }
+
+        .footer {
+            background: var(--dark);
+            color: white;
+            padding: 1.5rem 0;
+            text-align: center;
+            position: relative;
+            width: 100%;
+            margin-top: 0;
+        }
+
+        .footer-link {
+            color: rgba(255, 255, 255, 0.7);
             text-decoration: none;
             transition: all 0.3s ease;
-            position: relative;
-        }
-        p.text-center.mt-3 a::after {
-            content: '';
-            position: absolute;
-            left: 0;
-            bottom: -3px;
-            width: 0;
-            height: 2px;
-            background-color: var(--primary-blue);
-            transition: width 0.3s ease;
-        }
-        p.text-center.mt-3 a:hover {
-            color: var(--deep-blue);
-            text-shadow: 0 0 5px rgba(0,0,0,0.1);
-        }
-        p.text-center.mt-3 a:hover::after {
-            width: 100%;
         }
 
-        @keyframes textFadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
+        .footer-link:hover {
+            color: white;
         }
 
-        /* Responsive Adjustments */
         @media (max-width: 768px) {
-            .navbar-brand { font-size: 1.5rem; }
-            .nav-link { padding: 6px 12px !important; }
-            .register-card { padding: 30px; }
-            h3.mb-4.text-center { font-size: 1.75rem; }
-        }
-
-        @media (max-width: 576px) {
-            .navbar-collapse {
-                background: var(--gradient-primary);
-                padding: 10px 0;
+            .signup-card {
+                padding: 2rem;
+                margin: 0 1rem;
             }
-            .nav-link {
-                margin: 0;
-                padding: 10px 15px !important;
-                border-radius: 0;
+            .signup-card h3 {
+                font-size: 1.75rem;
             }
-            .nav-item:not(:last-child) .nav-link {
-                border-bottom: 1px solid rgba(255,255,255,0.1);
+            .main-content-wrapper {
+                padding-top: 80px;
+                padding-bottom: 20px;
             }
-            .register-card { border-radius: 15px; } /* Less rounded on smaller screens */
         }
-
-        /* Custom Scrollbar */
-        ::-webkit-scrollbar { width: 10px; }
-        ::-webkit-scrollbar-track { background: #f1f1f1; }
-        ::-webkit-scrollbar-thumb {
-            background: var(--gradient-water);
-            border-radius: 10px;
-            border: 2px solid #f1f1f1;
-        }
-        ::-webkit-scrollbar-thumb:hover { background: var(--deep-blue); }
-
-        /* Footer Styles */
-        footer {
-            background: var(--gradient-primary);
-            color: rgba(255,255,255,0.9);
-            padding: 20px 0;
-            text-align: center;
-            margin-top: auto; /* Push footer to the bottom */
-            box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
-        }
-        footer a { color: rgba(255,255,255,0.8); text-decoration: none; transition: color 0.3s ease; }
-        footer a:hover { color: white; text-decoration: underline; transform: none; }
     </style>
 </head>
 <body>
-    <div class="water-droplet" style="top: 10%; left: 10%; width: 12px; height: 18px; animation-delay: 0s, 0s;"></div>
-    <div class="water-droplet" style="top: 20%; left: 80%; width: 18px; height: 25px; animation-delay: 1s, 0.5s;"></div>
-    <div class="water-droplet" style="top: 60%; left: 15%; width: 10px; height: 15px; animation-delay: 2s, 1s;"></div>
-    <div class="water-droplet" style="top: 80%; left: 70%; width: 15px; height: 22px; animation-delay: 3s, 1.5s;"></div>
-    <div class="water-droplet" style="top: 40%; left: 40%; width: 9px; height: 14px; animation-delay: 4s, 2s;"></div>
-    <div class="water-droplet" style="top: 70%; left: 50%; width: 16px; height: 23px; animation-delay: 5s, 2.5s;"></div>
-
-
-    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+  <nav class="navbar navbar-expand-lg fixed-top" id="mainNavbar">
         <div class="container">
-            <a class="navbar-brand" href="{% url 'home' %}">WaterBottleCo</a>
+            <a class="navbar-brand" href="#">
+                <div class="logo-icon">
+                    <i class="fas fa-seedling"></i>
+                </div>
+                Vin2Grow
+            </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -385,7 +322,6 @@
                     {% if user.is_authenticated %}
                         <li class="nav-item"><a class="nav-link" href="{% url 'my_orders' %}">My Orders</a></li>
                         <li class="nav-item"><a class="nav-link" href="{% url 'logout' %}">Logout</a></li>
-                        {% comment %} <li class="nav-item"><a class="nav-link" href="{% url 'admin_dashboard' %}">Admin Panel</a></li> {% endcomment %}
                     {% else %}
                         <li class="nav-item"><a class="nav-link" href="{% url 'login' %}">Login</a></li>
                         <li class="nav-item"><a class="nav-link" href="{% url 'register' %}">Register</a></li>
@@ -395,64 +331,152 @@
         </div>
     </nav>
 
-    <div class="container mt-5">
-        <div class="register-card" style="max-width: 400px; width: 100%;">
-            <h3 class="mb-4 text-center">Register</h3>
+    <div class="main-content-wrapper">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-10">
+                    <div class="signup-card">
+                        <h3 class="mb-4 text-center">Create Your Account</h3>
 
-            {% if messages %}
-                {% for message in messages %}
-                    <div class="alert alert-warning">{{ message }}</div>
-                {% endfor %}
-            {% endif %}
+                        {% if messages %}
+                            {% for message in messages %}
+                                <div class="alert alert-{{ message.tags }}">{{ message }}</div>
+                            {% endfor %}
+                        {% endif %}
 
-            <form method="POST">
-                {% csrf_token %}
-                <div class="mb-3">
-                    <label class="form-label">Username</label>
-                    <input type="text" name="username" class="form-control" required>
+                        <form method="POST">
+                            {% csrf_token %} 
+                            
+                            <div class="mb-3">
+                                <label for="username" class="form-label">Username</label>
+                                <input type="text" name="username" id="username" class="form-control" placeholder="Choose a unique username" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="email" class="form-label">Email Address</label>
+                                <input type="email" name="email" id="email" class="form-control" placeholder="your@example.com" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="password" class="form-label">Password</label>
+                                <input type="password" name="password" id="password" class="form-control" placeholder="Enter a strong password" required>
+                            </div>
+                            <div class="mb-4">
+                                <label for="confirm_password" class="form-label">Confirm Password</label>
+                                <input type="password" name="confirm_password" id="confirm_password" class="form-control" placeholder="Confirm your password" required>
+                            </div>
+                            <button type="submit" class="btn btn-primary w-100">Sign Up</button>
+                        </form>
+
+                        <p class="text-center mt-3">Already have an account? <a href="{% url 'login' %}">Login here</a></p>
+                    </div>
                 </div>
-                <div class="mb-3">
-                    <label class="form-label">Password</label>
-                    <input type="password" name="password" class="form-control" required>
-                </div>
-                <button type="submit" class="btn btn-primary w-100">Register</button>
-            </form>
-
-            <p class="text-center mt-3">Already have an account? <a href="{% url 'login' %}">Login</a></p>
+            </div>
         </div>
     </div>
 
+    <!-- Footer -->
     <footer class="footer">
         <div class="container">
-            <p>&copy; 2025 WaterBottleCo. All rights reserved.</p>
+            <div class="row">
+                <div class="col-lg-4 mb-4">
+                    <div class="footer-brand">
+                        <i class="fas fa-seedling me-2"></i>Vin2Grow
+                    </div>
+                    <p style="color: rgba(255, 255, 255, 0.7); line-height: 1.6;">
+                        Premium water bottles designed for the modern lifestyle. Sustainable, stylish, and built to last.
+                    </p>
+                    <div class="mt-3">
+                        <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-6 mb-4">
+                    <h5 style="margin-bottom: 1.5rem;">Products</h5>
+                    <a href="#" class="footer-link">Sports Bottles</a>
+                    <a href="#" class="footer-link">Insulated Bottles</a>
+                    <a href="#" class="footer-link">Glass Bottles</a>
+                    <a href="#" class="footer-link">Kids Collection</a>
+                </div>
+                <div class="col-lg-2 col-md-6 mb-4">
+                    <h5 style="margin-bottom: 1.5rem;">Company</h5>
+                    <a href="#" class="footer-link">About Us</a>
+                    <a href="#" class="footer-link">Contact</a>
+                    <a href="#" class="footer-link">Careers</a>
+                    <a href="#" class="footer-link">Press</a>
+                </div>
+                <div class="col-lg-2 col-md-6 mb-4">
+                    <h5 style="margin-bottom: 1.5rem;">Support</h5>
+                    <a href="#" class="footer-link">Help Center</a>
+                    <a href="#" class="footer-link">Returns</a>
+                    <a href="#" class="footer-link">Shipping Info</a>
+                    <a href="#" class="footer-link">Size Guide</a>
+                </div>
+                <div class="col-lg-2 col-md-6 mb-4">
+                    <h5 style="margin-bottom: 1.5rem;">Legal</h5>
+                    <a href="#" class="footer-link">Privacy Policy</a>
+                    <a href="#" class="footer-link">Terms of Service</a>
+                    <a href="#" class="footer-link">Cookie Policy</a>
+                    <a href="#" class="footer-link">GDPR</a>
+                </div>
+            </div>
+            <hr style="border-color: rgba(255, 255, 255, 0.1); margin: 2rem 0;">
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <p style="color: rgba(255, 255, 255, 0.6); margin: 0;">
+                        © <span id="currentYear"></span> Vin2Grow. All rights reserved.
+                    </p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <p style="color: rgba(255, 255, 255, 0.6); margin: 0;">
+                        Made with <i class="fas fa-heart text-danger"></i> for better hydration
+                    </p>
+                </div>
+            </div>
         </div>
     </footer>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
     <script>
-        // JavaScript to dynamically create more water droplets for background ambiance
-        document.addEventListener('DOMContentLoaded', function() {
-            const body = document.body;
-            const numAdditionalDroplets = 10; // You can adjust this number for more or fewer droplets
+        // Navbar scroll effect
+        window.addEventListener('scroll', () => {
+            const navbar = document.getElementById('mainNav');
+            if (window.scrollY > 50) {
+                navbar.classList.add('navbar-scrolled');
+            } else {
+                navbar.classList.remove('navbar-scrolled');
+            }
+        });
 
-            for (let i = 0; i < numAdditionalDroplets; i++) {
-                const droplet = document.createElement('div');
-                droplet.classList.add('water-droplet');
-                const size = Math.random() * 10 + 8; // Random size between 8px and 18px
-                const top = Math.random() * 100; // Random top position
-                const left = Math.random() * 100; // Random left position
-                const delay = Math.random() * 6; // Random animation delay
-                const swayDelay = Math.random() * 3; // Random sway animation delay
+        // Basic client-side validation for signup form
+        document.querySelector('form').addEventListener('submit', function(event) {
+            const usernameInput = document.getElementById('username');
+            const emailInput = document.getElementById('email');
+            const passwordInput = document.getElementById('password');
+            const confirmPasswordInput = document.getElementById('confirm_password');
 
-                droplet.style.cssText = `
-                    top: ${top}%;
-                    left: ${left}%;
-                    width: ${size}px;
-                    height: ${size * 1.5}px; /* Make it more droplet shaped */
-                    animation-delay: ${delay}s, ${swayDelay}s;
-                    opacity: ${Math.random() * 0.4 + 0.3}; /* Random opacity between 0.3 and 0.7 */
-                `;
-                body.appendChild(droplet);
+            if (usernameInput.value.trim() === '' || emailInput.value.trim() === '' || 
+                passwordInput.value.trim() === '' || confirmPasswordInput.value.trim() === '') {
+                alert('Please fill in all fields.');
+                event.preventDefault();
+                return;
+            }
+
+            if (passwordInput.value !== confirmPasswordInput.value) {
+                alert('Passwords do not match.');
+                event.preventDefault();
+                return;
+            }
+
+            if (passwordInput.value.length < 8) {
+                alert('Password must be at least 8 characters long.');
+                event.preventDefault();
+                return;
+            }
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(emailInput.value)) {
+                alert('Please enter a valid email address.');
+                event.preventDefault();
+                return;
             }
         });
     </script>

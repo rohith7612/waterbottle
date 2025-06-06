@@ -2,22 +2,29 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Your Orders - WaterBottleCo</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <title>Your Orders - Vin2Grow</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
+    
     <style>
-        /* CSS Variables */
         :root {
-            --primary-blue: #0d6efd;
-            --water-blue: #00bcd4;
-            --deep-blue: #1976d2;
-            --light-blue: #e3f2fd;
-            --gradient-primary: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            --gradient-water: linear-gradient(135deg, #00bcd4 0%, #2196f3 100%);
-            --gradient-hero: linear-gradient(135deg, rgba(13,110,253,0.9) 0%, rgba(25,118,210,0.9) 100%);
-            --gradient-light-translucent: linear-gradient(135deg, rgba(227, 242, 253, 0.8) 0%, rgba(207, 216, 220, 0.8) 100%);
+            --primary-navy: #1e3a8a;
+            --primary-blue: #3b82f6;
+            --accent-teal: #06b6d4;
+            --accent-emerald: #10b981;
+            --neutral-gray: #6b7280;
+            --light-gray: #f8fafc;
+            --white: #ffffff;
+            --dark: #0f172a;
+            --shadow-light: rgba(0, 0, 0, 0.1);
+            --shadow-medium: rgba(0, 0, 0, 0.15);
+            --shadow-heavy: rgba(0, 0, 0, 0.25);
+            --gradient-primary: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+            --gradient-accent: linear-gradient(135deg, #06b6d4 0%, #10b981 100%);
+            --gradient-hero: linear-gradient(135deg, rgba(30, 58, 138, 0.95) 0%, rgba(59, 130, 246, 0.95) 100%);
         }
 
-        /* Global Styles */
         * {
             margin: 0;
             padding: 0;
@@ -25,16 +32,29 @@
         }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.6;
+            color: var(--dark);
+            background-color: var(--white);
             overflow-x: hidden;
-            background: linear-gradient(45deg, #f8f9fa, #e9ecef);
+            display: flex; /* Make body a flex container */
+            flex-direction: column; /* Stack children vertically */
             min-height: 100vh; /* Ensure body takes full viewport height */
-            display: flex;
-            flex-direction: column;
-            position: relative; /* For animated background and particles */
+            /* Removed justify-content and align-items here, as they're for centering a single item */
         }
 
-        /* Animated Background */
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 600;
+            line-height: 1.2;
+            margin-bottom: 1rem;
+        }
+
+        .display-1, .display-2, .display-3, .display-4 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+        }
+
         body::before {
             content: '';
             position: fixed;
@@ -42,156 +62,249 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background:
-                radial-gradient(circle at 20% 80%, rgba(13,110,253,0.05) 0%, transparent 40%),
-                radial-gradient(circle at 80% 20%, rgba(0,188,212,0.05) 0%, transparent 40%),
-                radial-gradient(circle at 50% 50%, rgba(102,126,234,0.03) 0%, transparent 30%);
-            animation: backgroundShift 15s ease-in-out infinite alternate;
+            background: 
+                radial-gradient(circle at 15% 85%, rgba(59, 130, 246, 0.03) 0%, transparent 50%),
+                radial-gradient(circle at 85% 15%, rgba(6, 182, 212, 0.03) 0%, transparent 50%);
+            animation: subtleShift 20s ease-in-out infinite alternate;
             z-index: -1;
-        }
-
-        @keyframes backgroundShift {
-            0% { transform: translateX(0) translateY(0) scale(1); }
-            50% { transform: translateX(15px) translateY(-10px) scale(1.05); }
-            100% { transform: translateX(-10px) translateY(15px) scale(1); }
-        }
-
-        /* Floating Water Droplets (for background) */
-        .water-droplet {
-            position: fixed;
-            background: var(--gradient-water);
-            border-radius: 50% 50% 50% 0 / 60% 60% 40% 40%; /* More realistic droplet shape */
-            transform: rotate(-45deg);
             pointer-events: none;
-            z-index: 1000;
-            animation: float 8s infinite ease-in-out, dropletSway 5s infinite alternate ease-in-out;
-            opacity: 0.5; /* Slightly more subtle */
-            box-shadow: inset -5px -5px 10px rgba(0,0,0,0.1), 0 0 5px var(--water-blue);
-        }
-        @keyframes dropletSway {
-            0% { transform: rotate(-45deg) translateX(0); }
-            100% { transform: rotate(-35deg) translateX(5px); }
         }
 
-        @keyframes float {
-            0%, 100% { transform: rotate(-45deg) translateY(0px); opacity: 0.5; }
-            50% { transform: rotate(-45deg) translateY(-25px); opacity: 0.7; }
+        @keyframes subtleShift {
+            0% { transform: translate(0, 0) scale(1); }
+            100% { transform: translate(-10px, 10px) scale(1.02); }
         }
 
-        /* Navbar Animations */
         .navbar {
-            background: var(--gradient-primary) !important;
-            backdrop-filter: blur(10px);
-            border-bottom: 1px solid rgba(255,255,255,0.1);
+            background: rgba(255, 255, 255, 0.95) !important;
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
             transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-            z-index: 10; /* Ensure navbar is above droplets */
+            box-shadow: 0 2px 20px var(--shadow-light);
+            padding: 1rem 0;
+            /* Remove position: absolute; top: 0; left: 0; right: 0; */
+            /* The body's flex-direction: column; will naturally place it at the top */
         }
 
-        .navbar::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
-            animation: shimmer 3s infinite;
-        }
-
-        @keyframes shimmer {
-            0% { left: -100%; }
-            100% { left: 100%; }
+        .navbar-scrolled {
+            background: rgba(255, 255, 255, 0.98) !important;
+            box-shadow: 0 2px 30px var(--shadow-medium);
+            padding: 0.5rem 0;
         }
 
         .navbar-brand {
-            font-weight: bold;
-            font-size: 1.8rem;
-            color: white !important;
-            position: relative;
-            animation: brandPulse 2s ease-in-out infinite alternate;
-            text-shadow: 0 0 10px rgba(255,255,255,0.3), 0 0 20px rgba(255,255,255,0.2);
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            font-size: 2rem;
+            color: var(--primary-navy) !important;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s ease;
         }
 
-        @keyframes brandPulse {
-            0% { transform: scale(1); text-shadow: 0 0 10px rgba(255,255,255,0.3), 0 0 20px rgba(255,255,255,0.2); }
-            100% { transform: scale(1.05); text-shadow: 0 0 15px rgba(255,255,255,0.5), 0 0 30px rgba(255,255,255,0.3); }
+        .logo-icon {
+            width: 45px;
+            height: 45px;
+            background: var(--gradient-primary);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .navbar-brand:hover .logo-icon {
+            transform: rotate(5deg) scale(1.05);
+            box-shadow: 0 5px 15px var(--shadow-medium);
         }
 
         .nav-link {
-            color: rgba(255,255,255,0.9) !important;
+            color: var(--neutral-gray) !important;
+            font-weight: 500;
             position: relative;
             transition: all 0.3s ease;
-            margin: 0 5px;
-            border-radius: 20px;
-            padding: 8px 16px !important;
+            margin: 0 0.5rem;
+            padding: 0.5rem 1rem !important;
+            border-radius: 8px;
         }
 
         .nav-link::before {
             content: '';
             position: absolute;
-            top: 0;
-            left: 0;
+            bottom: 0;
+            left: 50%;
             width: 0;
-            height: 100%;
-            background: rgba(255,255,255,0.2);
-            border-radius: 20px;
-            transition: width 0.3s ease;
-            z-index: -1;
+            height: 2px;
+            background: var(--gradient-primary);
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
         }
 
         .nav-link:hover {
-            color: white !important;
-            transform: translateY(-2px);
-            text-shadow: 0 0 10px rgba(255,255,255,0.8);
+            color: var(--primary-navy) !important;
+            background: rgba(59, 130, 246, 0.05);
         }
 
         .nav-link:hover::before {
+            width: 60%;
+        }
+
+        /* Main content wrapper to handle spacing and push footer down */
+        .main-content-wrapper {
+            flex-grow: 1; /* This makes the wrapper take up all available vertical space */
+            padding: 3rem 0; /* Add vertical padding for spacing */
+            display: flex;
+            justify-content: center;
+            align-items: flex-start; /* Align content to the top within the wrapper */
+        }
+
+        /* Specific styles for the content card */
+        .content-card { /* Renamed from .signup-card for clarity, apply to the main content container */
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px var(--shadow-medium);
+            padding: 3rem;
             width: 100%;
-        }
-
-        /* Alert Messages Animation - Removed for this page as messages were not in original HTML snippet */
-
-        /* Container for Orders Content */
-        .container.mt-5 {
-            flex-grow: 1; /* Allow content to grow and push footer down */
-            padding-top: 40px; /* Increased top padding */
-            padding-bottom: 40px; /* Increased bottom padding */
-            background-color: rgba(255, 255, 255, 0.8); /* Slightly translucent white background */
-            backdrop-filter: blur(8px); /* Frosted glass effect */
-            border-radius: 25px; /* More rounded corners */
-            box-shadow: 0 15px 40px rgba(0,0,0,0.15); /* Stronger shadow */
-            max-width: 700px; /* Limit width for better readability */
-            animation: contentFadeInUp 0.8s ease-out forwards;
-            opacity: 0; /* Start hidden for animation */
-            border: 1px solid rgba(255,255,255,0.3); /* Subtle border */
-        }
-
-        @keyframes contentFadeInUp {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        h3 { /* Apply to "Your Orders" heading */
-            color: var(--primary-blue);
-            text-shadow: 0 2px 8px rgba(0,0,0,0.1);
-            font-weight: 700;
-            font-size: 2.2rem; /* Larger heading */
+            max-width: 800px; /* Adjusted max-width for better content display */
             text-align: center;
-            margin-bottom: 1.5rem !important;
-            animation: textGlow 2s ease-in-out infinite alternate;
+            transition: all 0.3s ease;
+            position: relative;
+            z-index: 2;
+            margin: 0 auto; /* Center horizontally */
         }
 
-        @keyframes textGlow {
-            0% { text-shadow: 0 0 5px rgba(13,110,253,0.4), 0 0 10px rgba(13,110,253,0.2); }
-            100% { text-shadow: 0 0 15px rgba(13,110,253,0.7), 0 0 25px rgba(13,110,253,0.5); }
+        .content-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 50px var(--shadow-heavy);
         }
 
+        .content-card h3 { /* Style for 'Your Orders' heading */
+            font-size: 2.5rem; /* Slightly larger for main heading */
+            color: var(--primary-navy);
+            margin-bottom: 2rem; /* More space below heading */
+        }
+
+        .form-label { /* Keep these styles for any potential forms in the future */
+            font-weight: 600;
+            color: var(--primary-navy);
+            text-align: left;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .form-control { /* Keep these styles for any potential forms in the future */
+            border-radius: 10px;
+            padding: 0.75rem 1.25rem;
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.05);
+        }
+
+        .form-control:focus { /* Keep these styles for any potential forms in the future */
+            border-color: var(--primary-blue);
+            box-shadow: 0 0 0 0.25rem rgba(59, 130, 246, 0.25);
+            outline: none;
+        }
+
+        .btn-primary { /* Keep these styles for any potential buttons */
+            background: var(--gradient-primary);
+            border: none;
+            border-radius: 10px;
+            padding: 0.8rem 2rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(30, 58, 138, 0.3);
+            color: white;
+        }
+
+        .btn-primary:hover { /* Keep these styles for any potential buttons */
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(30, 58, 138, 0.4);
+            filter: brightness(1.1);
+        }
+
+        .alert { /* Keep alert styles in case messages are used */
+            border-radius: 10px;
+            padding: 1rem 1.5rem;
+            margin-bottom: 1.5rem;
+            font-weight: 500;
+            text-align: left;
+            opacity: 0;
+            transform: translateY(-10px);
+            animation: fadeInAlert 0.5s forwards;
+        }
+
+        .alert-danger { /* Keep alert styles in case messages are used */
+            background-color: #f8d7da;
+            color: #721c24;
+            border-color: #f5c6cb;
+        }
+        .alert-success { /* Keep alert styles in case messages are used */
+            background-color: #d4edda;
+            color: #155724;
+            border-color: #c3e6cb;
+        }
+
+        @keyframes fadeInAlert { /* Keep alert styles in case messages are used */
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .text-center a { /* Style for links in the footer or similar */
+            color: var(--primary-blue);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .text-center a:hover { /* Style for links in the footer or similar */
+            color: var(--primary-navy);
+            text-decoration: underline;
+        }
+
+        .footer {
+            background: var(--dark);
+            color: white;
+            padding: 2.5rem 0; /* Adjusted padding for better spacing */
+            text-align: center;
+            /* Removed position: absolute; bottom: 0; width: 100%; */
+            /* The body's flex-direction: column; and main-content-wrapper's flex-grow will push it down */
+            margin-top: auto; /* Ensures the footer is pushed to the bottom */
+        }
+
+        .footer-link { /* Keep for any links in the footer */
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .footer-link:hover { /* Keep for any links in the footer */
+            color: white;
+        }
+
+        @media (max-width: 768px) {
+            .content-card { /* Adjusted from .signup-card */
+                padding: 2rem;
+                margin: 0 1rem;
+            }
+            .content-card h3 { /* Adjusted from .signup-card h3 */
+                font-size: 1.75rem;
+            }
+            .main-content-wrapper {
+                padding: 2rem 0; /* Adjust padding for smaller screens */
+            }
+        }
+
+        /* Specific styles for list group from previous iterations, adapted to new theme */
         .list-group {
-            border-radius: 15px; /* Rounded list group */
+            border-radius: 12px;
             overflow: hidden;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.05); /* Subtle shadow for list */
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
             animation: listAppear 0.8s ease-out forwards;
             animation-delay: 0.3s;
             opacity: 0;
@@ -203,29 +316,30 @@
         }
 
         .list-group-item {
-            background-color: rgba(255, 255, 255, 0.9); /* Slightly translucent list items */
-            border: 1px solid rgba(0, 0, 0, 0.05);
-            padding: 15px 20px;
-            font-size: 1.05rem;
-            color: #34495e;
+            background-color: var(--white);
+            border: 1px solid rgba(0, 0, 0, 0.08);
+            padding: 18px 25px;
+            font-size: 1.1rem;
+            color: var(--dark);
             transition: all 0.3s ease;
         }
 
         .list-group-item:hover {
-            background-color: rgba(227, 242, 253, 0.9); /* Light blue on hover */
-            transform: translateX(5px); /* Slight shift on hover */
-            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+            background-color: var(--light-gray);
+            transform: translateX(5px);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
         }
 
         .list-group-item strong {
-            color: var(--deep-blue);
+            color: var(--primary-blue);
+            font-weight: 600;
         }
 
         p { /* For "You have no purchases yet." */
-            font-size: 1.1rem;
-            color: #6c757d;
+            font-size: 1.2rem;
+            color: var(--neutral-gray);
             text-align: center;
-            margin-top: 2rem;
+            margin-top: 2.5rem;
             animation: textFadeIn 0.8s ease-out forwards;
             animation-delay: 0.5s;
             opacity: 0;
@@ -235,66 +349,19 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* Responsive Adjustments */
-        @media (max-width: 768px) {
-            .navbar-brand { font-size: 1.5rem; }
-            .nav-link { padding: 6px 12px !important; }
-            h3 { font-size: 1.75rem; }
-            .container.mt-5 { padding: 30px; }
-            .list-group-item { font-size: 0.95rem; padding: 12px 15px; }
-        }
-
-        @media (max-width: 576px) {
-            .navbar-collapse {
-                background: var(--gradient-primary);
-                padding: 10px 0;
-            }
-            .nav-link {
-                margin: 0;
-                padding: 10px 15px !important;
-                border-radius: 0;
-            }
-            .nav-item:not(:last-child) .nav-link {
-                border-bottom: 1px solid rgba(255,255,255,0.1);
-            }
-            .container.mt-5 { border-radius: 15px; } /* Less rounded on smaller screens */
-        }
-
-        /* Custom Scrollbar */
-        ::-webkit-scrollbar { width: 10px; }
-        ::-webkit-scrollbar-track { background: #f1f1f1; }
-        ::-webkit-scrollbar-thumb {
-            background: var(--gradient-water);
-            border-radius: 10px;
-            border: 2px solid #f1f1f1;
-        }
-        ::-webkit-scrollbar-thumb:hover { background: var(--deep-blue); }
-
-        /* Footer Styles */
-        footer {
-            background: var(--gradient-primary);
-            color: rgba(255,255,255,0.9);
-            padding: 20px 0;
-            text-align: center;
-            margin-top: auto; /* Push footer to the bottom */
-            box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
-        }
-        footer a { color: rgba(255,255,255,0.8); text-decoration: none; transition: color 0.3s ease; }
-        footer a:hover { color: white; text-decoration: underline; transform: none; }
+        /* No Water Droplets from this CSS, so they are removed from the HTML for consistency.
+           If you want them, they need to be added back to the CSS with their animations. */
     </style>
 </head>
 <body>
-    <div class="water-droplet" style="top: 10%; left: 10%; width: 12px; height: 18px; animation-delay: 0s, 0s;"></div>
-    <div class="water-droplet" style="top: 20%; left: 80%; width: 18px; height: 25px; animation-delay: 1s, 0.5s;"></div>
-    <div class="water-droplet" style="top: 60%; left: 15%; width: 10px; height: 15px; animation-delay: 2s, 1s;"></div>
-    <div class="water-droplet" style="top: 80%; left: 70%; width: 15px; height: 22px; animation-delay: 3s, 1.5s;"></div>
-    <div class="water-droplet" style="top: 40%; left: 40%; width: 9px; height: 14px; animation-delay: 4s, 2s;"></div>
-    <div class="water-droplet" style="top: 70%; left: 50%; width: 16px; height: 23px; animation-delay: 5s, 2.5s;"></div>
-
-
-    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <nav class="navbar navbar-expand-lg" id="mainNav">
         <div class="container">
-            <a class="navbar-brand" href="{% url 'home' %}">WaterBottleCo</a>
+            <a class="navbar-brand" href="{% url 'home' %}">
+                <div class="logo-icon">
+                    <i class="fas fa-seedling"></i>
+                </div>
+                WaterBottleCo
+            </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -317,54 +384,98 @@
         </div>
     </nav>
 
-    <div class="container mt-5">
-        <h3>Your Orders</h3>
-        {% if orders %}
-            <ul class="list-group">
-                {% for order in orders %}
-                    <li class="list-group-item">
-                        <strong>{{ order.product.name }}</strong> - ₹{{ order.product.price }} on {{ order.timestamp|date:"d M Y, h:i A" }}
-                    </li>
-                {% endfor %}
-            </ul>
-        {% else %}
-            <p>You have no purchases yet.</p>
-        {% endif %}
+    <div class="main-content-wrapper">
+        <div class="container">
+            <div class="content-card"> <h3>Your Orders</h3>
+                {% if orders %}
+                    <ul class="list-group">
+                        {% for order in orders %}
+                            <li class="list-group-item">
+                                <strong>{{ order.product.name }}</strong> - ₹{{ order.product.price }} on {{ order.timestamp|date:"d M Y, h:i A" }}
+                            </li>
+                        {% endfor %}
+                    </ul>
+                {% else %}
+                    <p>You have no purchases yet.</p>
+                {% endif %}
+            </div>
+        </div>
     </div>
 
+   <!-- Footer -->
     <footer class="footer">
         <div class="container">
-            <p>&copy; 2025 WaterBottleCo. All rights reserved.</p>
+            <div class="row">
+                <div class="col-lg-4 mb-4">
+                    <div class="footer-brand">
+                        <i class="fas fa-seedling me-2"></i>Vin2Grow
+                    </div>
+                    <p style="color: rgba(255, 255, 255, 0.7); line-height: 1.6;">
+                        Premium water bottles designed for the modern lifestyle. Sustainable, stylish, and built to last.
+                    </p>
+                    <div class="mt-3">
+                        <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-6 mb-4">
+                    <h5 style="margin-bottom: 1.5rem;">Products</h5>
+                    <a href="#" class="footer-link">Sports Bottles</a>
+                    <a href="#" class="footer-link">Insulated Bottles</a>
+                    <a href="#" class="footer-link">Glass Bottles</a>
+                    <a href="#" class="footer-link">Kids Collection</a>
+                </div>
+                <div class="col-lg-2 col-md-6 mb-4">
+                    <h5 style="margin-bottom: 1.5rem;">Company</h5>
+                    <a href="#" class="footer-link">About Us</a>
+                    <a href="#" class="footer-link">Contact</a>
+                    <a href="#" class="footer-link">Careers</a>
+                    <a href="#" class="footer-link">Press</a>
+                </div>
+                <div class="col-lg-2 col-md-6 mb-4">
+                    <h5 style="margin-bottom: 1.5rem;">Support</h5>
+                    <a href="#" class="footer-link">Help Center</a>
+                    <a href="#" class="footer-link">Returns</a>
+                    <a href="#" class="footer-link">Shipping Info</a>
+                    <a href="#" class="footer-link">Size Guide</a>
+                </div>
+                <div class="col-lg-2 col-md-6 mb-4">
+                    <h5 style="margin-bottom: 1.5rem;">Legal</h5>
+                    <a href="#" class="footer-link">Privacy Policy</a>
+                    <a href="#" class="footer-link">Terms of Service</a>
+                    <a href="#" class="footer-link">Cookie Policy</a>
+                    <a href="#" class="footer-link">GDPR</a>
+                </div>
+            </div>
+            <hr style="border-color: rgba(255, 255, 255, 0.1); margin: 2rem 0;">
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <p style="color: rgba(255, 255, 255, 0.6); margin: 0;">
+                        © <span id="currentYear"></span> Vin2Grow. All rights reserved.
+                    </p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <p style="color: rgba(255, 255, 255, 0.6); margin: 0;">
+                        Made with <i class="fas fa-heart text-danger"></i> for better hydration
+                    </p>
+                </div>
+            </div>
         </div>
     </footer>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
     <script>
-        // JavaScript to dynamically create more water droplets for background ambiance
-        document.addEventListener('DOMContentLoaded', function() {
-            const body = document.body;
-            const numAdditionalDroplets = 10; // You can adjust this number for more or fewer droplets
-
-            for (let i = 0; i < numAdditionalDroplets; i++) {
-                const droplet = document.createElement('div');
-                droplet.classList.add('water-droplet');
-                const size = Math.random() * 10 + 8; // Random size between 8px and 18px
-                const top = Math.random() * 100; // Random top position
-                const left = Math.random() * 100; // Random left position
-                const delay = Math.random() * 6; // Random animation delay
-                const swayDelay = Math.random() * 3; // Random sway animation delay
-
-                droplet.style.cssText = `
-                    top: ${top}%;
-                    left: ${left}%;
-                    width: ${size}px;
-                    height: ${size * 1.5}px; /* Make it more droplet shaped */
-                    animation-delay: ${delay}s, ${swayDelay}s;
-                    opacity: ${Math.random() * 0.4 + 0.3}; /* Random opacity between 0.3 and 0.7 */
-                `;
-                body.appendChild(droplet);
+        // Navbar scroll effect
+        window.addEventListener('scroll', () => {
+            const navbar = document.getElementById('mainNav');
+            if (window.scrollY > 50) {
+                navbar.classList.add('navbar-scrolled');
+            } else {
+                navbar.classList.remove('navbar-scrolled');
             }
         });
+        // No client-side validation script needed for this page
     </script>
 </body>
 </html>

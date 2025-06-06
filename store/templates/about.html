@@ -2,22 +2,30 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Contact Us - WaterBottleCo</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Vin2Grow</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
+    
     <style>
-        /* CSS Variables */
         :root {
-            --primary-blue: #0d6efd;
-            --water-blue: #00bcd4;
-            --deep-blue: #1976d2;
-            --light-blue: #e3f2fd;
-            --gradient-primary: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            --gradient-water: linear-gradient(135deg, #00bcd4 0%, #2196f3 100%);
-            --gradient-hero: linear-gradient(135deg, rgba(13,110,253,0.9) 0%, rgba(25,118,210,0.9) 100%);
-            --gradient-light-translucent: linear-gradient(135deg, rgba(227, 242, 253, 0.8) 0%, rgba(207, 216, 220, 0.8) 100%);
+            --primary-navy: #1e3a8a;
+            --primary-blue: #3b82f6;
+            --accent-teal: #06b6d4;
+            --accent-emerald: #10b981;
+            --neutral-gray: #6b7280;
+            --light-gray: #f8fafc;
+            --white: #ffffff;
+            --dark: #0f172a;
+            --shadow-light: rgba(0, 0, 0, 0.1);
+            --shadow-medium: rgba(0, 0, 0, 0.15);
+            --shadow-heavy: rgba(0, 0, 0, 0.25);
+            --gradient-primary: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+            --gradient-accent: linear-gradient(135deg, #06b6d4 0%, #10b981 100%);
+            --gradient-hero: linear-gradient(135deg, rgba(30, 58, 138, 0.95) 0%, rgba(59, 130, 246, 0.95) 100%);
         }
 
-        /* Global Styles */
         * {
             margin: 0;
             padding: 0;
@@ -25,16 +33,25 @@
         }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.6;
+            color: var(--dark);
+            background-color: var(--white);
             overflow-x: hidden;
-            background: linear-gradient(45deg, #f8f9fa, #e9ecef);
-            min-height: 100vh; /* Ensure body takes full viewport height */
-            display: flex;
-            flex-direction: column;
-            position: relative; /* For animated background and particles */
         }
 
-        /* Animated Background */
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 600;
+            line-height: 1.2;
+            margin-bottom: 1rem;
+        }
+
+        .display-1, .display-2, .display-3, .display-4 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+        }
+
         body::before {
             content: '';
             position: fixed;
@@ -42,250 +59,402 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background:
-                radial-gradient(circle at 20% 80%, rgba(13,110,253,0.05) 0%, transparent 40%),
-                radial-gradient(circle at 80% 20%, rgba(0,188,212,0.05) 0%, transparent 40%),
-                radial-gradient(circle at 50% 50%, rgba(102,126,234,0.03) 0%, transparent 30%);
-            animation: backgroundShift 15s ease-in-out infinite alternate;
+            background: 
+                radial-gradient(circle at 15% 85%, rgba(59, 130, 246, 0.03) 0%, transparent 50%),
+                radial-gradient(circle at 85% 15%, rgba(6, 182, 212, 0.03) 0%, transparent 50%);
+            animation: subtleShift 20s ease-in-out infinite alternate;
             z-index: -1;
-        }
-
-        @keyframes backgroundShift {
-            0% { transform: translateX(0) translateY(0) scale(1); }
-            50% { transform: translateX(15px) translateY(-10px) scale(1.05); }
-            100% { transform: translateX(-10px) translateY(15px) scale(1); }
-        }
-
-        /* Floating Water Droplets (for background) */
-        .water-droplet {
-            position: fixed;
-            background: var(--gradient-water);
-            border-radius: 50% 50% 50% 0 / 60% 60% 40% 40%; /* More realistic droplet shape */
-            transform: rotate(-45deg);
             pointer-events: none;
-            z-index: 1000;
-            animation: float 8s infinite ease-in-out, dropletSway 5s infinite alternate ease-in-out;
-            opacity: 0.5; /* Slightly more subtle */
-            box-shadow: inset -5px -5px 10px rgba(0,0,0,0.1), 0 0 5px var(--water-blue);
-        }
-        @keyframes dropletSway {
-            0% { transform: rotate(-45deg) translateX(0); }
-            100% { transform: rotate(-35deg) translateX(5px); }
         }
 
-        @keyframes float {
-            0%, 100% { transform: rotate(-45deg) translateY(0px); opacity: 0.5; }
-            50% { transform: rotate(-45deg) translateY(-25px); opacity: 0.7; }
+        @keyframes subtleShift {
+            0% { transform: translate(0, 0) scale(1); }
+            100% { transform: translate(-10px, 10px) scale(1.02); }
         }
 
-        /* Navbar Animations */
         .navbar {
-            background: var(--gradient-primary) !important;
-            backdrop-filter: blur(10px);
-            border-bottom: 1px solid rgba(255,255,255,0.1);
+            background: rgba(255, 255, 255, 0.95) !important;
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
             transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-            z-index: 10; /* Ensure navbar is above droplets */
+            box-shadow: 0 2px 20px var(--shadow-light);
+            padding: 1rem 0;
         }
 
-        .navbar::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
-            animation: shimmer 3s infinite;
-        }
-
-        @keyframes shimmer {
-            0% { left: -100%; }
-            100% { left: 100%; }
+        .navbar-scrolled {
+            background: rgba(255, 255, 255, 0.98) !important;
+            box-shadow: 0 2px 30px var(--shadow-medium);
+            padding: 0.5rem 0;
         }
 
         .navbar-brand {
-            font-weight: bold;
-            font-size: 1.8rem;
-            color: white !important;
-            position: relative;
-            animation: brandPulse 2s ease-in-out infinite alternate;
-            text-shadow: 0 0 10px rgba(255,255,255,0.3), 0 0 20px rgba(255,255,255,0.2);
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            font-size: 2rem;
+            color: var(--primary-navy) !important;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s ease;
         }
 
-        @keyframes brandPulse {
-            0% { transform: scale(1); text-shadow: 0 0 10px rgba(255,255,255,0.3), 0 0 20px rgba(255,255,255,0.2); }
-            100% { transform: scale(1.05); text-shadow: 0 0 15px rgba(255,255,255,0.5), 0 0 30px rgba(255,255,255,0.3); }
+        .logo-icon {
+            width: 45px;
+            height: 45px;
+            background: var(--gradient-primary);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .navbar-brand:hover .logo-icon {
+            transform: rotate(5deg) scale(1.05);
+            box-shadow: 0 5px 15px var(--shadow-medium);
         }
 
         .nav-link {
-            color: rgba(255,255,255,0.9) !important;
+            color: var(--neutral-gray) !important;
+            font-weight: 500;
             position: relative;
             transition: all 0.3s ease;
-            margin: 0 5px;
-            border-radius: 20px;
-            padding: 8px 16px !important;
+            margin: 0 0.5rem;
+            padding: 0.5rem 1rem !important;
+            border-radius: 8px;
         }
 
         .nav-link::before {
             content: '';
             position: absolute;
-            top: 0;
-            left: 0;
+            bottom: 0;
+            left: 50%;
             width: 0;
-            height: 100%;
-            background: rgba(255,255,255,0.2);
-            border-radius: 20px;
-            transition: width 0.3s ease;
-            z-index: -1;
+            height: 2px;
+            background: var(--gradient-primary);
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
         }
 
         .nav-link:hover {
-            color: white !important;
-            transform: translateY(-2px);
-            text-shadow: 0 0 10px rgba(255,255,255,0.8);
+            color: var(--primary-navy) !important;
+            background: rgba(59, 130, 246, 0.05);
         }
 
         .nav-link:hover::before {
-            width: 100%;
+            width: 60%;
         }
 
-        /* Alert Messages Animation */
-        .alert {
-            animation: slideInFromTop 0.5s ease-out;
-            border: none;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        .hero-section {
+            background: var(--gradient-hero);
+            color: white;
+            padding: 8rem 0 6rem;
             position: relative;
             overflow: hidden;
-            margin-bottom: 1.5rem;
         }
 
-        .alert::before {
+        .hero-section::before {
             content: '';
             position: absolute;
             top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
-            animation: alertShimmer 2s infinite;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" patternUnits="userSpaceOnUse" width="100" height="100"><circle cx="50" cy="50" r="1" fill="white" fill-opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+            opacity: 0.3;
         }
 
-        @keyframes slideInFromTop {
-            0% { transform: translateY(-100px); opacity: 0; }
-            100% { transform: translateY(0); opacity: 1; }
-        }
-        @keyframes alertShimmer {
-            0% { left: -100%; }
-            100% { left: 100%; }
+        .hero-content {
+            position: relative;
+            z-index: 1;
         }
 
-        /* Container Animation */
-        .container {
-            animation: fadeInUpMainContent 0.8s ease-out;
-            flex-grow: 1; /* Allow content to grow and fill available space */
-            padding-top: 20px;
-            padding-bottom: 20px;
-        }
-        @keyframes fadeInUpMainContent {
-            0% { transform: translateY(30px); opacity: 0; }
-            100% { transform: translateY(0); opacity: 1; }
-        }
-
-        /* Text Styles for Contact Page */
-        h2 { /* Apply to "Contact Us" heading */
-            color: var(--primary-blue);
-            text-shadow: 0 2px 5px rgba(0,0,0,0.1);
-            animation: textGlow 2s ease-in-out infinite alternate;
+        .hero-title {
+            font-size: 4rem;
             font-weight: 700;
-            text-align: center; /* Center the heading */
-            margin-top: 2rem !important;
-            margin-bottom: 2rem !important;
+            margin-bottom: 1.5rem;
+            line-height: 1.1;
         }
 
-        p {
-            font-size: 1.1rem;
-            color: #495057;
-            margin-bottom: 1rem;
-            line-height: 1.6;
-            text-align: center; /* Center the paragraphs */
-            animation: textFadeIn 0.8s ease-out forwards;
-            opacity: 0; /* Start hidden for animation */
-        }
-        p:nth-of-type(1) { animation-delay: 0.2s; }
-        p:nth-of-type(2) { animation-delay: 0.4s; }
-        p:nth-of-type(3) { animation-delay: 0.6s; }
-
-        @keyframes textFadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
+        .hero-subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+            font-weight: 300;
         }
 
-        @keyframes textGlow {
-            0% { text-shadow: 0 0 5px rgba(13,110,253,0.4), 0 0 10px rgba(13,110,253,0.2); }
-            100% { text-shadow: 0 0 15px rgba(13,110,253,0.7), 0 0 25px rgba(13,110,253,0.5); }
+        .section {
+            padding: 6rem 0;
         }
 
-        /* Responsive Adjustments */
-        @media (max-width: 768px) {
-            .navbar-brand { font-size: 1.5rem; }
-            .nav-link { padding: 6px 12px !important; }
-            h2 { font-size: 1.8rem; }
-            p { font-size: 1rem; }
-        }
-
-        @media (max-width: 576px) {
-            .navbar-collapse {
-                background: var(--gradient-primary); /* Ensure dropdown is styled */
-                padding: 10px 0;
-            }
-            .nav-link {
-                margin: 0;
-                padding: 10px 15px !important;
-                border-radius: 0;
-            }
-            .nav-item:not(:last-child) .nav-link {
-                border-bottom: 1px solid rgba(255,255,255,0.1);
-            }
-        }
-
-        /* Custom Scrollbar */
-        ::-webkit-scrollbar { width: 10px; }
-        ::-webkit-scrollbar-track { background: #f1f1f1; }
-        ::-webkit-scrollbar-thumb {
-            background: var(--gradient-water);
-            border-radius: 10px;
-            border: 2px solid #f1f1f1;
-        }
-        ::-webkit-scrollbar-thumb:hover { background: var(--deep-blue); }
-
-        /* Footer Styles */
-        footer {
-            background: var(--gradient-primary);
-            color: rgba(255,255,255,0.9);
-            padding: 20px 0;
+        .section-title {
+            font-size: 3rem;
             text-align: center;
-            margin-top: auto; /* Push footer to the bottom */
-            box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
+            margin-bottom: 1rem;
+            color: var(--primary-navy);
         }
-        footer a { color: rgba(255,255,255,0.8); text-decoration: none; transition: color 0.3s ease; }
-        footer a:hover { color: white; text-decoration: underline; transform: none; }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.2rem;
+            color: var(--neutral-gray);
+            margin-bottom: 4rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .about-card {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 8px 30px var(--shadow-light);
+            padding: 3rem;
+            transition: all 0.3s ease;
+            height: 100%;
+            border: none;
+        }
+
+        .about-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 45px var(--shadow-medium);
+        }
+
+        .about-icon {
+            width: 80px;
+            height: 80px;
+            background: var(--gradient-accent);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 2rem;
+            font-size: 2rem;
+            color: white;
+        }
+
+        .timeline {
+            position: relative;
+            padding-left: 3rem;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 15px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: var(--gradient-primary);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 3rem;
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px var(--shadow-light);
+            transition: all 0.3s ease;
+        }
+
+        .timeline-item:hover {
+            transform: translateX(10px);
+            box-shadow: 0 10px 30px var(--shadow-medium);
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -2.5rem;
+            top: 2rem;
+            width: 20px;
+            height: 20px;
+            background: var(--primary-blue);
+            border-radius: 50%;
+            border: 4px solid white;
+            box-shadow: 0 0 0 2px var(--primary-blue);
+        }
+
+        .timeline-year {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--primary-navy);
+            margin-bottom: 0.5rem;
+        }
+
+        .stats-section {
+            background: var(--light-gray);
+        }
+
+        .stat-card {
+            text-align: center;
+            padding: 2rem;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px var(--shadow-light);
+            transition: all 0.3s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px var(--shadow-medium);
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--primary-navy);
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            color: var(--neutral-gray);
+            font-weight: 500;
+        }
+
+        .team-member {
+            text-align: center;
+            background: white;
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: 0 5px 20px var(--shadow-light);
+            transition: all 0.3s ease;
+        }
+
+        .team-member:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px var(--shadow-medium);
+        }
+
+        .team-avatar {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background: var(--gradient-primary);
+            margin: 0 auto 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: white;
+        }
+
+        .team-name {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--primary-navy);
+        }
+
+        .team-role {
+            color: var(--neutral-gray);
+            margin-bottom: 1rem;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+        }
+
+        .social-link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(59, 130, 246, 0.1);
+            border-radius: 10px;
+            color: var(--primary-blue);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .social-link:hover {
+            background: var(--primary-blue);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .footer {
+            background: var(--dark);
+            color: white;
+            padding: 4rem 0 2rem;
+        }
+
+        .footer-brand {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .footer-link {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-link:hover {
+            color: white;
+            transform: translateX(5px);
+        }
+
+        .fade-in-up {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .fade-in-up.animate {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2.5rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.2rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .hero-section {
+                padding: 4rem 0 3rem;
+            }
+            
+            .section {
+                padding: 4rem 0;
+            }
+
+            .timeline {
+                padding-left: 2rem;
+            }
+
+            .timeline-item {
+                padding: 1.5rem;
+            }
+        }
     </style>
 </head>
 <body>
-    <div class="water-droplet" style="top: 10%; left: 10%; width: 12px; height: 18px; animation-delay: 0s, 0s;"></div>
-    <div class="water-droplet" style="top: 20%; left: 80%; width: 18px; height: 25px; animation-delay: 1s, 0.5s;"></div>
-    <div class="water-droplet" style="top: 60%; left: 15%; width: 10px; height: 15px; animation-delay: 2s, 1s;"></div>
-    <div class="water-droplet" style="top: 80%; left: 70%; width: 15px; height: 22px; animation-delay: 3s, 1.5s;"></div>
-    <div class="water-droplet" style="top: 40%; left: 40%; width: 9px; height: 14px; animation-delay: 4s, 2s;"></div>
-    <div class="water-droplet" style="top: 70%; left: 50%; width: 16px; height: 23px; animation-delay: 5s, 2.5s;"></div>
-
-
-    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+<nav class="navbar navbar-expand-lg fixed-top" id="mainNavbar">
         <div class="container">
-            <a class="navbar-brand" href="{% url 'home' %}">WaterBottleCo</a>
+            <a class="navbar-brand" href="#">
+                <div class="logo-icon">
+                    <i class="fas fa-seedling"></i>
+                </div>
+                Vin2Grow
+            </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -298,7 +467,6 @@
                     {% if user.is_authenticated %}
                         <li class="nav-item"><a class="nav-link" href="{% url 'my_orders' %}">My Orders</a></li>
                         <li class="nav-item"><a class="nav-link" href="{% url 'logout' %}">Logout</a></li>
-                        {% comment %} <li class="nav-item"><a class="nav-link" href="{% url 'admin_dashboard' %}">Admin Panel</a></li> {% endcomment %}
                     {% else %}
                         <li class="nav-item"><a class="nav-link" href="{% url 'login' %}">Login</a></li>
                         <li class="nav-item"><a class="nav-link" href="{% url 'register' %}">Register</a></li>
@@ -308,50 +476,330 @@
         </div>
     </nav>
 
-    <div class="container mt-4">
-        {% if messages %}
-            {% for message in messages %}
-                <div class="alert alert-{{ message.tags }}">{{ message }}</div>
-            {% endfor %}
-        {% endif %}
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8 text-center hero-content">
+                    <h1 class="hero-title fade-in-up">About Vin2Grow</h1>
+                    <p class="hero-subtitle fade-in-up">Empowering growth through innovation, sustainability, and excellence in every product we deliver.</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-        <h2>About Us</h2>
-        <p>We are a passionate startup focused on designing and delivering reusable water bottles that combine *sustainability with style*. Our mission is to reduce plastic waste while keeping you hydrated and happy.</p>
-        <p>Founded in 2023, WaterBottleCo believes that small changes can make a big impact. We meticulously craft our bottles using *high-quality, eco-friendly materials* that are built to last, ensuring a reduced environmental footprint.</p>
-        <p>Beyond our commitment to the planet, we prioritize your experience. Our designs are *ergonomic, functional, and aesthetically pleasing*, making hydration a seamless and enjoyable part of your daily routine. Join us in our journey towards a greener, healthier future!</p>
-    </div>
+    <!-- Our Story Section -->
+    <section class="section">
+        <div class="container">
+            <div class="row justify-content-center mb-5">
+                <div class="col-lg-8 text-center">
+                    <h2 class="section-title fade-in-up">Our Story</h2>
+                    <p class="section-subtitle fade-in-up">From humble beginnings to industry leadership, discover the journey that shaped Vin2Grow.</p>
+                </div>
+            </div>
+            
+            <div class="row g-4">
+                <div class="col-lg-6">
+                    <div class="about-card fade-in-up">
+                        <div class="about-icon">
+                            <i class="fas fa-lightbulb"></i>
+                        </div>
+                        <h3>Our Vision</h3>
+                        <p>To be the leading catalyst for sustainable growth and innovation, creating products that not only meet today's needs but also nurture tomorrow's possibilities. We envision a world where quality, sustainability, and growth go hand in hand.</p>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="about-card fade-in-up">
+                        <div class="about-icon">
+                            <i class="fas fa-heart"></i>
+                        </div>
+                        <h3>Our Mission</h3>
+                        <p>At Vin2Grow, we are committed to delivering exceptional products and services that foster growth, promote sustainability, and create lasting value for our customers, communities, and the environment we all share.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
+    <!-- Timeline Section -->
+    <section class="section" style="background: var(--light-gray);">
+        <div class="container">
+            <div class="row justify-content-center mb-5">
+                <div class="col-lg-8 text-center">
+                    <h2 class="section-title fade-in-up">Our Journey</h2>
+                    <p class="section-subtitle fade-in-up">Key milestones that define our path to excellence.</p>
+                </div>
+            </div>
+            
+            <div class="row">
+                <div class="col-lg-8 mx-auto">
+                    <div class="timeline">
+                        <div class="timeline-item fade-in-up">
+                            <div class="timeline-year">2020</div>
+                            <h4>The Beginning</h4>
+                            <p>Vin2Grow was founded with a simple yet powerful vision: to create products that enable sustainable growth for businesses and individuals alike.</p>
+                        </div>
+                        
+                        <div class="timeline-item fade-in-up">
+                            <div class="timeline-year">2021</div>
+                            <h4>First Breakthrough</h4>
+                            <p>Launched our flagship product line, gaining recognition for innovation and quality in the market. Our commitment to excellence began to show results.</p>
+                        </div>
+                        
+                        <div class="timeline-item fade-in-up">
+                            <div class="timeline-year">2022</div>
+                            <h4>Expansion & Growth</h4>
+                            <p>Expanded our operations and reached new markets, establishing partnerships that would become the foundation of our continued success.</p>
+                        </div>
+                        
+                        <div class="timeline-item fade-in-up">
+                            <div class="timeline-year">2023</div>
+                            <h4>Innovation Focus</h4>
+                            <p>Invested heavily in research and development, introducing cutting-edge solutions that set new industry standards for sustainability and performance.</p>
+                        </div>
+                        
+                        <div class="timeline-item fade-in-up">
+                            <div class="timeline-year">2024</div>
+                            <h4>Industry Leadership</h4>
+                            <p>Recognized as an industry leader, we continue to push boundaries and set new benchmarks for excellence, quality, and environmental responsibility.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="section stats-section">
+        <div class="container">
+            <div class="row justify-content-center mb-5">
+                <div class="col-lg-8 text-center">
+                    <h2 class="section-title fade-in-up">Our Impact</h2>
+                    <p class="section-subtitle fade-in-up">Numbers that reflect our commitment to excellence and growth.</p>
+                </div>
+            </div>
+            
+            <div class="row g-4">
+                <div class="col-lg-3 col-md-6">
+                    <div class="stat-card fade-in-up">
+                        <div class="stat-number">10K+</div>
+                        <div class="stat-label">Happy Customers</div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="stat-card fade-in-up">
+                        <div class="stat-number">500+</div>
+                        <div class="stat-label">Products Delivered</div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="stat-card fade-in-up">
+                        <div class="stat-number">50+</div>
+                        <div class="stat-label">Countries Served</div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="stat-card fade-in-up">
+                        <div class="stat-number">99%</div>
+                        <div class="stat-label">Customer Satisfaction</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section class="section">
+        <div class="container">
+            <div class="row justify-content-center mb-5">
+                <div class="col-lg-8 text-center">
+                    <h2 class="section-title fade-in-up">Meet Our Team</h2>
+                    <p class="section-subtitle fade-in-up">The passionate individuals behind Vin2Grow's success.</p>
+                </div>
+            </div>
+            
+            <div class="row g-4">
+                <div class="col-lg-4 col-md-6">
+                    <div class="team-member fade-in-up">
+                        <div class="team-avatar">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div class="team-name">Sarah Johnson</div>
+                        <div class="team-role">Chief Executive Officer</div>
+                        <p>Visionary leader with 15+ years of experience in sustainable business development and innovation.</p>
+                        <div class="social-links">
+                            <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
+                            <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 col-md-6">
+                    <div class="team-member fade-in-up">
+                        <div class="team-avatar">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div class="team-name">Michael Chen</div>
+                        <div class="team-role">Head of Innovation</div>
+                        <p>Technology expert passionate about creating solutions that drive growth and environmental sustainability.</p>
+                        <div class="social-links">
+                            <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
+                            <a href="#" class="social-link"><i class="fab fa-github"></i></a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 col-md-6">
+                    <div class="team-member fade-in-up">
+                        <div class="team-avatar">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div class="team-name">Emily Rodriguez</div>
+                        <div class="team-role">Customer Success Manager</div>
+                        <p>Dedicated to ensuring every customer achieves their growth objectives with our products and services.</p>
+                        <div class="social-links">
+                            <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
+                            <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Values Section -->
+    <section class="section" style="background: var(--light-gray);">
+        <div class="container">
+            <div class="row justify-content-center mb-5">
+                <div class="col-lg-8 text-center">
+                    <h2 class="section-title fade-in-up">Our Values</h2>
+                    <p class="section-subtitle fade-in-up">The principles that guide everything we do at Vin2Grow.</p>
+                </div>
+            </div>
+            
+            <div class="row g-4">
+                <div class="col-lg-4 col-md-6">
+                    <div class="about-card fade-in-up">
+                        <div class="about-icon">
+                            <i class="fas fa-leaf"></i>
+                        </div>
+                        <h4>Sustainability</h4>
+                        <p>We believe in creating products and processes that protect our planet for future generations while delivering exceptional value today.</p>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 col-md-6">
+                    <div class="about-card fade-in-up">
+                        <div class="about-icon">
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <h4>Excellence</h4>
+                        <p>We strive for perfection in every detail, continuously improving our products, services, and processes to exceed expectations.</p>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 col-md-6">
+                    <div class="about-card fade-in-up">
+                        <div class="about-icon">
+                            <i class="fas fa-handshake"></i>
+                        </div>
+                        <h4>Integrity</h4>
+                        <p>Honesty, transparency, and ethical business practices form the foundation of all our relationships and business decisions.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
     <footer class="footer">
         <div class="container">
-            <p>&copy; 2025 WaterBottleCo. All rights reserved.</p>
+            <div class="row">
+                <div class="col-lg-4 mb-4">
+                    <div class="footer-brand">
+                        <i class="fas fa-seedling me-2"></i>Vin2Grow
+                    </div>
+                    <p style="color: rgba(255, 255, 255, 0.7); line-height: 1.6;">
+                        Premium water bottles designed for the modern lifestyle. Sustainable, stylish, and built to last.
+                    </p>
+                    <div class="mt-3">
+                        <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-6 mb-4">
+                    <h5 style="margin-bottom: 1.5rem;">Products</h5>
+                    <a href="#" class="footer-link">Sports Bottles</a>
+                    <a href="#" class="footer-link">Insulated Bottles</a>
+                    <a href="#" class="footer-link">Glass Bottles</a>
+                    <a href="#" class="footer-link">Kids Collection</a>
+                </div>
+                <div class="col-lg-2 col-md-6 mb-4">
+                    <h5 style="margin-bottom: 1.5rem;">Company</h5>
+                    <a href="#" class="footer-link">About Us</a>
+                    <a href="#" class="footer-link">Contact</a>
+                    <a href="#" class="footer-link">Careers</a>
+                    <a href="#" class="footer-link">Press</a>
+                </div>
+                <div class="col-lg-2 col-md-6 mb-4">
+                    <h5 style="margin-bottom: 1.5rem;">Support</h5>
+                    <a href="#" class="footer-link">Help Center</a>
+                    <a href="#" class="footer-link">Returns</a>
+                    <a href="#" class="footer-link">Shipping Info</a>
+                    <a href="#" class="footer-link">Size Guide</a>
+                </div>
+                <div class="col-lg-2 col-md-6 mb-4">
+                    <h5 style="margin-bottom: 1.5rem;">Legal</h5>
+                    <a href="#" class="footer-link">Privacy Policy</a>
+                    <a href="#" class="footer-link">Terms of Service</a>
+                    <a href="#" class="footer-link">Cookie Policy</a>
+                    <a href="#" class="footer-link">GDPR</a>
+                </div>
+            </div>
+            <hr style="border-color: rgba(255, 255, 255, 0.1); margin: 2rem 0;">
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <p style="color: rgba(255, 255, 255, 0.6); margin: 0;">
+                        © <span id="currentYear"></span> Vin2Grow. All rights reserved.
+                    </p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <p style="color: rgba(255, 255, 255, 0.6); margin: 0;">
+                        Made with <i class="fas fa-heart text-danger"></i> for better hydration
+                    </p>
+                </div>
+            </div>
         </div>
     </footer>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
     <script>
-        // JavaScript to dynamically create more water droplets for background ambiance
-        document.addEventListener('DOMContentLoaded', function() {
-            const body = document.body;
-            const numAdditionalDroplets = 10; // You can adjust this number for more or fewer droplets
+        // Scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
 
-            for (let i = 0; i < numAdditionalDroplets; i++) {
-                const droplet = document.createElement('div');
-                droplet.classList.add('water-droplet');
-                const size = Math.random() * 10 + 8; // Random size between 8px and 18px
-                const top = Math.random() * 100; // Random top position
-                const left = Math.random() * 100; // Random left position
-                const delay = Math.random() * 6; // Random animation delay
-                const swayDelay = Math.random() * 3; // Random sway animation delay
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate');
+                }
+            });
+        }, observerOptions);
 
-                droplet.style.cssText = `
-                    top: ${top}%;
-                    left: ${left}%;
-                    width: ${size}px;
-                    height: ${size * 1.5}px; /* Make it more droplet shaped */
-                    animation-delay: ${delay}s, ${swayDelay}s;
-                    opacity: ${Math.random() * 0.4 + 0.3}; /* Random opacity between 0.3 and 0.7 */
-                `;
-                body.appendChild(droplet);
+        document.querySelectorAll('.fade-in-up').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Navbar scroll effect
+        const navbar = document.getElementById('mainNav');
+        window.addEventListener('scroll', function() {
+            if (window.scrollY > 50) {
+                navbar.classList.add('navbar-scrolled');
+            } else {
+                navbar.classList.remove('navbar-scrolled');
             }
         });
     </script>

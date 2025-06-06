@@ -2,22 +2,30 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Contact Us - WaterBottleCo</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Vin2Grow</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
+    
     <style>
-        /* CSS Variables */
         :root {
-            --primary-blue: #0d6efd;
-            --water-blue: #00bcd4;
-            --deep-blue: #1976d2;
-            --light-blue: #e3f2fd;
-            --gradient-primary: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            --gradient-water: linear-gradient(135deg, #00bcd4 0%, #2196f3 100%);
-            --gradient-hero: linear-gradient(135deg, rgba(13,110,253,0.9) 0%, rgba(25,118,210,0.9) 100%);
-            --gradient-light-translucent: linear-gradient(135deg, rgba(227, 242, 253, 0.8) 0%, rgba(207, 216, 220, 0.8) 100%);
+            --primary-navy: #1e3a8a;
+            --primary-blue: #3b82f6;
+            --accent-teal: #06b6d4;
+            --accent-emerald: #10b981;
+            --neutral-gray: #6b7280;
+            --light-gray: #f8fafc;
+            --white: #ffffff;
+            --dark: #0f172a;
+            --shadow-light: rgba(0, 0, 0, 0.1);
+            --shadow-medium: rgba(0, 0, 0, 0.15);
+            --shadow-heavy: rgba(0, 0, 0, 0.25);
+            --gradient-primary: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+            --gradient-accent: linear-gradient(135deg, #06b6d4 0%, #10b981 100%);
+            --gradient-hero: linear-gradient(135deg, rgba(30, 58, 138, 0.95) 0%, rgba(59, 130, 246, 0.95) 100%);
         }
 
-        /* Global Styles */
         * {
             margin: 0;
             padding: 0;
@@ -25,16 +33,25 @@
         }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.6;
+            color: var(--dark);
+            background-color: var(--white);
             overflow-x: hidden;
-            background: linear-gradient(45deg, #f8f9fa, #e9ecef);
-            min-height: 100vh; /* Ensure body takes full viewport height */
-            display: flex;
-            flex-direction: column;
-            position: relative; /* For animated background and particles */
         }
 
-        /* Animated Background */
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 600;
+            line-height: 1.2;
+            margin-bottom: 1rem;
+        }
+
+        .display-1, .display-2, .display-3, .display-4 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+        }
+
         body::before {
             content: '';
             position: fixed;
@@ -42,250 +59,331 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background:
-                radial-gradient(circle at 20% 80%, rgba(13,110,253,0.05) 0%, transparent 40%),
-                radial-gradient(circle at 80% 20%, rgba(0,188,212,0.05) 0%, transparent 40%),
-                radial-gradient(circle at 50% 50%, rgba(102,126,234,0.03) 0%, transparent 30%);
-            animation: backgroundShift 15s ease-in-out infinite alternate;
+            background: 
+                radial-gradient(circle at 15% 85%, rgba(59, 130, 246, 0.03) 0%, transparent 50%),
+                radial-gradient(circle at 85% 15%, rgba(6, 182, 212, 0.03) 0%, transparent 50%);
+            animation: subtleShift 20s ease-in-out infinite alternate;
             z-index: -1;
-        }
-
-        @keyframes backgroundShift {
-            0% { transform: translateX(0) translateY(0) scale(1); }
-            50% { transform: translateX(15px) translateY(-10px) scale(1.05); }
-            100% { transform: translateX(-10px) translateY(15px) scale(1); }
-        }
-
-        /* Floating Water Droplets (for background) */
-        .water-droplet {
-            position: fixed;
-            background: var(--gradient-water);
-            border-radius: 50% 50% 50% 0 / 60% 60% 40% 40%; /* More realistic droplet shape */
-            transform: rotate(-45deg);
             pointer-events: none;
-            z-index: 1000;
-            animation: float 8s infinite ease-in-out, dropletSway 5s infinite alternate ease-in-out;
-            opacity: 0.5; /* Slightly more subtle */
-            box-shadow: inset -5px -5px 10px rgba(0,0,0,0.1), 0 0 5px var(--water-blue);
-        }
-        @keyframes dropletSway {
-            0% { transform: rotate(-45deg) translateX(0); }
-            100% { transform: rotate(-35deg) translateX(5px); }
         }
 
-        @keyframes float {
-            0%, 100% { transform: rotate(-45deg) translateY(0px); opacity: 0.5; }
-            50% { transform: rotate(-45deg) translateY(-25px); opacity: 0.7; }
+        @keyframes subtleShift {
+            0% { transform: translate(0, 0) scale(1); }
+            100% { transform: translate(-10px, 10px) scale(1.02); }
         }
 
-        /* Navbar Animations */
         .navbar {
-            background: var(--gradient-primary) !important;
-            backdrop-filter: blur(10px);
-            border-bottom: 1px solid rgba(255,255,255,0.1);
+            background: rgba(255, 255, 255, 0.95) !important;
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
             transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-            z-index: 10; /* Ensure navbar is above droplets */
+            box-shadow: 0 2px 20px var(--shadow-light);
+            padding: 1rem 0;
         }
 
-        .navbar::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
-            animation: shimmer 3s infinite;
-        }
-
-        @keyframes shimmer {
-            0% { left: -100%; }
-            100% { left: 100%; }
+        .navbar-scrolled {
+            background: rgba(255, 255, 255, 0.98) !important;
+            box-shadow: 0 2px 30px var(--shadow-medium);
+            padding: 0.5rem 0;
         }
 
         .navbar-brand {
-            font-weight: bold;
-            font-size: 1.8rem;
-            color: white !important;
-            position: relative;
-            animation: brandPulse 2s ease-in-out infinite alternate;
-            text-shadow: 0 0 10px rgba(255,255,255,0.3), 0 0 20px rgba(255,255,255,0.2);
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            font-size: 2rem;
+            color: var(--primary-navy) !important;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s ease;
         }
 
-        @keyframes brandPulse {
-            0% { transform: scale(1); text-shadow: 0 0 10px rgba(255,255,255,0.3), 0 0 20px rgba(255,255,255,0.2); }
-            100% { transform: scale(1.05); text-shadow: 0 0 15px rgba(255,255,255,0.5), 0 0 30px rgba(255,255,255,0.3); }
+        .logo-icon {
+            width: 45px;
+            height: 45px;
+            background: var(--gradient-primary);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .navbar-brand:hover .logo-icon {
+            transform: rotate(5deg) scale(1.05);
+            box-shadow: 0 5px 15px var(--shadow-medium);
         }
 
         .nav-link {
-            color: rgba(255,255,255,0.9) !important;
+            color: var(--neutral-gray) !important;
+            font-weight: 500;
             position: relative;
             transition: all 0.3s ease;
-            margin: 0 5px;
-            border-radius: 20px;
-            padding: 8px 16px !important;
+            margin: 0 0.5rem;
+            padding: 0.5rem 1rem !important;
+            border-radius: 8px;
         }
 
         .nav-link::before {
             content: '';
             position: absolute;
-            top: 0;
-            left: 0;
+            bottom: 0;
+            left: 50%;
             width: 0;
-            height: 100%;
-            background: rgba(255,255,255,0.2);
-            border-radius: 20px;
-            transition: width 0.3s ease;
-            z-index: -1;
+            height: 2px;
+            background: var(--gradient-primary);
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
         }
 
         .nav-link:hover {
-            color: white !important;
-            transform: translateY(-2px);
-            text-shadow: 0 0 10px rgba(255,255,255,0.8);
+            color: var(--primary-navy) !important;
+            background: rgba(59, 130, 246, 0.05);
         }
 
         .nav-link:hover::before {
-            width: 100%;
+            width: 60%;
         }
 
-        /* Alert Messages Animation */
-        .alert {
-            animation: slideInFromTop 0.5s ease-out;
-            border: none;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        .hero-section {
+            background: var(--gradient-hero);
+            color: white;
+            padding: 8rem 0 6rem;
             position: relative;
             overflow: hidden;
-            margin-bottom: 1.5rem;
         }
 
-        .alert::before {
+        .hero-section::before {
             content: '';
             position: absolute;
             top: 0;
-            left: -100%;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" patternUnits="userSpaceOnUse" width="100" height="100"><circle cx="50" cy="50" r="1" fill="white" fill-opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+            opacity: 0.3;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-title {
+            font-size: 4rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            line-height: 1.1;
+        }
+
+        .hero-subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+            font-weight: 300;
+        }
+
+        .section {
+            padding: 6rem 0;
+        }
+
+        .section-title {
+            font-size: 3rem;
+            text-align: center;
+            margin-bottom: 1rem;
+            color: var(--primary-navy);
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.2rem;
+            color: var(--neutral-gray);
+            margin-bottom: 4rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .contact-info-card {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 8px 30px var(--shadow-light);
+            padding: 2.5rem;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .contact-info-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 45px var(--shadow-medium);
+        }
+
+        .contact-icon {
+            width: 70px;
+            height: 70px;
+            background: var(--gradient-accent);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            font-size: 1.8rem;
+            color: white;
+            flex-shrink: 0;
+        }
+
+        .contact-info-card h4 {
+            font-size: 1.5rem;
+            color: var(--primary-navy);
+            margin-bottom: 0.75rem;
+        }
+
+        .contact-info-card p {
+            color: var(--neutral-gray);
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-form-card {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 8px 30px var(--shadow-light);
+            padding: 3rem;
+            height: 100%;
+        }
+
+        .form-label {
+            font-weight: 600;
+            color: var(--primary-navy);
+            margin-bottom: 0.5rem;
+        }
+
+        .form-control, .form-select {
+            border-radius: 10px;
+            padding: 0.75rem 1.25rem;
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.05);
+        }
+
+        .form-control:focus, .form-select:focus {
+            border-color: var(--primary-blue);
+            box-shadow: 0 0 0 0.25rem rgba(59, 130, 246, 0.25);
+            outline: none;
+        }
+
+        .btn-primary {
+            background: var(--gradient-primary);
+            border: none;
+            border-radius: 10px;
+            padding: 0.8rem 2rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(30, 58, 138, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(30, 58, 138, 0.4);
+            filter: brightness(1.1);
+        }
+
+        .map-container {
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 8px 30px var(--shadow-light);
+            height: 400px;
+            margin-top: 4rem;
+        }
+
+        .map-container iframe {
             width: 100%;
             height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
-            animation: alertShimmer 2s infinite;
+            border: 0;
         }
 
-        @keyframes slideInFromTop {
-            0% { transform: translateY(-100px); opacity: 0; }
-            100% { transform: translateY(0); opacity: 1; }
-        }
-        @keyframes alertShimmer {
-            0% { left: -100%; }
-            100% { left: 100%; }
+        .footer {
+            background: var(--dark);
+            color: white;
+            padding: 4rem 0 2rem;
         }
 
-        /* Container Animation */
-        .container {
-            animation: fadeInUpMainContent 0.8s ease-out;
-            flex-grow: 1; /* Allow content to grow and fill available space */
-            padding-top: 20px;
-            padding-bottom: 20px;
-        }
-        @keyframes fadeInUpMainContent {
-            0% { transform: translateY(30px); opacity: 0; }
-            100% { transform: translateY(0); opacity: 1; }
-        }
-
-        /* Text Styles for Contact Page */
-        h2 { /* Apply to "Contact Us" heading */
-            color: var(--primary-blue);
-            text-shadow: 0 2px 5px rgba(0,0,0,0.1);
-            animation: textGlow 2s ease-in-out infinite alternate;
+        .footer-brand {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
             font-weight: 700;
-            text-align: center; /* Center the heading */
-            margin-top: 2rem !important;
-            margin-bottom: 2rem !important;
-        }
-
-        p {
-            font-size: 1.1rem;
-            color: #495057;
             margin-bottom: 1rem;
-            line-height: 1.6;
-            text-align: center; /* Center the paragraphs */
-            animation: textFadeIn 0.8s ease-out forwards;
-            opacity: 0; /* Start hidden for animation */
-        }
-        p:nth-of-type(1) { animation-delay: 0.2s; }
-        p:nth-of-type(2) { animation-delay: 0.4s; }
-        p:nth-of-type(3) { animation-delay: 0.6s; }
-
-        @keyframes textFadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
         }
 
-        @keyframes textGlow {
-            0% { text-shadow: 0 0 5px rgba(13,110,253,0.4), 0 0 10px rgba(13,110,253,0.2); }
-            100% { text-shadow: 0 0 15px rgba(13,110,253,0.7), 0 0 25px rgba(13,110,253,0.5); }
+        .footer-link {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: block;
+            margin-bottom: 0.5rem;
         }
 
-        /* Responsive Adjustments */
+        .footer-link:hover {
+            color: white;
+            transform: translateX(5px);
+        }
+
+        .fade-in-up {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .fade-in-up.animate {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
         @media (max-width: 768px) {
-            .navbar-brand { font-size: 1.5rem; }
-            .nav-link { padding: 6px 12px !important; }
-            h2 { font-size: 1.8rem; }
-            p { font-size: 1rem; }
-        }
-
-        @media (max-width: 576px) {
-            .navbar-collapse {
-                background: var(--gradient-primary); /* Ensure dropdown is styled */
-                padding: 10px 0;
+            .hero-title {
+                font-size: 2.5rem;
             }
-            .nav-link {
-                margin: 0;
-                padding: 10px 15px !important;
-                border-radius: 0;
+            
+            .hero-subtitle {
+                font-size: 1.2rem;
             }
-            .nav-item:not(:last-child) .nav-link {
-                border-bottom: 1px solid rgba(255,255,255,0.1);
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .hero-section {
+                padding: 4rem 0 3rem;
+            }
+            
+            .section {
+                padding: 4rem 0;
+            }
+
+            .contact-form-card, .contact-info-card {
+                padding: 2rem;
+            }
+
+            .map-container {
+                height: 300px;
             }
         }
-
-        /* Custom Scrollbar */
-        ::-webkit-scrollbar { width: 10px; }
-        ::-webkit-scrollbar-track { background: #f1f1f1; }
-        ::-webkit-scrollbar-thumb {
-            background: var(--gradient-water);
-            border-radius: 10px;
-            border: 2px solid #f1f1f1;
-        }
-        ::-webkit-scrollbar-thumb:hover { background: var(--deep-blue); }
-
-        /* Footer Styles */
-        footer {
-            background: var(--gradient-primary);
-            color: rgba(255,255,255,0.9);
-            padding: 20px 0;
-            text-align: center;
-            margin-top: auto; /* Push footer to the bottom */
-            box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
-        }
-        footer a { color: rgba(255,255,255,0.8); text-decoration: none; transition: color 0.3s ease; }
-        footer a:hover { color: white; text-decoration: underline; transform: none; }
     </style>
 </head>
 <body>
-    <div class="water-droplet" style="top: 10%; left: 10%; width: 12px; height: 18px; animation-delay: 0s, 0s;"></div>
-    <div class="water-droplet" style="top: 20%; left: 80%; width: 18px; height: 25px; animation-delay: 1s, 0.5s;"></div>
-    <div class="water-droplet" style="top: 60%; left: 15%; width: 10px; height: 15px; animation-delay: 2s, 1s;"></div>
-    <div class="water-droplet" style="top: 80%; left: 70%; width: 15px; height: 22px; animation-delay: 3s, 1.5s;"></div>
-    <div class="water-droplet" style="top: 40%; left: 40%; width: 9px; height: 14px; animation-delay: 4s, 2s;"></div>
-    <div class="water-droplet" style="top: 70%; left: 50%; width: 16px; height: 23px; animation-delay: 5s, 2.5s;"></div>
-
-
-    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <nav class="navbar navbar-expand-lg fixed-top" id="mainNavbar">
         <div class="container">
-            <a class="navbar-brand" href="{% url 'home' %}">WaterBottleCo</a>
+            <a class="navbar-brand" href="#">
+                <div class="logo-icon">
+                    <i class="fas fa-seedling"></i>
+                </div>
+                Vin2Grow
+            </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -298,7 +396,6 @@
                     {% if user.is_authenticated %}
                         <li class="nav-item"><a class="nav-link" href="{% url 'my_orders' %}">My Orders</a></li>
                         <li class="nav-item"><a class="nav-link" href="{% url 'logout' %}">Logout</a></li>
-                        {% comment %} <li class="nav-item"><a class="nav-link" href="{% url 'admin_dashboard' %}">Admin Panel</a></li> {% endcomment %}
                     {% else %}
                         <li class="nav-item"><a class="nav-link" href="{% url 'login' %}">Login</a></li>
                         <li class="nav-item"><a class="nav-link" href="{% url 'register' %}">Register</a></li>
@@ -308,50 +405,199 @@
         </div>
     </nav>
 
-    <div class="container mt-4">
-        {% if messages %}
-            {% for message in messages %}
-                <div class="alert alert-{{ message.tags }}">{{ message }}</div>
-            {% endfor %}
-        {% endif %}
+    <section class="hero-section">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8 text-center hero-content">
+                    <h1 class="hero-title fade-in-up">Get in Touch</h1>
+                    <p class="hero-subtitle fade-in-up">We'd love to hear from you! Reach out to us with any questions, feedback, or inquiries.</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-        <h2>Contact Us</h2>
-        <p>Email: <strong>support@waterbottleco.com</strong></p>
-        <p>Phone: <strong>+91 98765 43210</strong></p>
-        <p>Location: <strong>Hyderabad, India</strong></p>
-    </div>
+    <section class="section">
+        <div class="container">
+            <div class="row justify-content-center mb-5">
+                <div class="col-lg-8 text-center">
+                    <h2 class="section-title fade-in-up">Reach Out to Us</h2>
+                    <p class="section-subtitle fade-in-up">Whether you have a query about our products, need support, or just want to say hello, we're here for you.</p>
+                </div>
+            </div>
+            
+            <div class="row g-4">
+                <div class="col-lg-4 col-md-6">
+                    <div class="contact-info-card fade-in-up">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone-alt"></i>
+                        </div>
+                        <h4>Call Us</h4>
+                        <p>Our team is available to answer your calls during business hours.</p>
+                        <p class="mb-0"><strong>+1 (555) 123-4567</strong></p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="contact-info-card fade-in-up">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <h4>Email Us</h4>
+                        <p>Send us an email, and we'll get back to you within 24 hours.</p>
+                        <p class="mb-0"><strong>info@vin2grow.com</strong></p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-12">
+                    <div class="contact-info-card fade-in-up">
+                        <div class="contact-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <h4>Visit Our Office</h4>
+                        <p>We'd be delighted to meet you at our headquarters.</p>
+                        <p class="mb-0"><strong>123 Growth Street, Innovation City, IC 12345</strong></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
+    <section class="section" style="background: var(--light-gray);">
+        <div class="container">
+            <div class="row justify-content-center mb-5">
+                <div class="col-lg-8 text-center">
+                    <h2 class="section-title fade-in-up">Send Us a Message</h2>
+                    <p class="section-subtitle fade-in-up">Fill out the form below and we'll connect with you shortly.</p>
+                </div>
+            </div>
+            
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="contact-form-card fade-in-up">
+                        <form>
+                            <div class="mb-4">
+                                <label for="name" class="form-label">Your Name</label>
+                                <input type="text" class="form-control" id="name" placeholder="John Doe" required>
+                            </div>
+                            <div class="mb-4">
+                                <label for="email" class="form-label">Email Address</label>
+                                <input type="email" class="form-control" id="email" placeholder="john.doe@example.com" required>
+                            </div>
+                            <div class="mb-4">
+                                <label for="subject" class="form-label">Subject</label>
+                                <input type="text" class="form-control" id="subject" placeholder="Inquiry about products">
+                            </div>
+                            <div class="mb-4">
+                                <label for="message" class="form-label">Your Message</label>
+                                <textarea class="form-control" id="message" rows="6" placeholder="Tell us more about what you need..." required></textarea>
+                            </div>
+                            <div class="d-grid">
+                                <button type="submit" class="btn btn-primary">Send Message</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row justify-content-center">
+                <div class="col-lg-10">
+                    <div class="map-container fade-in-up">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3806.914972412808!2d78.47225137500001!3d17.412497683403217!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcbp190f8981f33%3A0xc3b8a1c8b3e8a4a5!2sSecunderabad%2C%20Telangana!5e0!3m2!1sen!2sin!4v1717603496924!5m2!1sen!2sin" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
     <footer class="footer">
         <div class="container">
-            <p>&copy; 2025 WaterBottleCo. All rights reserved.</p>
+            <div class="row">
+                <div class="col-lg-4 mb-4">
+                    <div class="footer-brand">
+                        <i class="fas fa-seedling me-2"></i>Vin2Grow
+                    </div>
+                    <p style="color: rgba(255, 255, 255, 0.7); line-height: 1.6;">
+                        Premium water bottles designed for the modern lifestyle. Sustainable, stylish, and built to last.
+                    </p>
+                    <div class="mt-3">
+                        <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-6 mb-4">
+                    <h5 style="margin-bottom: 1.5rem;">Products</h5>
+                    <a href="#" class="footer-link">Sports Bottles</a>
+                    <a href="#" class="footer-link">Insulated Bottles</a>
+                    <a href="#" class="footer-link">Glass Bottles</a>
+                    <a href="#" class="footer-link">Kids Collection</a>
+                </div>
+                <div class="col-lg-2 col-md-6 mb-4">
+                    <h5 style="margin-bottom: 1.5rem;">Company</h5>
+                    <a href="#" class="footer-link">About Us</a>
+                    <a href="#" class="footer-link">Contact</a>
+                    <a href="#" class="footer-link">Careers</a>
+                    <a href="#" class="footer-link">Press</a>
+                </div>
+                <div class="col-lg-2 col-md-6 mb-4">
+                    <h5 style="margin-bottom: 1.5rem;">Support</h5>
+                    <a href="#" class="footer-link">Help Center</a>
+                    <a href="#" class="footer-link">Returns</a>
+                    <a href="#" class="footer-link">Shipping Info</a>
+                    <a href="#" class="footer-link">Size Guide</a>
+                </div>
+                <div class="col-lg-2 col-md-6 mb-4">
+                    <h5 style="margin-bottom: 1.5rem;">Legal</h5>
+                    <a href="#" class="footer-link">Privacy Policy</a>
+                    <a href="#" class="footer-link">Terms of Service</a>
+                    <a href="#" class="footer-link">Cookie Policy</a>
+                    <a href="#" class="footer-link">GDPR</a>
+                </div>
+            </div>
+            <hr style="border-color: rgba(255, 255, 255, 0.1); margin: 2rem 0;">
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <p style="color: rgba(255, 255, 255, 0.6); margin: 0;">
+                        © <span id="currentYear"></span> Vin2Grow. All rights reserved.
+                    </p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <p style="color: rgba(255, 255, 255, 0.6); margin: 0;">
+                        Made with <i class="fas fa-heart text-danger"></i> for better hydration
+                    </p>
+                </div>
+            </div>
         </div>
     </footer>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
     <script>
-        // JavaScript to dynamically create more water droplets for background ambiance
-        document.addEventListener('DOMContentLoaded', function() {
-            const body = document.body;
-            const numAdditionalDroplets = 10; // You can adjust this number for more or fewer droplets
+        // Scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
 
-            for (let i = 0; i < numAdditionalDroplets; i++) {
-                const droplet = document.createElement('div');
-                droplet.classList.add('water-droplet');
-                const size = Math.random() * 10 + 8; // Random size between 8px and 18px
-                const top = Math.random() * 100; // Random top position
-                const left = Math.random() * 100; // Random left position
-                const delay = Math.random() * 6; // Random animation delay
-                const swayDelay = Math.random() * 3; // Random sway animation delay
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate');
+                } else {
+                    entry.target.classList.remove('animate'); 
+                }
+            });
+        }, observerOptions);
 
-                droplet.style.cssText = `
-                    top: ${top}%;
-                    left: ${left}%;
-                    width: ${size}px;
-                    height: ${size * 1.5}px; /* Make it more droplet shaped */
-                    animation-delay: ${delay}s, ${swayDelay}s;
-                    opacity: ${Math.random() * 0.4 + 0.3}; /* Random opacity between 0.3 and 0.7 */
-                `;
-                body.appendChild(droplet);
+        document.querySelectorAll('.fade-in-up').forEach(element => {
+            observer.observe(element);
+        });
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', () => {
+            const navbar = document.getElementById('mainNav');
+            if (window.scrollY > 50) {
+                navbar.classList.add('navbar-scrolled');
+            } else {
+                navbar.classList.remove('navbar-scrolled');
             }
         });
     </script>

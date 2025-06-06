@@ -6,7 +6,8 @@ from django.contrib import messages
 from django.utils import timezone
 
 def home(request):
-    return render(request, 'home.html')
+    products = Product.objects.all()
+    return render(request, 'home.html', {'products': products})
 
 def products(request):
     items = Product.objects.all()
