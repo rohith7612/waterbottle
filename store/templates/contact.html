@@ -150,9 +150,10 @@
         .hero-section {
             background: var(--gradient-hero);
             color: white;
-            padding: 8rem 0 6rem;
+            padding: 10rem 0 6rem 0; /* Top padding increased for navbar */
             position: relative;
             overflow: hidden;
+            margin-top: 0 !important; /* Remove margin-top to avoid double spacing */
         }
 
         .hero-section::before {
@@ -350,20 +351,24 @@
             .section-title { font-size: 2.2rem; }
             .section-subtitle { font-size: 1.1rem; }
             .contact-info-card, .contact-form-card { padding: 2rem; }
+            .hero-section { padding: 8rem 0 2rem 0; }
         }
         @media (max-width: 992px) {
-            .hero-title { font-size: 2rem; }
-            .hero-subtitle { font-size: 1rem; }
+            .hero-section { padding: 7rem 0 2rem 0; }
+            .hero-title { font-size: 2rem; text-align: center; }
+            .hero-subtitle { font-size: 1rem; text-align: center; }
             .section-title { font-size: 2rem; }
             .section-subtitle { font-size: 1rem; }
             .contact-info-card, .contact-form-card { padding: 1.2rem; }
             .map-container { height: 220px; }
             .footer { padding: 2rem 0 1rem; }
+            .row.g-4 { flex-direction: column; }
+            .col-lg-4, .col-md-6, .col-md-12 { max-width: 100%; flex: 0 0 100%; }
         }
         @media (max-width: 768px) {
-            .hero-section { padding: 2.5rem 0 1.5rem; }
-            .hero-title { font-size: 1.5rem; }
-            .hero-subtitle { font-size: 1rem; }
+            .hero-section { padding: 5.5rem 0 1.5rem 0; }
+            .hero-title { font-size: 1.5rem; text-align: center; }
+            .hero-subtitle { font-size: 1rem; text-align: center; }
             .section-title { font-size: 1.3rem; }
             .section-subtitle { font-size: 1rem; }
             .footer-brand { font-size: 1.2rem; }
@@ -371,11 +376,13 @@
             .navbar-brand { font-size: 1.2rem; }
             .logo-icon img { width: 28px !important; height: 28px !important; }
             .contact-info-card, .contact-form-card { padding: 0.7rem; }
+            .row.g-4 { flex-direction: column; }
+            .col-lg-4, .col-md-6, .col-md-12 { max-width: 100%; flex: 0 0 100%; }
         }
         @media (max-width: 576px) {
-            .hero-section { padding: 1.2rem 0 0.5rem; }
-            .hero-title { font-size: 1.1rem; }
-            .hero-subtitle { font-size: 0.9rem; }
+            .hero-section { padding: 4.5rem 0 0.5rem 0; }
+            .hero-title { font-size: 1.1rem; text-align: center; }
+            .hero-subtitle { font-size: 0.9rem; text-align: center; }
             .section-title { font-size: 1rem; }
             .section-subtitle { font-size: 0.85rem; }
             .footer-brand { font-size: 1rem; }
@@ -384,6 +391,8 @@
             .logo-icon img { width: 22px !important; height: 22px !important; }
             .container, .container-fluid { padding-left: 8px; padding-right: 8px; }
             .contact-info-card, .contact-form-card { padding: 0.3rem; }
+            .row.g-4 { flex-direction: column; }
+            .col-lg-4, .col-md-6, .col-md-12 { max-width: 100%; flex: 0 0 100%; }
         }
     </style>
 </head>
@@ -417,7 +426,7 @@
         </div>
     </nav>
 
-    <section class="hero-section">
+    <section class="hero-section" style="padding-top: 7rem;">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-lg-8 text-center hero-content">
@@ -605,7 +614,7 @@
 
         // Navbar scroll effect
         window.addEventListener('scroll', () => {
-            const navbar = document.getElementById('mainNav');
+            const navbar = document.getElementById('mainNavbar');
             if (window.scrollY > 50) {
                 navbar.classList.add('navbar-scrolled');
             } else {

@@ -150,9 +150,10 @@
         .hero-section {
             background: var(--gradient-hero);
             color: white;
-            padding: 8rem 0 6rem;
+            padding: 10rem 0 6rem 0; /* Top padding increased for navbar */
             position: relative;
             overflow: hidden;
+            margin-top: 0 !important; /* Remove margin-top to avoid double spacing */
         }
 
         .hero-section::before {
@@ -423,17 +424,21 @@
             .about-card, .stat-card, .team-member { padding: 2rem; }
         }
         @media (max-width: 992px) {
-            .hero-title { font-size: 2rem; }
-            .hero-subtitle { font-size: 1rem; }
+            .hero-title { font-size: 2rem; text-align: center; }
+            .hero-subtitle { font-size: 1rem; text-align: center; }
             .section-title { font-size: 2rem; }
             .section-subtitle { font-size: 1rem; }
             .about-card, .stat-card, .team-member { padding: 1.2rem; }
             .footer { padding: 2rem 0 1rem; }
+            .row.g-4 { flex-direction: column; }
+            .col-lg-4, .col-md-6, .col-lg-3 { max-width: 100%; flex: 0 0 100%; }
         }
         @media (max-width: 768px) {
-            .hero-section { padding: 2.5rem 0 1.5rem; }
-            .hero-title { font-size: 1.5rem; }
-            .hero-subtitle { font-size: 1rem; }
+            .hero-section {
+                padding-top: 8.5rem !important;
+            }
+            .hero-title { font-size: 1.5rem; text-align: center; }
+            .hero-subtitle { font-size: 1rem; text-align: center; }
             .section-title { font-size: 1.3rem; }
             .section-subtitle { font-size: 1rem; }
             .footer-brand { font-size: 1.2rem; }
@@ -443,11 +448,15 @@
             .about-card, .stat-card, .team-member { padding: 0.7rem; }
             .timeline { padding-left: 1rem; }
             .timeline-item { padding: 1rem; }
+            .row.g-4 { flex-direction: column; }
+            .col-lg-4, .col-md-6, .col-lg-3 { max-width: 100%; flex: 0 0 100%; }
         }
         @media (max-width: 576px) {
-            .hero-section { padding: 1.2rem 0 0.5rem; }
-            .hero-title { font-size: 1.1rem; }
-            .hero-subtitle { font-size: 0.9rem; }
+            .hero-section {
+                padding-top: 8.5rem !important;
+            }
+            .hero-title { font-size: 1.1rem; text-align: center; }
+            .hero-subtitle { font-size: 0.9rem; text-align: center; }
             .section-title { font-size: 1rem; }
             .section-subtitle { font-size: 0.85rem; }
             .footer-brand { font-size: 1rem; }
@@ -456,6 +465,8 @@
             .logo-icon img { width: 22px !important; height: 22px !important; }
             .container, .container-fluid { padding-left: 8px; padding-right: 8px; }
             .about-card, .stat-card, .team-member { padding: 0.3rem; }
+            .row.g-4 { flex-direction: column; }
+            .col-lg-4, .col-md-6, .col-lg-3 { max-width: 100%; flex: 0 0 100%; }
         }
     </style>
 </head>
@@ -490,7 +501,7 @@
     </nav>
 
     <!-- Hero Section -->
-    <section class="hero-section">
+    <section class="hero-section" style="padding-top: 7rem;">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-lg-8 text-center hero-content">
@@ -786,7 +797,7 @@
         </div>
     </footer>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
     <script>
         // Scroll animations
         const observerOptions = {
@@ -798,17 +809,19 @@
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('animate');
+                } else {
+                    entry.target.classList.remove('animate'); 
                 }
             });
         }, observerOptions);
 
-        document.querySelectorAll('.fade-in-up').forEach(el => {
-            observer.observe(el);
+        document.querySelectorAll('.fade-in-up').forEach(element => {
+            observer.observe(element);
         });
 
         // Navbar scroll effect
-        const navbar = document.getElementById('mainNav');
-        window.addEventListener('scroll', function() {
+        window.addEventListener('scroll', () => {
+            const navbar = document.getElementById('mainNavbar');
             if (window.scrollY > 50) {
                 navbar.classList.add('navbar-scrolled');
             } else {

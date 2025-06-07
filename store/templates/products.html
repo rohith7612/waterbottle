@@ -416,35 +416,100 @@
             .card-img-top { height: 180px; }
         }
         @media (max-width: 992px) {
+            .products-section .row {
+                flex-direction: column;
+            }
+            .col-lg-4, .col-md-6 {
+                max-width: 100%;
+                flex: 0 0 100%;
+            }
+            .card {
+                max-width: 95vw;
+                width: 90%;
+                margin-left: auto;
+                margin-right: auto;
+                margin-bottom: 1.5rem;
+                min-height: unset;
+            }
+            .card-img-top {
+                height: 140px;
+                object-fit: contain;
+            }
             .section-title { font-size: 2rem; }
             .section-subtitle { font-size: 1rem; }
-            .card-img-top { height: 140px; }
             .feature-card { padding: 2rem 1rem; }
             .section { padding: 2.5rem 0; }
             .footer { padding: 2rem 0 1rem; }
         }
         @media (max-width: 768px) {
+            .products-section .row {
+                flex-direction: column;
+            }
+            .col-lg-4, .col-md-6 {
+                max-width: 100%;
+                flex: 0 0 100%;
+            }
+            .card {
+                min-height: unset;
+                max-width: 98vw;
+                width: 95%;
+                margin-left: auto;
+                margin-right: auto;
+                margin-bottom: 1.5rem;
+            }
+            .card-img-top {
+                height: 100px;
+            }
             .section-title { font-size: 1.3rem; }
             .section-subtitle { font-size: 1rem; }
-            .card { min-height: 220px; }
-            .card-img-top { height: 100px; }
             .feature-card { padding: 1.2rem 0.5rem; }
             .footer-brand { font-size: 1.2rem; }
             .footer { padding: 1.2rem 0 0.5rem; }
             .navbar-brand { font-size: 1.2rem; }
             .logo-icon img { width: 28px !important; height: 28px !important; }
+            .section.products-section {
+                padding-top: 7.5rem !important;
+            }
         }
         @media (max-width: 576px) {
-            .section-title { font-size: 1rem; }
-            .section-subtitle { font-size: 0.85rem; }
-            .card { min-height: 160px; }
-            .card-img-top { height: 70px; }
-            .feature-card { padding: 0.7rem 0.2rem; }
-            .footer-brand { font-size: 1rem; }
-            .footer { padding: 0.7rem 0 0.2rem; }
-            .navbar-brand { font-size: 1rem; }
-            .logo-icon img { width: 22px !important; height: 22px !important; }
-            .container, .container-fluid { padding-left: 8px; padding-right: 8px; }
+            .products-section .row {
+                flex-direction: column;
+            }
+            .col-lg-4, .col-md-6 {
+                max-width: 100%;
+                flex: 0 0 100%;
+            }
+            .card {
+                min-height: unset;
+                max-width: 99vw;
+                width: 98%;
+                margin-left: auto;
+                margin-right: auto;
+                margin-bottom: 1.2rem;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+            .card-img-top {
+                height: 120px;
+                min-height: 120px;
+                max-height: 160px;
+                width: 100%;
+                object-fit: contain;
+                padding: 0.5rem 0;
+                background: #f8fafc;
+                margin: 0 auto;
+                display: block;
+            }
+            .card-body {
+                width: 100%;
+                padding: 1rem 0.8rem 1.2rem 0.8rem;
+                min-height: unset;
+                text-align: center;
+            }
+            .card-title, .card-text, .price-text {
+                text-align: center;
+            }
         }
 
         /* Loading Animation */
@@ -513,7 +578,7 @@
         </div>
     </nav>
        <!-- Products Section -->
-<section class="section products-section">
+<section class="section products-section" style="padding-top: 6rem;">
     <div class="container">
         <h2 class="section-title fade-in-up">Our Products</h2>
         <p class="section-subtitle fade-in-up">Explore our carefully curated collection of premium water bottles</p>

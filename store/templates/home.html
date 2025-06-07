@@ -410,6 +410,7 @@
 
         /* Responsive Design */
         @media (max-width: 1200px) {
+            .hero-section { padding: 6rem 0 4rem; }
             .hero-title { font-size: 2.5rem; }
             .hero-subtitle { font-size: 1.1rem; }
             .btn-hero { font-size: 1rem; padding: 0.8rem 2rem; }
@@ -418,20 +419,27 @@
             .section-title { font-size: 2.2rem; }
         }
         @media (max-width: 992px) {
-            .hero-title { font-size: 2rem; }
-            .hero-subtitle { font-size: 1rem; }
-            .btn-hero { font-size: 0.95rem; padding: 0.7rem 1.5rem; }
+            .hero-section { padding: 4rem 0 2rem; margin-top: 70px; }
+            .hero-content .row { flex-direction: column-reverse; }
+            .hero-title { font-size: 2rem; text-align: center; }
+            .hero-subtitle { font-size: 1rem; text-align: center; }
+            .btn-hero { font-size: 0.95rem; padding: 0.7rem 1.5rem; display: block; margin: 0 auto; }
+            .hero-image { margin-bottom: 2rem; }
+            .hero-image img { max-width: 260px; margin: 0 auto; display: block; }
             .card-img-top { height: 140px; }
             .feature-card { padding: 2rem 1rem; }
             .section { padding: 2.5rem 0; }
             .footer { padding: 2rem 0 1rem; }
         }
         @media (max-width: 768px) {
-            .hero-section { padding: 2.5rem 0 1.5rem; }
-            .hero-title { font-size: 1.5rem; }
-            .hero-subtitle { font-size: 1rem; }
-            .btn-hero { font-size: 0.9rem; padding: 0.6rem 1.2rem; }
-            .card { min-height: 220px; }
+            .hero-section { padding: 3rem 0 1.5rem; margin-top: 60px; }
+            .hero-content .row { flex-direction: column-reverse; }
+            .hero-title { font-size: 1.5rem; text-align: center; }
+            .hero-subtitle { font-size: 1rem; text-align: center; }
+            .btn-hero { font-size: 0.9rem; padding: 0.6rem 1.2rem; display: block; margin: 0 auto; }
+            .hero-image { margin-bottom: 1.5rem; }
+            .hero-image img { max-width: 200px; margin: 0 auto; display: block; }
+            .card { min-height: auto; }
             .card-img-top { height: 100px; }
             .feature-card { padding: 1.2rem 0.5rem; }
             .section-title { font-size: 1.3rem; }
@@ -442,20 +450,31 @@
             .logo-icon img { width: 28px !important; height: 28px !important; }
         }
         @media (max-width: 576px) {
-            .hero-section { padding: 1.2rem 0 0.5rem; }
-            .hero-title { font-size: 1.1rem; }
-            .hero-subtitle { font-size: 0.9rem; }
-            .btn-hero { font-size: 0.8rem; padding: 0.5rem 1rem; }
-            .card { min-height: 160px; }
+            .hero-section { padding: 2rem 0 1rem; margin-top: 50px; }
+            .hero-content .row { flex-direction: column-reverse; }
+            .hero-title { font-size: 1.1rem; text-align: center; }
+            .hero-subtitle { font-size: 0.9rem; text-align: center; }
+            .btn-hero { width: 100%; text-align: center; display: block; margin-top: 1.5rem; padding: 0.7rem 1.5rem; font-size: 0.9rem; }
+            .hero-image { margin-bottom: 1.2rem; }
+            .hero-image img { max-width: 150px; margin: 0 auto; display: block; }
             .card-img-top { height: 70px; }
-            .feature-card { padding: 0.7rem 0.2rem; }
-            .section-title { font-size: 1rem; }
+            .card-title { font-size: 1rem; }
+            .card-text { font-size: 0.85rem; }
+            .price-text { font-size: 1.1rem; }
+            .btn-buy { padding: 0.6rem 1.5rem; font-size: 0.9rem; }
+            .section-title { font-size: 1.5rem; }
             .section-subtitle { font-size: 0.85rem; }
-            .footer-brand { font-size: 1rem; }
-            .footer { padding: 0.7rem 0 0.2rem; }
-            .navbar-brand { font-size: 1rem; }
-            .logo-icon img { width: 22px !important; height: 22px !important; }
-            .container, .container-fluid { padding-left: 8px; padding-right: 8px; }
+            .feature-card { padding: 1rem; }
+            .feature-icon { width: 60px; height: 60px; font-size: 1.5rem; margin-bottom: 1rem; }
+            .feature-card h3 { font-size: 1.1rem; }
+            .feature-card p { font-size: 0.85rem; }
+            .cta-title { font-size: 1.5rem; }
+            .cta-text { font-size: 0.85rem; }
+            .footer-brand { font-size: 1.2rem; text-align: center; }
+            .footer-link { font-size: 0.8rem; text-align: center; }
+            .social-link { width: 40px; height: 40px; font-size: 1rem; }
+            .col-lg-4, .col-md-6, .col-lg-2 { margin-bottom: 1.5rem; }
+            .text-md-end { text-align: center !important; }
         }
 
         /* Loading Animation */
@@ -503,6 +522,265 @@
             box-shadow: 0 16px 48px 0 rgba(30,58,138,0.25), 0 2px 8px 0 rgba(30,58,138,0.10);
             filter: brightness(1.08) saturate(1.2);
         }
+
+
+
+
+        @media (max-width: 992px) {
+    /* Navbar Toggle for smaller screens */
+    .navbar-collapse {
+        position: fixed;
+        top: 0;
+        right: -100%; /* Start off-screen */
+        width: 70%; /* Adjust width as needed */
+        height: 100vh;
+        background-color: var(--white);
+        box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+        transition: right 0.3s ease-in-out;
+        z-index: 1050;
+        padding: 2rem 1.5rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+    }
+
+    .navbar-collapse.show {
+        right: 0; /* Slide in */
+    }
+
+    .navbar-nav {
+        flex-direction: column;
+        width: 100%;
+        margin-top: 1rem;
+    }
+
+    .nav-item {
+        margin: 0.5rem 0;
+    }
+
+    .nav-link {
+        padding: 0.8rem 1rem !important;
+        text-align: left;
+        font-size: 1.1rem;
+        color: var(--dark) !important;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    }
+
+    .nav-link:hover {
+        background: var(--light-gray);
+    }
+
+    .nav-link::before {
+        display: none; /* Hide underline on mobile */
+    }
+
+    .navbar-toggler {
+        z-index: 1051; /* Keep toggler above the sliding menu */
+    }
+
+    /* Product Cards for smaller screens (one by one) */
+    .products-section .col-lg-4,
+    .products-section .col-md-6 {
+        flex: 0 0 100%; /* Take full width */
+        max-width: 100%;
+    }
+
+    .card {
+        max-width: 350px; /* Limit card width */
+        width: 90%; /* Occupy 90% of parent width */
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: 1.5rem; /* Add some space between cards */
+    }
+
+    .card-img-top {
+        height: 200px; /* Adjust image height for better mobile viewing */
+        object-fit: contain;
+    }
+
+    .hero-title {
+        font-size: 2.5rem;
+    }
+    .hero-subtitle {
+        font-size: 1.2rem;
+    }
+    .section-title {
+        font-size: 2rem;
+    }
+    .section-subtitle {
+        font-size: 1rem;
+    }
+    .cta-title {
+        font-size: 2rem;
+    }
+    .cta-text {
+        font-size: 1rem;
+    }
+    .footer-brand {
+        font-size: 1.5rem;
+    }
+    .footer-link, .social-link {
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero-section {
+        padding: 6rem 0 4rem; /* Adjust padding for hero section */
+    }
+    .hero-title {
+        font-size: 2rem;
+    }
+    .hero-subtitle {
+        font-size: 1rem;
+    }
+    .btn-hero {
+        padding: 0.8rem 1.8rem;
+        font-size: 1rem;
+    }
+    .hero-image img {
+        max-width: 300px;
+    }
+    .card {
+        min-height: auto; /* Allow card height to adjust */
+    }
+    .card-img-top {
+        height: 180px;
+    }
+    .section-title {
+        font-size: 1.8rem;
+    }
+    .section-subtitle {
+        font-size: 0.95rem;
+    }
+    .feature-card {
+        padding: 1.5rem;
+    }
+    .feature-icon {
+        width: 70px;
+        height: 70px;
+        font-size: 1.8rem;
+    }
+    .cta-title {
+        font-size: 1.8rem;
+    }
+    .cta-text {
+        font-size: 0.95rem;
+    }
+    .footer-brand {
+        font-size: 1.3rem;
+    }
+    .footer-link, .social-link {
+        font-size: 0.85rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .hero-section {
+        padding: 5rem 0 3rem;
+    }
+    .hero-title {
+        font-size: 1.8rem;
+        text-align: center;
+    }
+    .hero-subtitle {
+        font-size: 0.9rem;
+        text-align: center;
+    }
+    .btn-hero {
+        width: 100%;
+        text-align: center;
+        display: block;
+        margin-top: 1.5rem;
+        padding: 0.7rem 1.5rem;
+        font-size: 0.9rem;
+    }
+    .hero-image {
+        margin-top: 2rem;
+    }
+    .hero-image img {
+        max-width: 250px;
+        margin: auto;
+    }
+    .card-img-top {
+        height: 150px;
+    }
+    .card-title {
+        font-size: 1rem;
+    }
+    .card-text {
+        font-size: 0.85rem;
+    }
+    .price-text {
+        font-size: 1.1rem;
+    }
+    .btn-buy {
+        padding: 0.6rem 1.5rem;
+        font-size: 0.9rem;
+    }
+    .section-title {
+        font-size: 1.5rem;
+    }
+    .section-subtitle {
+        font-size: 0.85rem;
+    }
+    .feature-card {
+        padding: 1rem;
+    }
+    .feature-icon {
+        width: 60px;
+        height: 60px;
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+    }
+    .feature-card h3 {
+        font-size: 1.1rem;
+    }
+    .feature-card p {
+        font-size: 0.85rem;
+    }
+    .cta-title {
+        font-size: 1.5rem;
+    }
+    .cta-text {
+        font-size: 0.85rem;
+    }
+    .footer-brand {
+        font-size: 1.2rem;
+        text-align: center;
+    }
+    .footer-link {
+        font-size: 0.8rem;
+        text-align: center;
+    }
+    .social-link {
+        width: 40px;
+        height: 40px;
+        font-size: 1rem;
+    }
+    .col-lg-4, .col-md-6, .col-lg-2 { /* Ensure columns stack on small screens */
+        margin-bottom: 1.5rem;
+    }
+    .text-md-end {
+        text-align: center !important;
+    }
+}
+
+/* Adjustments for the logo icon on very small screens */
+@media (max-width: 400px) {
+    .navbar-brand {
+        font-size: 1.1rem;
+    }
+    .logo-icon {
+        width: 32px;
+        height: 32px;
+        font-size: 1.2rem;
+    }
+    .logo-icon img {
+        width: 26px !important;
+        height: 26px !important;
+    }
+}
     </style>
 </head>
 <body>

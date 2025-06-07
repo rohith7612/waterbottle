@@ -312,8 +312,13 @@
                 font-size: 1.75rem;
             }
             .main-content-wrapper {
-                padding-top: 80px;
+                padding-top: 120px; /* Increased for mobile navbar height */
                 padding-bottom: 20px;
+            }
+        }
+        @media (max-width: 576px) {
+            .main-content-wrapper {
+                padding-top: 110px; /* Further increase for very small screens */
             }
         }
     </style>
