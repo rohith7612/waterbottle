@@ -9,6 +9,7 @@ def home(request):
     products = Product.objects.all()
     return render(request, 'home.html', {'products': products})
 
+
 def products(request):
     items = Product.objects.all()
     return render(request, 'products.html', {'products': items})
@@ -42,8 +43,6 @@ def add_product(request):
         return redirect('admin_dashboard')
     return render(request, 'add_product.html')
 
-
-
 @login_required
 def delete_product(request, id):
     product = get_object_or_404(Product, id=id)
@@ -62,11 +61,6 @@ def buy_product(request, product_id):
 def my_orders(request):
     orders = Sale.objects.filter(user=request.user).select_related('product')
     return render(request, 'store/my_orders.html', {'orders': orders})
-
-
-
-
-
 
 
 

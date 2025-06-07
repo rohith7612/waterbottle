@@ -34,4 +34,3 @@ class Sale(models.Model):
 
 
 
-
