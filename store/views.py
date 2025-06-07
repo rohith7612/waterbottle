@@ -42,6 +42,8 @@ def add_product(request):
         return redirect('admin_dashboard')
     return render(request, 'add_product.html')
 
+
+
 @login_required
 def delete_product(request, id):
     product = get_object_or_404(Product, id=id)

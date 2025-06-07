@@ -1498,7 +1498,39 @@
     <section class="section products-section" style="padding-top: 6rem;">
     <div class="container">
         <h2 class="section-title fade-in-up">Our Products</h2>
-        <p class="section-subtitle fade-in-up">Explore our carefully curated collection of premium water bottles</p>        <div class="row">            {% for product in products %}
+        <p class="section-subtitle fade-in-up">Explore our carefully curated collection of premium water bottles.</p>        <div class="row">            {% for product in products %}
+            <div class="col-lg-4 col-md-6 col-6 mb-4">
+                <div class="card fade-in-up" style="animation-delay: {{ forloop.counter0|add:0|floatformat:1 }}s;">
+                    <img src="{{ product.image.url }}" class="card-img-top" alt="{{ product.name }}">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ product.name }}</h5>
+                        <p class="card-text">{{ product.description|truncatewords:20 }}</p>
+                        <div class="price-text">₹{{ product.price }}</div>
+                        <a href="{% url 'buy_product' product.id %}" class="btn-buy">
+                            <i class="fas fa-shopping-cart me-2"></i>Buy Now
+                        </a>
+                    </div>
+                </div>
+            </div>
+            {% empty %}
+            <div class="col-12 text-center">
+                <div class="no-products-message">
+                    <i class="fas fa-box-open fa-3x text-muted mb-3"></i>
+                    <h4 class="text-muted">No Products Available</h4>
+                    <p class="text-muted">Products will appear here once they are added by the administrator.</p>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+
+<!--Bamboo products section-->
+<section class="section products-section" style="padding-top: 6rem;">
+    <div class="container">
+        <h2 class="section-title fade-in-up">Bamboo Products</h2>
+        <p class="section-subtitle fade-in-up">Explore our carefully curated collection of organic bamboo collection.</p>        <div class="row">            {% for product in products %}
             <div class="col-lg-4 col-md-6 col-6 mb-4">
                 <div class="card fade-in-up" style="animation-delay: {{ forloop.counter0|add:0|floatformat:1 }}s;">
                     <img src="{{ product.image.url }}" class="card-img-top" alt="{{ product.name }}">
