@@ -38,10 +38,12 @@ def add_product(request):
         price = request.POST['price']
         desc = request.POST['description']
         img = request.FILES['image']
-        Product.objects.create(name=name, price=price, description=desc, image=img)
+        category = request.POST['category']
+        Product.objects.create(name=name, price=price, description=desc, image=img, category=category)
         messages.success(request, "Product added successfully")
         return redirect('admin_dashboard')
     return render(request, 'add_product.html')
+
 
 @login_required
 def delete_product(request, id):
@@ -63,7 +65,9 @@ def my_orders(request):
     return render(request, 'store/my_orders.html', {'orders': orders})
 
 
-
+def bamboo_products(request):
+    items = Product.objects.filter(category='Bamboo Bottle')
+    return render(request, 'bamboo.html', {'products': items})
 
 
 

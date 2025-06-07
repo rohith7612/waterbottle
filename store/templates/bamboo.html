@@ -4,7 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.2, maximum-scale=5.0, user-scalable=yes">
     <title>Vin2Grow - Premium Water Bottles</title>
-    
+    <!-- Bootstrap CSS -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -38,20 +43,6 @@
             color: var(--dark);
             background-color: var(--white);
             overflow-x: hidden;
-            touch-action: manipulation;
-            -webkit-overflow-scrolling: touch;
-        }
-
-        /* Enable content zooming */
-        .container {
-            touch-action: pan-x pan-y pinch-zoom;
-        }
-
-        /* Ensure images are zoomable */
-        img {
-            max-width: 100%;
-            height: auto;
-            touch-action: pinch-zoom;
         }
 
         /* Professional Typography */
@@ -255,25 +246,37 @@
             min-height: 120px;
         }
 
+        .card-body {
+            width: 100%;
+            padding: 0.5rem;
+            min-height: unset;
+            text-align: center;
+        }
+
         .card-title {
-            font-size: 1.1rem;
-            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+            margin-bottom: 0.25rem;
         }
 
         .card-text {
-            font-size: 0.95rem;
-            margin-bottom: 1rem;
+            font-size: 0.8rem;
+            margin-bottom: 0.5rem;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
         }
 
         .price-text {
-            font-size: 1.2rem;
-            margin-bottom: 1rem;
+            font-size: 1rem;
+            margin-bottom: 0.5rem;
         }
 
         .btn-buy {
             background: var(--gradient-primary);
             border: none;
-            padding: 0.75rem 2rem;
+            padding: 0.5rem 1rem;
+            font-size: 0.9rem;
             font-weight: 600;
             border-radius: 10px;
             color: white;
@@ -426,239 +429,103 @@
 
         /* Responsive Design */
         @media (max-width: 1200px) {
-            .hero-section { padding: 6rem 0 4rem; }
-            .hero-title { font-size: 2.5rem; }
-            .hero-subtitle { font-size: 1.1rem; }
-            .btn-hero { font-size: 1rem; padding: 0.8rem 2rem; }
+            .section-title { font-size: 2.2rem; }
+            .section-subtitle { font-size: 1.1rem; }
             .card { max-width: 95vw; }
             .card-img-top { height: 180px; }
-            .section-title { font-size: 2.2rem; }
         }
         @media (max-width: 992px) {
-            .hero-section { padding: 4rem 0 2rem; margin-top: 70px; }
-            .hero-content .row { flex-direction: column-reverse; }
-            .hero-title { font-size: 2rem; text-align: center; }
-            .hero-subtitle { font-size: 1rem; text-align: center; }
-            .btn-hero { font-size: 0.95rem; padding: 0.7rem 1.5rem; display: block; margin: 0 auto; }
-            .hero-image { margin-bottom: 2rem; }
-            .hero-image img { max-width: 260px; margin: 0 auto; display: block; }
-            .card-img-top { height: 140px; }
+            .products-section .row {
+                flex-direction: column;
+            }
+            .col-lg-4, .col-md-6 {
+                max-width: 100%;
+                flex: 0 0 100%;
+            }
+            .card {
+                max-width: 95vw;
+                width: 90%;
+                margin-left: auto;
+                margin-right: auto;
+                margin-bottom: 1.5rem;
+                min-height: unset;
+            }
+            .card-img-top {
+                height: 140px;
+                object-fit: contain;
+            }
+            .section-title { font-size: 2rem; }
+            .section-subtitle { font-size: 1rem; }
             .feature-card { padding: 2rem 1rem; }
             .section { padding: 2.5rem 0; }
             .footer { padding: 2rem 0 1rem; }
         }
         @media (max-width: 768px) {
-            .hero-section { padding: 3rem 0 1.5rem; margin-top: 60px; }
-            .hero-content .row { flex-direction: column-reverse; }
-            .hero-title { font-size: 1.5rem; text-align: center; }
-            .hero-subtitle { font-size: 1rem; text-align: center; }
-            .btn-hero { font-size: 0.9rem; padding: 0.6rem 1.2rem; display: block; margin: 0 auto; }
-            .hero-image { margin-bottom: 1.5rem; }
-            .hero-image img { max-width: 200px; margin: 0 auto; display: block; }
-            .card { min-height: auto; }
-            .card-img-top { height: 100px; }
-            .feature-card { padding: 1.2rem 0.5rem; }
+            .products-section .row {
+                flex-direction: column;
+            }
+            .col-lg-4, .col-md-6 {
+                max-width: 100%;
+                flex: 0 0 100%;
+            }
+            .card {
+                min-height: unset;
+                max-width: 98vw;
+                width: 95%;
+                margin-left: auto;
+                margin-right: auto;
+                margin-bottom: 1.5rem;
+            }
+            .card-img-top {
+                height: 100px;
+            }
             .section-title { font-size: 1.3rem; }
             .section-subtitle { font-size: 1rem; }
+            .feature-card { padding: 1.2rem 0.5rem; }
             .footer-brand { font-size: 1.2rem; }
             .footer { padding: 1.2rem 0 0.5rem; }
             .navbar-brand { font-size: 1.2rem; }
             .logo-icon img { width: 28px !important; height: 28px !important; }
-        }
-        @media (max-width: 576px) {
-            .hero-section {
-        padding: 7rem 0 4rem;
-    }
-    .hero-title {
-        font-size: 2.3rem;
-        text-align: center;
-    }
-    .hero-subtitle {
-        font-size: 1.3rem;
-        text-align: center;
-    }
-    .btn-hero {
-        width: 100%;
-        text-align: center;
-        display: block;
-        margin-top: 2rem;
-        padding: 1.1rem 2rem;
-        font-size: 1.2rem;
-    }
-    .hero-image {
-        margin-top: 2.5rem;
-        margin-bottom: 2rem;
-    }
-    .hero-image img {
-        max-width: 320px;
-        width: 100%;
-        margin: auto;
-    }
-    .card-img-top {
-        height: 180px;
-    }
-    .card-title {
-        font-size: 1.3rem;
-    }
-    .card-text {
-        font-size: 1.1rem;
-    }
-    .price-text {
-        font-size: 1.4rem;
-    }
-    .btn-buy {
-        padding: 1rem 2rem;
-        font-size: 1.1rem;
-    }
-    .section-title {
-        font-size: 2.2rem;
-    }
-    .section-subtitle {
-        font-size: 1.2rem;
-    }
-    .feature-card {
-        padding: 2rem 1.2rem;
-    }
-    .feature-icon {
-        width: 80px;
-        height: 80px;
-        font-size: 2.2rem;
-        margin-bottom: 1.5rem;
-    }
-    .feature-card h3 {
-        font-size: 1.4rem;
-    }
-    .feature-card p {
-        font-size: 1.1rem;
-    }
-    .cta-title {
-        font-size: 2.1rem;
-    }
-    .cta-text {
-        font-size: 1.1rem;
-    }
-    .footer-brand {
-        font-size: 1.5rem;
-        text-align: center;
-    }
-    .footer-link {
-        font-size: 1.1rem;
-        text-align: center;
-    }
-    .social-link {
-        width: 48px;
-        height: 48px;
-        font-size: 1.3rem;
-    }
-    .col-lg-4, .col-md-6, .col-6 {
-        max-width: 50% !important;
-        flex: 0 0 50% !important;
-        padding-left: 0.25rem;
-        padding-right: 0.25rem;
-    }
-    .text-md-end {
-        text-align: center !important;
-    }
-
-    /* Product card styles for mobile */
-    .card {
-        max-width: 100% !important;
-        width: 100% !important;
-        margin-bottom: 2rem;
-    }
-    .card-img-top {
-        height: 250px;
-    }
-        }
-
-        /* Loading Animation */
-        .page-loader {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: white;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 9999;
-            opacity: 1;
-            transition: opacity 0.5s ease;
-        }
-
-        .page-loader.fade-out {
-            opacity: 0;
-            pointer-events: none;
-        }
-
-        .loader-spinner {
-            width: 50px;
-            height: 50px;
-            border: 3px solid var(--light-gray);
-            border-top: 3px solid var(--primary-blue);
-            border-radius: 50%;
-            animation: spin 1s linear infinite;
-        }
-
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-
-        /* Hero Image Animation */
-        .hero-image img {
-            transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.5s cubic-bezier(0.22, 1, 0.36, 1);
-        }
-
-        /* Circle Section Styles */
-        .circle-section {
-            padding: 5rem 0;
-            background: var(--white);
-        }
-
-        .circle-item {
-            text-align: center;
-            margin-bottom: 2rem;
-        }
-
-        .circle-image {
-            width: 200px;
-            height: 200px;
-            border-radius: 50%;
-            margin: 0 auto 1.5rem;
-            overflow: hidden;
-            box-shadow: 0 8px 25px var(--shadow-light);
-            transition: all 0.3s ease;
-            background: var(--light-gray);
-        }
-
-        .circle-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: all 0.3s ease;
-        }
-
-        .circle-item:hover .circle-image {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 35px var(--shadow-medium);
-        }
-
-        .circle-title {
-            font-size: 1.2rem;
-            color: var(--primary-navy);
-            margin-top: 1rem;
-            font-weight: 600;
-        }
-
-        @media (max-width: 768px) {
-            .circle-image {
-                width: 150px;
-                height: 150px;
+            .section.products-section {
+                padding-top: 7.5rem !important;
             }
-            .circle-title {
-                font-size: 1rem;
+        }        @media (max-width: 576px) {
+            .products-section .row {
+                flex-direction: row;
+                flex-wrap: wrap;
+                margin: 0 -0.25rem;
+            }            .col-lg-4, .col-md-6, .col-6 {
+                max-width: 50% !important;
+                flex: 0 0 50% !important;
+                padding-left: 0.25rem;
+                padding-right: 0.25rem;
+            }.card {
+                min-height: unset;
+                max-width: 100% !important;
+                width: 100% !important;
+                margin-bottom: 1rem;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }            .card-img-top {
+                height: 140px;
+                min-height: 140px;
+                max-height: 140px;
+                width: 100%;
+                object-fit: contain;
+                padding: 0.5rem;
+                background: #f8fafc;
+                margin: 0 auto;
+                display: block;
+            }
+            .card-body {
+                width: 100%;
+                padding: 1rem 0.8rem 1.2rem 0.8rem;
+                min-height: unset;
+                text-align: center;
+            }
+            .card-title, .card-text, .price-text {
+                text-align: center;
             }
         }
 
@@ -695,70 +562,10 @@
         @keyframes spin {
             0% { transform: rotate(0deg); }
             100% { transform: rotate(360deg); }
-        }
-
-        /* Hero Image Animation */
-        .hero-image img {
-            transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.5s cubic-bezier(0.22, 1, 0.36, 1);
-        }
-
-        /* Circle Section Styles */
-        .circle-section {
-            padding: 5rem 0;
-            background: var(--white);
-        }
-
-        .circle-item {
-            text-align: center;
-            margin-bottom: 2rem;
-        }
-
-        .circle-image {
-            width: 200px;
-            height: 200px;
-            border-radius: 50%;
-            margin: 0 auto 1.5rem;
-            overflow: hidden;
-            box-shadow: 0 8px 25px var(--shadow-light);
-            transition: all 0.3s ease;
-            background: var(--light-gray);
-        }
-
-        .circle-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: all 0.3s ease;
-        }
-
-        .circle-item:hover .circle-image {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 35px var(--shadow-medium);
-        }
-
-        .circle-title {
-            font-size: 1.2rem;
-            color: var(--primary-navy);
-            margin-top: 1rem;
-            font-weight: 600;
-        }
-
-        @media (max-width: 768px) {
-            .circle-image {
-                width: 150px;
-                height: 150px;
-            }
-            .circle-title {
-                font-size: 1rem;
-            }
         }
     </style>
 </head>
 <body>
-    <div class="page-loader" id="pageLoader">
-        <div class="loader-spinner"></div>
-    </div>
-
     <nav class="navbar navbar-expand-lg fixed-top" id="mainNavbar">
         <div class="container">
             <a class="navbar-brand" href="#">
@@ -787,155 +594,53 @@
             </div>
         </div>
     </nav>
+       <!-- Products Section -->
+<section class="section products-section" style="padding-top: 6rem;">
+  <h2 class="section-title fade-in-up">Bamboo Products</h2>
+  <p class="section-subtitle fade-in-up">Explore our carefully curated collection of organic Bamboo products</p>
+  <div class="container">
+    <div class="row">
+      {% for product in products %}
+      <div class="col-lg-4 col-md-6 col-6 mb-4">
+        <div class="card fade-in-up" style="animation-delay: {{ forloop.counter0|add:0|floatformat:1 }}s;">
 
-    <!-- Hero Section -->
-    <section class="hero-section">
-        <div class="container hero-content">
-            <div class="row align-items-center">
-                <div class="col-lg-6 text-center">
-                    <div class="hero-image fade-in-up">
-                        <img src="/media/product_images/Vin2Grow.png" alt="Premium Water Bottle" style="max-width: 350px; width: 100%; height: auto; border-radius: 2rem; box-shadow: 0 8px 32px rgba(30,58,138,0.15); object-fit: cover; background: #f8fafc;" />
-                    </div>
-                </div>
-                <div class="col-lg-6">
-                    <h1 class="hero-title fade-in-up">Premium Water Bottles for Every Lifestyle</h1>
-                    <p class="hero-subtitle fade-in-up">Discover our collection of sustainable, stylish, and durable water bottles designed to keep you hydrated in style.</p>
-                    <a href="{% url 'products' %}" class="btn-hero fade-in-up">
-                        <i class="fas fa-shopping-bag me-2"></i>Shop Collection
-                    </a>
-                </div>
-                
+          <!-- Bootstrap Carousel -->
+          <div id="carousel{{ product.id }}" class="carousel slide" data-bs-ride="carousel" data-bs-interval="2000" data-bs-pause="false">
+            <div class="carousel-inner">
+              {% for img in product.images.all %}
+              <div class="carousel-item {% if forloop.first %}active{% endif %}">
+                <img src="{{ img.image.url }}" class="d-block w-100 card-img-top" alt="{{ product.name }}">
+              </div>
+              {% empty %}
+              <div class="carousel-item active">
+                <img src="{{ product.image.url }}" class="d-block w-100 card-img-top" alt="{{ product.name }}">
+              </div>
+              {% endfor %}
             </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carousel{{ product.id }}" data-bs-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carousel{{ product.id }}" data-bs-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Next</span>
+            </button>
+          </div>
+
+          <!-- Card Body -->
+          <div class="card-body">
+            <h5 class="card-title">{{ product.name }}</h5>
+            <p class="card-text">{{ product.description }}</p>
+            <p>₹{{ product.price }}</p>
+            <a href="{% url 'buy_product' product.id %}" class="btn btn-success">Buy Now</a>
+          </div>
+
         </div>
-    </section>
-
-
-    <!-- Circle Section -->    
-     <section class="circle-section">
-        <div class="container">
-            <h2 class="section-title fade-in-up mb-5">Our Speciality</h2>
-            <div class="row justify-content-center">
-                <a href="{% url 'bamboo_products' %}">
-                <div class="col-lg-3 col-md-6 col-sm-6 mb-10">
-                    <div class="circle-item fade-in-up">
-                        <div class="circle-image">
-                            <img src="/media/bamboo_images/Prodcut-K-2.jpg" alt="Premium Bamboo">
-                        </div>
-                        </a>
-                        <h4 class="circle-title">Premium Bamboo</h4>
-                    </div>
-                </div>
-                
-                <div class="col-lg-3 col-md-6 col-sm-6 mb-10">
-                    <div class="circle-item fade-in-up" style="animation-delay: 0.2s;">
-                        <div class="circle-image">
-                            <img src="/media/product_images/Milton.jpg" alt="Water Bottles">
-                        </div>
-                        <h4 class="circle-title">Koya Bommalu</h4>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 col-sm-6 mb-10">
-                    <div class="circle-item fade-in-up" style="animation-delay: 0.4s;">
-                        <div class="circle-image">
-                            <img src="/media/product_images/frames.jpg" alt="Assam Bamboo">
-                        </div>
-                        <h4 class="circle-title">Wooden Frames</h4>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 col-sm-6 mb-10">
-                    <div class="circle-item fade-in-up" style="animation-delay: 0.6s;">
-                        <div class="circle-image">
-                            <img src="/media/product_images/Milton_copper.jpg" alt="Premium Collection">
-                        </div>
-                        <h4 class="circle-title">Premium Collection</h4>
-                    </div>
-                </div>
-            </div>
-        </div>    </section>
-
-    <section class="section products-section" style="padding-top: 3rem;">
-    <div class="container">
-        <h2 class="section-title fade-in-up">New Arrivals</h2>
-        <p class="section-subtitle fade-in-up">Explore our carefully curated collection of premium water bottles</p>        <div class="row">            {% for product in products %}
-            <div class="col-lg-4 col-md-6 col-6 mb-4">
-                <div class="card fade-in-up" style="animation-delay: {{ forloop.counter0|add:0|floatformat:1 }}s;">
-                    <img src="{{ product.image.url }}" class="card-img-top" alt="{{ product.name }}">
-                    <div class="card-body">
-                        <h5 class="card-title">{{ product.name }}</h5>
-                        <p class="card-text">{{ product.description|truncatewords:20 }}</p>
-                        <div class="price-text">₹{{ product.price }}</div>
-                        <a href="{% url 'buy_product' product.id %}" class="btn-buy">
-                            <i class="fas fa-shopping-cart me-2"></i>Buy Now
-                        </a>
-                    </div>
-                </div>
-            </div>
-            {% empty %}
-            <div class="col-12 text-center">
-                <div class="no-products-message">
-                    <i class="fas fa-box-open fa-3x text-muted mb-3"></i>
-                    <h4 class="text-muted">No Products Available</h4>
-                    <p class="text-muted">Products will appear here once they are added by the administrator.</p>
-                </div>
-            </div>
-            {% endfor %}
-        </div>
+      </div>
+      {% endfor %}
     </div>
+  </div>
 </section>
-
-
-    <!-- Features Section -->
-    <section class="section">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-4 mb-4">
-                    <div class="feature-card fade-in-up">
-                        <div class="feature-icon">
-                            <i class="fas fa-shield-alt"></i>
-                        </div>
-                        <h3>Premium Quality</h3>
-                        <p>Built to last with the finest materials and rigorous quality testing for ultimate durability.</p>
-                    </div>
-                </div>
-                <div class="col-md-4 mb-4">
-                    <div class="feature-card fade-in-up" style="animation-delay: 0.2s;">
-                        <div class="feature-icon">
-                            <i class="fas fa-leaf"></i>
-                        </div>
-                        <h3>Eco-Friendly</h3>
-                        <p>Sustainably manufactured with recycled materials to reduce environmental impact.</p>
-                    </div>
-                </div>
-                <div class="col-md-4 mb-4">
-                    <div class="feature-card fade-in-up" style="animation-delay: 0.4s;">
-                        <div class="feature-icon">
-                            <i class="fas fa-shipping-fast"></i>
-                        </div>
-                        <h3>Fast Delivery</h3>
-                        <p>Quick and reliable shipping to get your perfect bottle delivered right to your door.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-
-
-
-    <!-- CTA Section -->
-    <section class="cta-section">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-8 mx-auto text-center">
-                    <h2 class="cta-title fade-in-up">Ready to Upgrade Your Hydration?</h2>
-                    <p class="cta-text fade-in-up">Join thousands of satisfied customers who trust Vin2Grow for their daily hydration needs.</p>
-                    <a href="{% url 'products' %}" class="btn-hero fade-in-up">
-                        <i class="fas fa-arrow-right me-2"></i>Explore All Products
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
 
     <!-- Footer -->
     <footer class="footer">
