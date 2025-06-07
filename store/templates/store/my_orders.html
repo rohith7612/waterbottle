@@ -287,17 +287,37 @@
             color: white;
         }
 
+        @media (max-width: 1200px) {
+            .content-card h3 { font-size: 2.2rem; }
+            .content-card { padding: 2.2rem; }
+            .list-group-item { font-size: 1rem; padding: 14px 18px; }
+        }
+        @media (max-width: 992px) {
+            .content-card h3 { font-size: 1.7rem; }
+            .content-card { padding: 1.2rem; }
+            .main-content-wrapper { padding: 1.2rem 0; }
+            .footer { padding: 1.2rem 0 0.5rem; }
+        }
         @media (max-width: 768px) {
-            .content-card { /* Adjusted from .signup-card */
-                padding: 2rem;
-                margin: 0 1rem;
-            }
-            .content-card h3 { /* Adjusted from .signup-card h3 */
-                font-size: 1.75rem;
-            }
-            .main-content-wrapper {
-                padding: 2rem 0; /* Adjust padding for smaller screens */
-            }
+            .content-card h3 { font-size: 1.3rem; }
+            .content-card { padding: 0.7rem; }
+            .main-content-wrapper { padding: 0.7rem 0; }
+            .footer-brand { font-size: 1.2rem; }
+            .footer { padding: 0.7rem 0 0.2rem; }
+            .navbar-brand { font-size: 1.2rem; }
+            .logo-icon img { width: 28px !important; height: 28px !important; }
+            .list-group-item { font-size: 0.95rem; padding: 10px 10px; }
+        }
+        @media (max-width: 576px) {
+            .content-card h3 { font-size: 1.1rem; }
+            .content-card { padding: 0.3rem; }
+            .main-content-wrapper { padding: 0.3rem 0; }
+            .footer-brand { font-size: 1rem; }
+            .footer { padding: 0.3rem 0 0.1rem; }
+            .navbar-brand { font-size: 1rem; }
+            .logo-icon img { width: 22px !important; height: 22px !important; }
+            .container, .container-fluid { padding-left: 8px; padding-right: 8px; }
+            .list-group-item { font-size: 0.9rem; padding: 7px 5px; }
         }
 
         /* Specific styles for list group from previous iterations, adapted to new theme */

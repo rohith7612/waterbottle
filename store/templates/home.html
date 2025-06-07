@@ -409,26 +409,53 @@
         }
 
         /* Responsive Design */
+        @media (max-width: 1200px) {
+            .hero-title { font-size: 2.5rem; }
+            .hero-subtitle { font-size: 1.1rem; }
+            .btn-hero { font-size: 1rem; padding: 0.8rem 2rem; }
+            .card { max-width: 95vw; }
+            .card-img-top { height: 180px; }
+            .section-title { font-size: 2.2rem; }
+        }
+        @media (max-width: 992px) {
+            .hero-title { font-size: 2rem; }
+            .hero-subtitle { font-size: 1rem; }
+            .btn-hero { font-size: 0.95rem; padding: 0.7rem 1.5rem; }
+            .card-img-top { height: 140px; }
+            .feature-card { padding: 2rem 1rem; }
+            .section { padding: 2.5rem 0; }
+            .footer { padding: 2rem 0 1rem; }
+        }
         @media (max-width: 768px) {
-            .hero-title {
-                font-size: 2.5rem;
-            }
-            
-            .hero-subtitle {
-                font-size: 1.2rem;
-            }
-            
-            .section-title {
-                font-size: 2rem;
-            }
-            
-            .hero-section {
-                padding: 4rem 0 3rem;
-            }
-            
-            .section {
-                padding: 4rem 0;
-            }
+            .hero-section { padding: 2.5rem 0 1.5rem; }
+            .hero-title { font-size: 1.5rem; }
+            .hero-subtitle { font-size: 1rem; }
+            .btn-hero { font-size: 0.9rem; padding: 0.6rem 1.2rem; }
+            .card { min-height: 220px; }
+            .card-img-top { height: 100px; }
+            .feature-card { padding: 1.2rem 0.5rem; }
+            .section-title { font-size: 1.3rem; }
+            .section-subtitle { font-size: 1rem; }
+            .footer-brand { font-size: 1.2rem; }
+            .footer { padding: 1.2rem 0 0.5rem; }
+            .navbar-brand { font-size: 1.2rem; }
+            .logo-icon img { width: 28px !important; height: 28px !important; }
+        }
+        @media (max-width: 576px) {
+            .hero-section { padding: 1.2rem 0 0.5rem; }
+            .hero-title { font-size: 1.1rem; }
+            .hero-subtitle { font-size: 0.9rem; }
+            .btn-hero { font-size: 0.8rem; padding: 0.5rem 1rem; }
+            .card { min-height: 160px; }
+            .card-img-top { height: 70px; }
+            .feature-card { padding: 0.7rem 0.2rem; }
+            .section-title { font-size: 1rem; }
+            .section-subtitle { font-size: 0.85rem; }
+            .footer-brand { font-size: 1rem; }
+            .footer { padding: 0.7rem 0 0.2rem; }
+            .navbar-brand { font-size: 1rem; }
+            .logo-icon img { width: 22px !important; height: 22px !important; }
+            .container, .container-fluid { padding-left: 8px; padding-right: 8px; }
         }
 
         /* Loading Animation */

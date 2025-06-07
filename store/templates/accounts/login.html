@@ -283,6 +283,15 @@
             color: white;
         }
 
+        /* Add this to the <style> section for logo hover effect */
+        .navbar-brand .logo-icon img {
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .navbar-brand:hover .logo-icon img {
+            transform: rotate(5deg) scale(1.07);
+            box-shadow: 0 6px 18px var(--shadow-medium);
+        }
+
         @media (max-width: 768px) {
             .login-card {
                 padding: 2rem;
@@ -302,8 +311,8 @@
     <nav class="navbar navbar-expand-lg fixed-top" id="mainNavbar">
         <div class="container">
             <a class="navbar-brand" href="#">
-                <div class="logo-icon">
-                    <i class="fas fa-seedling"></i>
+                <div class="logo-icon" style="padding:0; background:none;">
+                    <img src="/media/product_images/Vin2Grow.png" alt="Vin2Grow Logo" style="width:45px; height:45px; border-radius:12px; object-fit:cover; box-shadow:0 2px 10px var(--shadow-light); transition:all 0.3s ease;" class="logo-img" />
                 </div>
                 Vin2Grow
             </a>
@@ -362,8 +371,9 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-4 mb-4">
-                    <div class="footer-brand">
-                        <i class="fas fa-seedling me-2"></i>Vin2Grow
+                    <div class="footer-brand d-flex align-items-center mb-2">
+                        <img src="/media/product_images/Vin2Grow.png" alt="Vin2Grow Logo" style="width:32px; height:32px; border-radius:8px; object-fit:cover; margin-right:8px; box-shadow:0 1px 4px var(--shadow-light); transition:all 0.3s ease;" class="logo-img" />
+                        Vin2Grow
                     </div>
                     <p style="color: rgba(255, 255, 255, 0.7); line-height: 1.6;">
                         Premium water bottles designed for the modern lifestyle. Sustainable, stylish, and built to last.
@@ -423,12 +433,24 @@
     <script>
         // Navbar scroll effect (might not be needed for a standalone login page)
         window.addEventListener('scroll', () => {
-            const navbar = document.getElementById('mainNav');
+            const navbar = document.getElementById('mainNavbar');
             if (window.scrollY > 50) {
                 navbar.classList.add('navbar-scrolled');
             } else {
                 navbar.classList.remove('navbar-scrolled');
             }
+        });
+
+        // Logo hover animation (matches other pages)
+        document.querySelectorAll('.logo-img').forEach(function(logo) {
+            logo.addEventListener('mouseenter', function() {
+                logo.style.transform = 'rotate(5deg) scale(1.05)';
+                logo.style.boxShadow = '0 5px 15px rgba(59,130,246,0.15)';
+            });
+            logo.addEventListener('mouseleave', function() {
+                logo.style.transform = '';
+                logo.style.boxShadow = '0 2px 10px var(--shadow-light)';
+            });
         });
 
         // Simple client-side validation example (optional, server-side is crucial)

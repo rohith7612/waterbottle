@@ -409,26 +409,42 @@
         }
 
         /* Responsive Design */
+        @media (max-width: 1200px) {
+            .section-title { font-size: 2.2rem; }
+            .section-subtitle { font-size: 1.1rem; }
+            .card { max-width: 95vw; }
+            .card-img-top { height: 180px; }
+        }
+        @media (max-width: 992px) {
+            .section-title { font-size: 2rem; }
+            .section-subtitle { font-size: 1rem; }
+            .card-img-top { height: 140px; }
+            .feature-card { padding: 2rem 1rem; }
+            .section { padding: 2.5rem 0; }
+            .footer { padding: 2rem 0 1rem; }
+        }
         @media (max-width: 768px) {
-            .hero-title {
-                font-size: 2.5rem;
-            }
-            
-            .hero-subtitle {
-                font-size: 1.2rem;
-            }
-            
-            .section-title {
-                font-size: 2rem;
-            }
-            
-            .hero-section {
-                padding: 4rem 0 3rem;
-            }
-            
-            .section {
-                padding: 4rem 0;
-            }
+            .section-title { font-size: 1.3rem; }
+            .section-subtitle { font-size: 1rem; }
+            .card { min-height: 220px; }
+            .card-img-top { height: 100px; }
+            .feature-card { padding: 1.2rem 0.5rem; }
+            .footer-brand { font-size: 1.2rem; }
+            .footer { padding: 1.2rem 0 0.5rem; }
+            .navbar-brand { font-size: 1.2rem; }
+            .logo-icon img { width: 28px !important; height: 28px !important; }
+        }
+        @media (max-width: 576px) {
+            .section-title { font-size: 1rem; }
+            .section-subtitle { font-size: 0.85rem; }
+            .card { min-height: 160px; }
+            .card-img-top { height: 70px; }
+            .feature-card { padding: 0.7rem 0.2rem; }
+            .footer-brand { font-size: 1rem; }
+            .footer { padding: 0.7rem 0 0.2rem; }
+            .navbar-brand { font-size: 1rem; }
+            .logo-icon img { width: 22px !important; height: 22px !important; }
+            .container, .container-fluid { padding-left: 8px; padding-right: 8px; }
         }
 
         /* Loading Animation */
