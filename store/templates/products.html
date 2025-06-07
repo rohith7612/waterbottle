@@ -476,9 +476,9 @@
                 flex-direction: row;
                 flex-wrap: wrap;
             }
-            .col-lg-4, .col-md-6 {
-                max-width: 50%;
-                flex: 0 0 50%;
+            .col-lg-4, .col-md-6, .col-6 {
+                max-width: 50% !important;
+                flex: 0 0 50% !important;
                 padding-left: 0.25rem;
                 padding-right: 0.25rem;
             }
@@ -587,7 +587,7 @@
         <p class="section-subtitle fade-in-up">Explore our carefully curated collection of premium water bottles</p>
         <div class="row">
             {% for product in products %}
-            <div class="col-lg-4 col-md-6 mb-4">
+            <div class="col-lg-4 col-md-6 col-6 mb-4">
                 <div class="card fade-in-up" style="animation-delay: {{ forloop.counter0|add:0|floatformat:1 }}s;">
                     <img src="{{ product.image.url }}" class="card-img-top" alt="{{ product.name }}">
                     <div class="card-body">
