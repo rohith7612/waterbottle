@@ -558,6 +558,27 @@
     .text-md-end {
         text-align: center !important;
     }
+
+    /* Product card styles for mobile */
+    .products-section .row {
+        flex-direction: column !important;
+    }
+    .products-section .col-lg-4,
+    .products-section .col-md-6,
+    .products-section .col-12 {
+        max-width: 100% !important;
+        flex: 0 0 100% !important;
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+    .card {
+        max-width: 100% !important;
+        width: 100% !important;
+        margin-bottom: 2rem;
+    }
+    .card-img-top {
+        height: 250px;
+    }
         }
 
         /* Loading Animation */
@@ -852,10 +873,31 @@
     .text-md-end {
         text-align: center !important;
     }
-}
 
-/* Adjustments for the logo icon on very small screens */
-@media (max-width: 400px) {
+    /* Product card styles for mobile */
+    .products-section .row {
+        flex-direction: column !important;
+    }
+    .products-section .col-lg-4,
+    .products-section .col-md-6,
+    .products-section .col-12 {
+        max-width: 100% !important;
+        flex: 0 0 100% !important;
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+    .card {
+        max-width: 100% !important;
+        width: 100% !important;
+        margin-bottom: 2rem;
+    }
+    .card-img-top {
+        height: 250px;
+    }
+        }
+
+        /* Adjustments for the logo icon on very small screens */
+        @media (max-width: 400px) {
     .navbar-brand {
         font-size: 1.1rem;
     }
@@ -930,9 +972,8 @@
     <div class="container">
         <h2 class="section-title fade-in-up">Our Products</h2>
         <p class="section-subtitle fade-in-up">Explore our carefully curated collection of premium water bottles</p>
-        <div class="row">
-            {% for product in products %}
-            <div class="col-lg-4 col-md-6 col-6 mb-4">
+        <div class="row">            {% for product in products %}
+            <div class="col-lg-4 col-md-6 col-12 mb-4">
                 <div class="card fade-in-up" style="animation-delay: {{ forloop.counter0|add:0|floatformat:1 }}s;">
                     <img src="{{ product.image.url }}" class="card-img-top" alt="{{ product.name }}">
                     <div class="card-body">
