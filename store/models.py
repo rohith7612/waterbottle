@@ -5,6 +5,7 @@ from django.contrib.auth.models import User
 CATEGORY_CHOICES = (
     ('Water Bottle', 'Water Bottle'),
     ('Bamboo Bottle', 'Bamboo Bottle'),
+    ('New Arrivals','New Arrivals'),
 )
 
 # Product model

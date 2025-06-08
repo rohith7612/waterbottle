@@ -592,7 +592,9 @@
 <section class="section products-section" style="padding-top: 6rem;">
     <div class="container">
         <h2 class="section-title fade-in-up">Our Products</h2>
-        <p class="section-subtitle fade-in-up">Explore our carefully curated collection of premium water bottles</p>        <div class="row">            {% for product in products %}
+        <p class="section-subtitle fade-in-up">Explore our carefully curated collection of premium water bottles</p>        
+        <div class="row">            
+            {% for product in products %}
             <div class="col-lg-4 col-md-6 col-6 mb-4">
                 <div class="card fade-in-up" style="animation-delay: {{ forloop.counter0|add:0|floatformat:1 }}s;">
                     <img src="{{ product.image.url }}" class="card-img-top" alt="{{ product.name }}">

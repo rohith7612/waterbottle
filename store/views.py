@@ -6,9 +6,10 @@ from django.contrib import messages
 from django.utils import timezone
 
 def home(request):
-    products = Product.objects.all()
-    return render(request, 'home.html', {'products': products})
-
+    newarrivals = Product.objects.filter(category='New Arrivals')
+    return render(request, 'home.html', {
+        'newarrivals': newarrivals
+    })
 
 def products(request):
     items = Product.objects.all()
@@ -68,6 +69,11 @@ def my_orders(request):
 def bamboo_products(request):
     items = Product.objects.filter(category='Bamboo Bottle')
     return render(request, 'bamboo.html', {'products': items})
+
+
+def newarrivals(request):
+    newarrivals = Product.objects.filter(category='New Arrivals')
+    return render(request,'newarrivals.html',{'products': newarrivals})
 
 
 
