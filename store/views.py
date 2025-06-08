@@ -67,13 +67,13 @@ def my_orders(request):
 
 
 def bamboo_products(request):
-    items = Product.objects.filter(category='Bamboo Bottle')
-    return render(request, 'bamboo.html', {'products': items})
+    bamboo_products = Product.objects.filter(category='Bamboo Bottle')
+    return render(request, 'bamboo.html', {'bamboo_products': bamboo_products})
 
 
 def newarrivals(request):
     newarrivals = Product.objects.filter(category='New Arrivals')
-    return render(request,'newarrivals.html',{'products': newarrivals})
+    return render(request,'newarrivals.html',{'newarrivals': newarrivals})
 
 
 
