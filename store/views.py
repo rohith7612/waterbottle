@@ -4,11 +4,14 @@ from .models import Product, Sale
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.utils import timezone
+from django.db.models import Count
 
 def home(request):
     newarrivals = Product.objects.filter(category='New Arrivals')
+    most_selling = Product.objects.annotate(sales_count=Count('sale')).order_by('-sales_count')[:3]
     return render(request, 'home.html', {
-        'newarrivals': newarrivals
+        'newarrivals': newarrivals,
+        'most_selling': most_selling,
     })
 
 def products(request):
