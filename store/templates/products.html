@@ -484,72 +484,42 @@
                 padding-top: 7.5rem !important;
             }
         }        @media (max-width: 576px) {
-            .products-section {
-                padding: 4rem 0.5rem !important;
-            }
-            .products-section .container {
-                padding: 0 0.5rem;
-            }
             .products-section .row {
-                flex-direction: column;
-                margin: 0;
-            }
-            .col-lg-4, .col-md-6, .col-6 {
-                max-width: 100% !important;
-                flex: 0 0 100% !important;
-                padding: 0 0.5rem;
-            }
-            .card {
+                flex-direction: row;
+                flex-wrap: wrap;
+                margin: 0 -0.25rem;
+            }            .col-lg-4, .col-md-6, .col-6 {
+                max-width: 50% !important;
+                flex: 0 0 50% !important;
+                padding-left: 0.25rem;
+                padding-right: 0.25rem;
+            }.card {
                 min-height: unset;
-                max-width: calc(100% - 1rem) !important;
+                max-width: 100% !important;
                 width: 100% !important;
-                margin: 0 auto 2rem auto;
+                margin-bottom: 1rem;
                 display: flex;
                 flex-direction: column;
                 align-items: center;
-                border-radius: 12px;
-            }
-            .card-img-top {
-                height: 200px;
+            }            .card-img-top {
+                height: 140px;
+                min-height: 140px;
+                max-height: 140px;
                 width: 100%;
                 object-fit: contain;
-                padding: 1rem;
+                padding: 0.5rem;
                 background: #f8fafc;
                 margin: 0 auto;
                 display: block;
-                border-radius: 12px 12px 0 0;
             }
             .card-body {
                 width: 100%;
-                padding: 1rem;
+                padding: 1rem 0.8rem 1.2rem 0.8rem;
+                min-height: unset;
                 text-align: center;
-                display: flex;
-                flex-direction: column;
-                gap: 0.5rem;
             }
-            .card-title {
-                font-size: 1.1rem;
-                margin: 0;
-                font-weight: 600;
-            }
-            .card-text {
-                font-size: 0.9rem;
-                margin: 0;
-                color: var(--neutral-gray);
-                -webkit-line-clamp: 2;
-                line-height: 1.4;
-            }
-            .price-text {
-                font-size: 1.2rem;
-                margin: 0.5rem 0;
-                font-weight: 600;
-                color: var(--primary-navy);
-            }
-            .btn-buy {
-                margin-top: 0.5rem;
-                padding: 0.8rem;
-                font-size: 1rem;
-                border-radius: 8px;
+            .card-title, .card-text, .price-text {
+                text-align: center;
             }
         }
 
