@@ -221,7 +221,8 @@
             transform: translateY(-3px);
             box-shadow: 0 15px 40px rgba(6, 182, 212, 0.4);
             color: white;
-        }        /* Professional Card Styling */
+        }  
+              /* Professional Card Styling */
         .card {
             border: none;
             border-radius: 16px;
@@ -773,284 +774,6 @@
                 font-size: 1rem;
             }
         }
-        :root {
-            --primary-navy: #1e3a8a;
-            --primary-blue: #3b82f6;
-            --accent-teal: #06b6d4;
-            --accent-emerald: #10b981;
-            --neutral-gray: #6b7280;
-            --light-gray: #f8fafc;
-            --white: #ffffff;
-            --dark: #0f172a;
-            --shadow-light: rgba(0, 0, 0, 0.1);
-            --shadow-medium: rgba(0, 0, 0, 0.15);
-            --shadow-heavy: rgba(0, 0, 0, 0.25);
-            --gradient-primary: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
-            --gradient-accent: linear-gradient(135deg, #06b6d4 0%, #10b981 100%);
-            --gradient-hero: linear-gradient(135deg, rgba(30, 58, 138, 0.95) 0%, rgba(59, 130, 246, 0.95) 100%);
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            line-height: 1.6;
-            color: var(--dark);
-            background-color: var(--white);
-            overflow-x: hidden;
-        }
-
-        /* Professional Typography */
-        h1, h2, h3, h4, h5, h6 {
-            font-family: 'Playfair Display', serif;
-            font-weight: 600;
-            line-height: 1.2;
-            margin-bottom: 1rem;
-        }
-
-        .display-1, .display-2, .display-3, .display-4 {
-            font-family: 'Playfair Display', serif;
-            font-weight: 700;
-        }
-
-        /* Subtle Background Animation */
-        body::before {
-            content: '';
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: 
-                radial-gradient(circle at 15% 85%, rgba(59, 130, 246, 0.03) 0%, transparent 50%),
-                radial-gradient(circle at 85% 15%, rgba(6, 182, 212, 0.03) 0%, transparent 50%);
-            animation: subtleShift 20s ease-in-out infinite alternate;
-            z-index: -1;
-            pointer-events: none;
-        }
-
-        @keyframes subtleShift {
-            0% { transform: translate(0, 0) scale(1); }
-            100% { transform: translate(-10px, 10px) scale(1.02); }
-        }
-
-        /* Professional Navbar */
-        .navbar {
-            background: rgba(255, 255, 255, 0.95) !important;
-            backdrop-filter: blur(20px);
-            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-            transition: all 0.3s ease;
-            box-shadow: 0 2px 20px var(--shadow-light);
-            padding: 1rem 0;
-        }
-
-        .navbar-scrolled {
-            background: rgba(255, 255, 255, 0.98) !important;
-            box-shadow: 0 2px 30px var(--shadow-medium);
-            padding: 0.5rem 0;
-        }
-
-        .navbar-brand {
-            font-family: 'Playfair Display', serif;
-            font-weight: 700;
-            font-size: 2rem;
-            color: var(--primary-navy) !important;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            transition: all 0.3s ease;
-        }
-
-        .logo-icon {
-            width: 45px;
-            height: 45px;
-            background: var(--gradient-primary);
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 1.5rem;
-            transition: all 0.3s ease;
-        }
-
-        .navbar-brand:hover .logo-icon {
-            transform: rotate(5deg) scale(1.05);
-            box-shadow: 0 5px 15px var(--shadow-medium);
-        }
-
-        .nav-link {
-            color: var(--neutral-gray) !important;
-            font-weight: 500;
-            position: relative;
-            transition: all 0.3s ease;
-            margin: 0 0.5rem;
-            padding: 0.5rem 1rem !important;
-            border-radius: 8px;
-        }
-
-        .nav-link::before {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            width: 0;
-            height: 2px;
-            background: var(--gradient-primary);
-            transition: all 0.3s ease;
-            transform: translateX(-50%);
-        }
-
-        .nav-link:hover {
-            color: var(--primary-navy) !important;
-            background: rgba(59, 130, 246, 0.05);
-        }
-
-        .nav-link:hover::before {
-            width: 60%;
-        }
-
-        /* Professional Hero Section */
-        .hero-section {
-            background: var(--gradient-hero);
-            color: white;
-            padding: 8rem 0 6rem;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero-section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" patternUnits="userSpaceOnUse" width="100" height="100"><circle cx="50" cy="50" r="1" fill="white" fill-opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
-            opacity: 0.3;
-        }
-
-        .hero-content {
-            position: relative;
-            z-index: 1;
-        }
-
-        .hero-title {
-            font-size: 4rem;
-            font-weight: 700;
-            margin-bottom: 1.5rem;
-            line-height: 1.1;
-        }
-
-        .hero-subtitle {
-            font-size: 1.5rem;
-            margin-bottom: 2rem;
-            opacity: 0.9;
-            font-weight: 300;
-        }
-
-        .btn-hero {
-            background: var(--gradient-accent);
-            border: none;
-            padding: 1rem 2.5rem;
-            font-size: 1.1rem;
-            font-weight: 600;
-            border-radius: 50px;
-            color: white;
-            transition: all 0.3s ease;
-            box-shadow: 0 10px 30px rgba(6, 182, 212, 0.3);
-            text-decoration: none;
-            display: inline-block;
-        }
-
-        .btn-hero:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 15px 40px rgba(6, 182, 212, 0.4);
-            color: white;
-        }
-
-        /* Professional Card Styling */
-        .card {
-            border: none;
-            border-radius: 16px;
-            background: white;
-            box-shadow: 0 4px 25px var(--shadow-light);
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            overflow: hidden;
-            min-height: 340px;
-            max-width: 320px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 20px 60px var(--shadow-medium);
-        }
-
-        .card-img-top {
-            height: 240px;
-            object-fit: contain;
-            background: #f8fafc;
-            padding: 0.5rem;
-            transition: all 0.4s ease;
-        }
-
-        .card-body {
-            padding: 0.8rem 1rem 1.2rem 1rem;
-            min-height: 120px;
-        }
-
-        .card-body {
-            width: 100%;
-            padding: 0.5rem;
-            min-height: unset;
-            text-align: center;
-        }
-
-        .card-title {
-            font-size: 0.9rem;
-            margin-bottom: 0.25rem;
-        }
-
-        .card-text {
-            font-size: 0.8rem;
-            margin-bottom: 0.5rem;
-            display: -webkit-box;
-            -webkit-line-clamp: 2;
-            -webkit-box-orient: vertical;
-            overflow: hidden;
-        }
-
-        .price-text {
-            font-size: 1rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .btn-buy {
-            background: var(--gradient-primary);
-            border: none;
-            padding: 0.5rem 1rem;
-            font-size: 0.9rem;
-            font-weight: 600;
-            border-radius: 10px;
-            color: white;
-            transition: all 0.3s ease;
-            text-decoration: none;
-            display: inline-block;
-            width: 100%;
-            text-align: center;
-        }
-
-        .btn-buy:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(30, 58, 138, 0.3);
-            color: white;
-        }
     </style>
 </head>
 <body>
@@ -1129,12 +852,12 @@
                 <div class="col-lg-3 col-md-6 col-sm-6 mb-10">
                     <div class="circle-item fade-in-up" style="animation-delay: 0.2s;">
                         <div class="circle-image">
-                            <img src="/media/product_images/Milton.jpg" alt="Water Bottles">
+                            <img src="/media/product_images/water bottle.jpg" alt="Water Bottles">
                         </div>
                         <h4 class="circle-title">Water Bottles</h4>
                     </div>
                 </div>
-                <div class="col-lg-3 col-md-6 col-sm-6 mb-10">
+                {% comment %} <div class="col-lg-3 col-md-6 col-sm-6 mb-10">
                     <div class="circle-item fade-in-up" style="animation-delay: 0.4s;">
                         <div class="circle-image">
                             <img src="/media/product_images/frames.jpg" alt="Assam Bamboo">
@@ -1149,7 +872,7 @@
                         </div>
                         <h4 class="circle-title">Premium Collection</h4>
                     </div>
-                </div>
+                </div> {% endcomment %}
             </div>
         </div>    
     </section>
@@ -1158,21 +881,21 @@
   <h2 class="section-title fade-in-up">New Arrivals</h2>
   <p class="section-subtitle fade-in-up">Explore our carefully curated collection of organic Bamboo products</p>
   <div class="container">
-    <div class="row">
-      {% for product in newarrivals %}
-      <div class="col-lg-4 col-md-6 col-6 mb-4">
-        <div class="card fade-in-up" style="animation-delay: {{ forloop.counter0|add:0|floatformat:1 }}s;">
-
-          <!-- Bootstrap Carousel -->
+  <div class="row">
+    {% for product in newarrivals %}
+    <div class="col-lg-4 col-md-6 col-6 mb-4">
+      <div class="wrapper fade-in-up" style="animation-delay: {{ forloop.counter0|add:0|floatformat:1 }}s;">
+        <!-- Bootstrap Carousel -->
+        <div class="product-img">
           <div id="carousel{{ product.id }}" class="carousel slide" data-bs-ride="carousel" data-bs-interval="2000" data-bs-pause="false">
             <div class="carousel-inner">
               {% for img in product.images.all %}
               <div class="carousel-item {% if forloop.first %}active{% endif %}">
-                <img src="{{ img.image.url }}" class="d-block w-100 card-img-top" alt="{{ product.name }}">
+                <img src="{{ img.image.url }}" class="d-block w-100" alt="{{ product.name }}">
               </div>
               {% empty %}
               <div class="carousel-item active">
-                <img src="{{ product.image.url }}" class="d-block w-100 card-img-top" alt="{{ product.name }}">
+                <img src="{{ product.image.url }}" class="d-block w-100" alt="{{ product.name }}">
               </div>
               {% endfor %}
             </div>
@@ -1185,22 +908,28 @@
               <span class="visually-hidden">Next</span>
             </button>
           </div>
-
-          <!-- Card Body -->
-          <div class="card-body">
-                        <h5 class="card-title">{{ product.name }}</h5>
-                        <p class="card-text">{{ product.description|truncatewords:20 }}</p>
-                        <div class="price-text">₹{{ product.price }}</div>
-                        <a href="{% url 'buy_product' product.id %}" class="btn-buy">
-                            <i class="fas fa-shopping-cart me-2"></i>Buy Now
-                        </a>
-                    </div>
-
         </div>
+
+        <!-- Product Info -->
+        <div class="product-info">
+          <div class="product-text">
+            <h1>{{ product.name }}</h1>
+            <h2>by studio</h2>
+            <p>{{ product.description|truncatewords:20 }}</p>
+          </div>
+          <div class="product-price-btn">
+            <p><span>{{ product.price }}</span>₹</p>
+            <a href="{% url 'buy_product' product.id %}">
+              <i class="fas fa-shopping-cart me-2"></i>buy now
+            </a>
+          </div>
+        </div>
+        
       </div>
-      {% endfor %}
     </div>
+    {% endfor %}
   </div>
+</div>
 </section>
 
 <section class="section products-section" style="padding-top: 6rem;">
@@ -1249,7 +978,6 @@
     </div>
   </div>
 </section>
-
     <!-- Features Section -->
     <section class="section">
         <div class="container">
@@ -1284,10 +1012,6 @@
             </div>
         </div>
     </section>
-
-
-
-
     <!-- CTA Section -->
     <section class="cta-section">
         <div class="container">
@@ -1302,7 +1026,6 @@
             </div>
         </div>
     </section>
-
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
