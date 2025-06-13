@@ -15,7 +15,7 @@ def home(request):
     })
 
 def products(request):
-    items = Product.objects.all()
+    items = Product.objects.prefetch_related('images').all()
     return render(request, 'products.html', {'products': items})
 
 def about(request):
@@ -67,6 +67,10 @@ def buy_product(request, product_id):
 def my_orders(request):
     orders = Sale.objects.filter(user=request.user).select_related('product')
     return render(request, 'store/my_orders.html', {'orders': orders})
+
+def waterbottles(request):
+    waterbottles = Product.objects.filter(category="Water Bottle")
+    return render(request,'waterbottle.html',{'waterbottles':waterbottles})
 
 
 def bamboo_products(request):
