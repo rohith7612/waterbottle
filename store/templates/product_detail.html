@@ -1,0 +1,764 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Premium Product Collection</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary-navy: #0f172a;
+            --primary-blue: #1e40af;
+            --accent-teal: #0891b2;
+            --accent-emerald: #059669;
+            --accent-purple: #7c3aed;
+            --neutral-gray: #64748b;
+            --neutral-light: #94a3b8;
+            --light-gray: #f8fafc;
+            --lighter-gray: #f1f5f9;
+            --white: #ffffff;
+            --dark: #0f172a;
+            --border-color: #e2e8f0;
+            --shadow-light: rgba(15, 23, 42, 0.08);
+            --shadow-medium: rgba(15, 23, 42, 0.12);
+            --shadow-heavy: rgba(15, 23, 42, 0.20);
+            --shadow-colored: rgba(30, 64, 175, 0.15);
+            --gradient-primary: linear-gradient(135deg, #0f172a 0%, #1e40af 50%, #0891b2 100%);
+            --gradient-accent: linear-gradient(135deg, #7c3aed 0%, #0891b2 50%, #059669 100%);
+            --gradient-bg: linear-gradient(135deg, #f8fafc 0%, #ffffff 100%);
+            --backdrop-blur: blur(20px);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.7;
+            color: var(--dark);
+            background: var(--gradient-bg);
+            overflow-x: hidden;
+            font-weight: 400;
+            letter-spacing: -0.01em;
+        }
+
+        /* Enhanced background with floating elements */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 80%, rgba(124, 58, 237, 0.04) 0%, transparent 60%),
+                radial-gradient(circle at 80% 20%, rgba(8, 145, 178, 0.04) 0%, transparent 60%),
+                radial-gradient(circle at 40% 40%, rgba(5, 150, 105, 0.03) 0%, transparent 60%);
+            animation: floatingBg 25s ease-in-out infinite alternate;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        body::after {
+            content: '';
+            position: fixed;
+            top: -50%;
+            right: -50%;
+            width: 100%;
+            height: 100%;
+            background: 
+                conic-gradient(from 0deg at 50% 50%, transparent 0deg, rgba(30, 64, 175, 0.02) 90deg, transparent 180deg);
+            animation: slowRotate 40s linear infinite;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        @keyframes floatingBg {
+            0% { 
+                transform: translate(0, 0) scale(1) rotate(0deg);
+                opacity: 1;
+            }
+            100% { 
+                transform: translate(-20px, 15px) scale(1.05) rotate(2deg);
+                opacity: 0.8;
+            }
+        }
+
+        @keyframes slowRotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        /* Container enhancements */
+        .main-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 2rem 1rem;
+        }
+
+        /* Product Image Container */
+        .product-image-container {
+            position: relative;
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: 
+                0 8px 32px var(--shadow-light),
+                0 0 0 1px var(--border-color);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            background: var(--white);
+            backdrop-filter: var(--backdrop-blur);
+        }
+
+        .product-image-container:hover {
+            transform: translateY(-8px) scale(1.01);
+            box-shadow: 
+                0 20px 60px var(--shadow-medium),
+                0 0 0 1px var(--border-color);
+        }
+
+        .product-carousel {
+            border-radius: 24px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .product-image-wrapper {
+            aspect-ratio: 4/3;
+            background: linear-gradient(135deg, var(--white) 0%, var(--lighter-gray) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            position: relative;
+        }
+
+        .product-image-wrapper::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: 
+                radial-gradient(circle at 30% 70%, rgba(124, 58, 237, 0.03) 0%, transparent 50%),
+                radial-gradient(circle at 70% 30%, rgba(8, 145, 178, 0.03) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .product-detail-image {
+            max-height: 100%;
+            max-width: 100%;
+            object-fit: contain;
+            border-radius: 16px;
+            transition: all 0.4s ease;
+            filter: drop-shadow(0 4px 20px rgba(0, 0, 0, 0.1));
+            position: relative;
+            z-index: 1;
+        }
+
+        .product-detail-image:hover {
+            transform: scale(1.02);
+            filter: drop-shadow(0 6px 30px rgba(0, 0, 0, 0.15));
+        }
+
+        /* Enhanced Carousel Controls */
+        .product-carousel-control {
+            width: 56px;
+            height: 56px;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: var(--backdrop-blur);
+            border-radius: 50%;
+            border: 1px solid var(--border-color);
+            top: 50%;
+            transform: translateY(-50%);
+            opacity: 0; /* Hidden by default */
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 4px 16px var(--shadow-light);
+        }
+
+        .product-image-container:hover .product-carousel-control {
+            opacity: 1; /* Visible on hover */
+        }
+
+        .product-carousel-control:hover {
+            background: var(--white);
+            transform: translateY(-50%) scale(1.1);
+            box-shadow: 0 6px 24px var(--shadow-medium);
+            border-color: var(--primary-blue);
+        }
+
+        .carousel-control-prev { left: 24px; }
+        .carousel-control-next { right: 24px; }
+
+        .carousel-control-prev-icon,
+        .carousel-control-next-icon {
+            filter: invert(0.2);
+            width: 24px;
+            height: 24px;
+            transition: all 0.3s ease;
+        }
+
+        .product-carousel-control:hover .carousel-control-prev-icon,
+        .product-carousel-control:hover .carousel-control-next-icon {
+            filter: invert(0.1);
+            transform: scale(1.1);
+        }
+
+        /* Enhanced Product Info Card */
+        .product-info-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: var(--backdrop-blur);
+            padding: 3rem;
+            border-radius: 24px;
+            box-shadow: 
+                0 8px 32px var(--shadow-light),
+                0 0 0 1px var(--border-color);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            height: fit-content;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .product-info-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--gradient-accent);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .product-info-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 
+                0 20px 60px var(--shadow-medium),
+                0 0 0 1px var(--border-color);
+        }
+
+        .product-info-card:hover::before {
+            opacity: 1;
+        }
+
+        /* Typography Improvements */
+        .product-category {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            background: var(--gradient-accent);
+            color: white;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 2px 8px rgba(124, 58, 237, 0.3);
+        }
+
+        .product-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 700;
+            background: var(--gradient-primary);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+            letter-spacing: -0.02em;
+        }
+
+        .product-description {
+            font-size: 1.125rem;
+            color: var(--neutral-gray);
+            line-height: 1.8;
+            margin-bottom: 2.5rem;
+            font-weight: 400;
+        }
+
+        .product-description p {
+            margin-bottom: 1.2rem;
+        }
+
+        .product-description strong {
+            color: var(--primary-navy);
+            font-weight: 600;
+        }
+
+        .product-description ul {
+            list-style: none;
+            padding-left: 0;
+            margin: 1.5rem 0;
+        }
+
+        .product-description li {
+            position: relative;
+            padding-left: 2rem;
+            margin-bottom: 0.75rem;
+            color: var(--neutral-gray);
+        }
+
+        .product-description li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0.75rem;
+            width: 6px;
+            height: 6px;
+            background: var(--gradient-accent);
+            border-radius: 50%;
+            transform: translateY(-50%);
+        }
+
+        /* Enhanced Pricing */
+        .product-price {
+            display: flex;
+            align-items: baseline;
+            gap: 0.5rem;
+            margin-bottom: 2rem;
+            padding: 1.5rem;
+            background: linear-gradient(135deg, var(--lighter-gray) 0%, var(--white) 100%);
+            border-radius: 16px;
+            border: 1px solid var(--border-color);
+        }
+
+        .price-currency {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--accent-emerald);
+        }
+
+        .price-amount {
+            font-size: clamp(2rem, 5vw, 3rem);
+            font-weight: 800;
+            color: var(--accent-emerald);
+            font-family: 'Playfair Display', serif;
+            letter-spacing: -0.02em;
+        }
+
+        .price-original {
+            font-size: 1.25rem;
+            color: var(--neutral-light);
+            text-decoration: line-through;
+            font-weight: 500;
+            margin-left: 0.5rem;
+        }
+
+        .price-save {
+            background: var(--accent-emerald);
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.875rem;
+            font-weight: 600;
+            margin-left: auto;
+        }
+
+        /* Enhanced Action Buttons */
+        .action-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-bottom: 2rem;
+        }
+
+        .btn-buy-now {
+            background: var(--gradient-primary);
+            border: none;
+            padding: 1.2rem 2.5rem;
+            font-size: 1.125rem;
+            font-weight: 600;
+            border-radius: 50px;
+            color: white;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.75rem;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 8px 25px var(--shadow-colored);
+            flex: 1;
+            min-width: 200px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-buy-now::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, transparent 100%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .btn-buy-now:hover {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 15px 40px var(--shadow-colored);
+            color: white;
+            text-decoration: none;
+        }
+
+        .btn-buy-now:hover::before {
+            opacity: 1;
+        }
+
+        .btn-add-to-cart {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: var(--backdrop-blur);
+            border: 2px solid var(--primary-blue);
+            padding: 1.2rem 2rem;
+            font-size: 1.125rem;
+            font-weight: 600;
+            border-radius: 50px;
+            color: var(--primary-blue);
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.75rem;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            flex: 1;
+            min-width: 180px;
+        }
+
+        .btn-add-to-cart:hover {
+            background: var(--primary-blue);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(30, 64, 175, 0.25);
+            text-decoration: none;
+        }
+
+        /* Product Features */
+        .product-features {
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem;
+            background: var(--lighter-gray);
+            border-radius: 12px;
+            transition: all 0.3s ease;
+        }
+
+        .feature-item:hover {
+            background: var(--white);
+            box-shadow: 0 4px 16px var(--shadow-light);
+            transform: translateY(-2px);
+        }
+
+        .feature-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--gradient-accent);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.1rem;
+            flex-shrink: 0;
+        }
+
+        .feature-text {
+            font-size: 0.95rem;
+            font-weight: 500;
+            color: var(--neutral-gray);
+        }
+
+        /* Animation Classes */
+        .fade-in-up {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .fade-in-up.animate {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .fade-in-left {
+            opacity: 0;
+            transform: translateX(-40px);
+            transition: all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .fade-in-left.animate {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .main-container {
+                padding: 1.5rem 1rem;
+            }
+            
+            .product-info-card {
+                padding: 2.5rem 2rem;
+                margin-top: 2rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .product-info-card {
+                padding: 2rem 1.5rem;
+            }
+            
+            .product-title {
+                font-size: 2.25rem;
+            }
+            
+            .product-description {
+                font-size: 1rem;
+            }
+            
+            .price-amount {
+                font-size: 2.25rem;
+            }
+            
+            .action-buttons {
+                flex-direction: column;
+            }
+            
+            .btn-buy-now,
+            .btn-add-to-cart {
+                font-size: 1rem;
+                padding: 1rem 2rem;
+                min-width: auto;
+            }
+            
+            .product-carousel-control {
+                width: 48px;
+                height: 48px;
+            }
+            
+            .carousel-control-prev { left: 16px; }
+            .carousel-control-next { right: 16px; }
+            
+            .feature-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .main-container {
+                padding: 1rem 0.5rem;
+            }
+            
+            .product-info-card {
+                padding: 1.5rem 1rem;
+            }
+            
+            .product-title {
+                font-size: 1.875rem;
+            }
+            
+            .price-amount {
+                font-size: 2rem;
+            }
+            
+            .btn-buy-now,
+            .btn-add-to-cart {
+                font-size: 0.95rem;
+                padding: 0.9rem 1.5rem;
+            }
+            
+            .product-image-wrapper {
+                padding: 1.5rem;
+            }
+        }
+
+        /* Accessibility improvements */
+        @media (prefers-reduced-motion: reduce) {
+            *,
+            *::before,
+            *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+
+        /* Focus states for accessibility */
+        .btn-buy-now:focus,
+        .btn-add-to-cart:focus,
+        .product-carousel-control:focus {
+            outline: 2px solid var(--primary-blue);
+            outline-offset: 2px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container py-5">
+        <div class="row align-items-start">
+            <div class="col-md-6 mb-4">
+                <div class="product-image-container fade-in-left">
+                    <div id="productCarousel" class="carousel slide product-carousel" data-bs-ride="carousel">
+                        <div class="carousel-inner">
+                            {% for image in product.images.all %}
+                            <div class="carousel-item {% if forloop.first %}active{% endif %}">
+                                <div class="product-image-wrapper">
+                                    <img src="{{ image.image.url }}" class="d-block w-100 product-detail-image" alt="Product Image">
+                                </div>
+                            </div>
+                            {% endfor %}
+                        </div>
+                        {% if product.images.count > 1 %}
+                        <button class="carousel-control-prev product-carousel-control" type="button" data-bs-target="#productCarousel" data-bs-slide="prev" aria-label="Previous image">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        </button>
+                        <button class="carousel-control-next product-carousel-control" type="button" data-bs-target="#productCarousel" data-bs-slide="next" aria-label="Next image">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        </button>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-6">
+                <div class="product-info-card fade-in-up">
+                    <h2 class="product-title mb-3">{{ product.name }}</h2>
+                    <p class="product-description mb-4">{{ product.description }}</p>
+                    <div class="product-price mb-4">
+                        <span class="price-currency">₹</span>
+                        <span class="price-amount">{{ product.price }}</span>
+                        </div>
+                    <div class="action-buttons">
+                        <a href="{% url 'buy_product' product.id %}" class="btn-buy-now">
+                            <i class="fas fa-shopping-cart me-2"></i> Buy Now
+                        </a>
+                        </div>
+
+                    </div>
+                    <div class="product-features">
+                        <h3 style="color: var(--primary-navy); font-weight: 600; margin-bottom: 1rem;">Why Choose This Product?</h3>
+                        <div class="feature-grid">
+                            <div class="feature-item">
+                                <div class="feature-icon">
+                                    <i class="fas fa-shipping-fast"></i>
+                                </div>
+                                <div class="feature-text">Free Express Delivery</div>
+                            </div>
+                            <div class="feature-item">
+                                <div class="feature-icon">
+                                    <i class="fas fa-shield-alt"></i>
+                                </div>
+                                <div class="feature-text">2 Year Warranty</div>
+                            </div>
+                            <div class="feature-item">
+                                <div class="feature-icon">
+                                    <i class="fas fa-undo"></i>
+                                </div>
+                                <div class="feature-text">30 Day Returns</div>
+                            </div>
+                            <div class="feature-item">
+                                <div class="feature-icon">
+                                    <i class="fas fa-headset"></i>
+                                </div>
+                                <div class="feature-text">24/7 Support</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+            </div>
+        </div>
+        
+    </div>
+    
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    
+    <script>
+        // Enhanced animation system
+        document.addEventListener('DOMContentLoaded', function() {
+            // Staggered fade-in animations
+            const fadeElements = document.querySelectorAll('.fade-in-up, .fade-in-left');
+            
+            fadeElements.forEach((element, index) => {
+                setTimeout(() => {
+                    element.classList.add('animate');
+                }, index * 200);
+            });
+            
+            // Enhanced carousel interaction
+            const carousel = document.getElementById('productCarousel');
+            if (carousel) { // Check if carousel exists before initializing
+                const carouselInstance = new bootstrap.Carousel(carousel, {
+                    interval: 5000,
+                    wrap: true,
+                    keyboard: true
+                });
+                
+                // Pause carousel on hover
+                carousel.addEventListener('mouseenter', () => {
+                    carouselInstance.pause();
+                });
+                
+                carousel.addEventListener('mouseleave', () => {
+                    carouselInstance.cycle();
+                });
+            }
+
+            // Smooth scrolling for better UX (removed as no internal anchors present in new body)
+            
+            // Add click handlers for buttons
+            // These event listeners assume you're handling the 'buy_product' URL with Django views.
+            // If these are meant for client-side interactions, you'll need to re-implement the alert logic.
+            const buyNowBtn = document.querySelector('.btn-buy-now');
+            if (buyNowBtn) {
+                buyNowBtn.addEventListener('click', function(e) {
+                    // e.preventDefault(); // Prevent default if you want to handle with JS only
+                    // alert('Redirecting to checkout...'); // Example client-side action
+                });
+            }
+            
+            // The 'Add to Cart' button and its logic were removed as they were not in your new body.
+            // If you add it back, remember to include its event listener.
+        });
+        
+        // Performance optimization: Intersection Observer for animations
+        if ('IntersectionObserver' in window) {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('animate');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            });
+            
+            document.querySelectorAll('.fade-in-up, .fade-in-left').forEach(el => {
+                observer.observe(el);
+            });
+        }
+    </script>
+</body>
+</html>

@@ -844,8 +844,8 @@ body::before {
                         <h5 class="card-title">{{ product.name }}</h5>
                         <p class="card-text">{{ product.description|truncatewords:20 }}</p>
                         <div class="price-text">₹{{ product.price }}</div>
-                        <a href="{% url 'buy_product' product.id %}" class="btn-buy">
-                            <i class="fas fa-shopping-cart me-2"></i>Buy Now
+                        <a href="{% url 'product_detail' product.id %}" class="btn-buy">
+                            <i class="fas fa-shopping-cart me-2"></i>View product
                         </a>
                     </div>
 
