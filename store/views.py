@@ -83,8 +83,34 @@ def newarrivals(request):
     return render(request,'newarrivals.html',{'newarrivals': newarrivals})
 
 
+# def product_detail(request, product_id):
+#     product = get_object_or_404(Product, id=product_id)
+#     return render(request, 'product_detail.html', {'product': product})
+
+
+# In your views.py file, update your product_detail view:
+
+from django.shortcuts import render, get_object_or_404
+from .models import Product  # Replace with your actual model import
+
 def product_detail(request, product_id):
     product = get_object_or_404(Product, id=product_id)
-    return render(request, 'product_detail.html', {'product': product})
-
-
+    
+    # Format description as bullet points
+    if product.description:
+        # Split by periods and clean up sentences
+        sentences = []
+        for sentence in product.description.split('.'):
+            sentence = sentence.strip()
+            if sentence:  # Only add non-empty sentences
+                sentences.append(sentence + '.')
+        
+        product.formatted_description = sentences
+    else:
+        product.formatted_description = []
+    
+    context = {
+        'product': product,
+    }
+    
+    return render(request, 'product_detail.html', context)

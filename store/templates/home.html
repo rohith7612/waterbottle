@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.2, maximum-scale=5.0, user-scalable=yes">
     <title>Vin2Grow - Premium Water Bottles</title>
@@ -221,25 +222,13 @@ body::before {
     color: white;
 }
 
-@keyframes turnAnimation {
-    0% {
-        transform: rotate(0deg) scale(1);
-    }
-    50% {
-        transform: rotate(180deg) scale(1.1);
-    }
-    100% {
-        transform: rotate(360deg) scale(1);
-    }
-}
-
 .hero-image img {
-    transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+    transition: all 0.3s ease;
 }
 
 .hero-image:hover img {
-    animation: turnAnimation 2s ease-in-out;
-    box-shadow: 0 20px 60px rgba(6, 182, 212, 0.4);
+    transform: rotate(5deg) scale(1.05);
+    box-shadow: 0 5px 15px var(--shadow-medium);
 }
 
 /* ===== SECTIONS ===== */
@@ -555,6 +544,11 @@ body::before {
 .hero-image img {
     transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1), 
                 box-shadow 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.hero-image:hover img {
+    transform: rotate(5deg) scale(1.05);
+    box-shadow: 0 5px 15px var(--shadow-medium);
 }
 
 /* ===================== Square Section ===================== */
